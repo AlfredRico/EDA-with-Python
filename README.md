@@ -9,7 +9,7 @@
 
 ## Background
 At the eariliest stages of the data analysis I will
-  * Build a datafram for the TikTok dataset
+  * Build a dataframe for the TikTok dataset
   * Examine data types
   * Gather descriptive statistics
   
