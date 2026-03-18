@@ -5,7 +5,7 @@
 
   This project aims to address this issue by developing a predictive model that can determine whether a video contains a claim or offers an opinion, derive any insight into relationships that may exist between variables such as views, likes, shares, comments and ban status, and implement a successful model that will reduce the backlog of user reports allowing moderators to prioritize them more efficiently.
 
-# For this Project
+# For This Part of the Project
 
 ## Background
 At the eariliest stages of the data analysis I will
