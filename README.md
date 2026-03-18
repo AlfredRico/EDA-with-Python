@@ -1,5 +1,5 @@
 # EDA-with-Python
-Exploratory data analysis using Python packages NumPy and Pandas, boolean masking and groupby() functions to gain preliminary insight
+**Exploratory data analysis using Python packages NumPy and Pandas, boolean masking and groupby() functions to gain preliminary insight**
 
   Tiktok's social platform can spark creativity and engulf viewers in inspiration and awe. With today's TikTok population reaching near 2 billion monthly users as of 2026, moderators are tasked, in the face of millions of backlogged reports, with devoloping a predictive model to categorize submitted reports identifying content that needs to be reviewed. At the pace of culture, video content on TikTok can spread like wildfire where discussion-driven topics elicit polarized debate and, if flagged or reported, must be addressed by moderators. This process generates large levels of data that can cannot be assessed in a timely enough manner. 
 
