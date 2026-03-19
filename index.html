@@ -142,6 +142,34 @@
   max-width: 160px;
 }
 
+
+
+/* SUBSECTION (H3) COLLAPSIBLE */
+h3 {
+  font-size: 1.2rem;
+  margin-top: 25px;
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 24px;
+  cursor: pointer;
+  color: #cfd8ff;
+}
+
+h3::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  color: #888;
+  transition: transform 0.2s ease;
+}
+
+h3.collapsed::before {
+  transform: translateY(-50%) rotate(-90deg);
+}
+
 </style>
 </head>
 <body>
@@ -531,7 +559,7 @@ memory usage: 1.8+ MB
   </div>
 
   <script>
-    document.querySelectorAll("h2").forEach(function(header) {
+    document.querySelectorAll("h2, h3").forEach(function(header) {
       header.classList.add("collapsible-header");
 
       header.addEventListener("click", function() {
@@ -542,7 +570,7 @@ memory usage: 1.8+ MB
     let collapsed = false;
 
     function toggleAll() {
-      document.querySelectorAll("h2").forEach(function(header) {
+      document.querySelectorAll("h2, h3").forEach(function(header) {
         header.classList.toggle("collapsed", !collapsed);
       });
 
