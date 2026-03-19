@@ -16,15 +16,12 @@ At the eariliest stages of the data analysis I will
 ## The goal
 I will be using the 19,382 rows and 12 columns present in the tiktok_dataset.csv for start of this project, bulding a dataframe for the claims classification data, organizing the claims data for the process of EDA and provide a preliminary assessment of relationships that might exist between variables such as author_ban_status and engagement level (views, shares, likes, comments). 
 
-## Project Environment  
-**IDE** - Jupyter Notebook  
+## Tools & Technologies
 
-Python packages  
-**NumPy** used primarily for numerical computation and it's wide range in mathematical functionality.  
-**Pandas** was used for data manipulation, data structuring and handling  
-
-**Boolean masking** to filter data with respect to the claim_status  
-**Groupby()** function to compile and **agg()** function to perform statistical calculations
+- **Environment:** Jupyter Notebook  
+- **Language:** Python  
+- **Libraries:** NumPy, Pandas  
+- **Techniques:** Boolean masking, groupby(), agg() aggregation
 
 ## Project Overview
 ### Key Takeaways  
