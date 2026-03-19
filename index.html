@@ -35,9 +35,7 @@
       padding-left: 28px;
     }
 
-    p {
-      color: #cfcfcf;
-    }
+    p { color: #cfcfcf; }
 
     .section {
       margin-top: 30px;
@@ -47,34 +45,7 @@
       background: #121212;
     }
 
-    .results {
-      margin-top: 15px;
-      padding: 15px;
-      background: #1a1a1a;
-      border-radius: 8px;
-      border: 1px solid #2a2a2a;
-    }
-
-    details {
-      margin-top: 15px;
-      background: #151515;
-      border: 1px solid #2a2a2a;
-      border-radius: 8px;
-      padding: 10px;
-    }
-
-    summary {
-      cursor: pointer;
-      font-weight: bold;
-      color: #9aaaff;
-    }
-
-    pre {
-      overflow-x: auto;
-      font-size: 0.9rem;
-      color: #dcdcdc;
-    }
-
+    /* Controls */
     .controls {
       display: flex;
       justify-content: flex-end;
@@ -87,13 +58,11 @@
       color: #888;
       font-size: 0.85rem;
       cursor: pointer;
-      padding: 4px 6px;
     }
 
-    .controls button:hover {
-      color: #ccc;
-    }
+    .controls button:hover { color: #ccc; }
 
+    /* Section collapse */
     .collapsible-header {
       cursor: pointer;
     }
@@ -104,20 +73,73 @@
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 1rem;
       color: #aaa;
-      transition: transform 0.2s ease;
     }
 
     .collapsible-header.collapsed::before {
       transform: translateY(-50%) rotate(-90deg);
     }
 
-    .collapsible-content {
-      display: block;
+    .collapsed + .collapsible-content {
+      display: none;
     }
 
-    .collapsed + .collapsible-content {
+    /* Notebook cells */
+    .cell {
+      margin-top: 15px;
+    }
+
+    .cell-row {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .cell-label {
+      width: 65px;
+      min-width: 65px;
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: #888;
+      text-align: right;
+      padding-top: 6px;
+      padding-right: 10px;
+    }
+
+    .cell-label.out {
+      color: #9aaaff;
+    }
+
+    .cell-box {
+      flex: 1;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    .cell-box.code {
+      background: #111;
+      border: 1px solid #2a2a2a;
+      padding: 10px;
+    }
+
+    .cell-box.output {
+      background: #0d0d0d;
+      border: 1px solid #222;
+      padding: 10px;
+    }
+
+    pre {
+      margin: 0;
+      font-size: 0.75rem;
+      color: #dcdcdc;
+    }
+
+    /* Cell collapse */
+    .cell-header {
+      cursor: pointer;
+    }
+
+    .cell.collapsed .cell-content {
       display: none;
     }
 
@@ -129,113 +151,128 @@
 </head>
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <h1>TikTok Claims Project (EDA with Python)</h1>
+<h1>TikTok Claims Project (EDA with Python)</h1>
 
-    <div class="controls">
-      <button onclick="toggleAll()" id="toggleBtn">Collapse all</button>
-    </div>
+<div class="controls">
+  <button onclick="toggleAll()" id="toggleBtn">Collapse all</button>
+</div>
 
-    <h2>Problem Statement</h2>
-    <div class="collapsible-content">
-      <p>
-        TikTok's ever growing community base, with close to 2 billion monthly users worldwide as of 2026, presents moderators with the challenge of reviewing reported content suspected of containing user claims. In order to maintain trust and safety on the platform, moderators must take precautionary measures to prevent the spread of misinformation and ensure adherence to policy. To help reduce the level of backlogging, the overall focus of this project will be to create a predictive model that can determine whether a video contains claims or offers opinions allowing moderators to prioritize reports efficiently.
-      </p>
-    </div>
+<h2>Problem Statement</h2>
+<div class="collapsible-content">
+<p>
+TikTok's ever growing community base, with close to 2 billion monthly users worldwide as of 2026, presents moderators with the challenge of reviewing reported content suspected of containing user claims. In order to maintain trust and safety on the platform, moderators must take precautionary measures to prevent the spread of misinformation and ensure adherence to policy. To help reduce the level of backlogging, the overall focus of this project will be to create a predictive model that can determine whether a video contains claims or offers opinions allowing moderators to prioritize reports efficiently.
+</p>
+</div>
 
-    <h2>Project Goal</h2>
-    <div class="collapsible-content">
-      <p>
-        For this part of the project, I will be focusing on cursory data inspection of the provided dataset, "tiktok_dataset.csv". Building a dataframe with Python I will then organize the claims data for exploratory data analysis, clean, transform and derive engagement trends identifying any suggestions of correlations between user engagement variables and claim status.
-      </p>
-    </div>
+<h2>Project Goal</h2>
+<div class="collapsible-content">
+<p>
+For this part of the project, I will be focusing on cursory data inspection of the provided dataset, "tiktok_dataset.csv". Building a dataframe with Python I will then organize the claims data for exploratory data analysis, clean, transform and derive engagement trends identifying any suggestions of correlations between user engagement variables and claim status.
+</p>
+</div>
 
-    <div class="section">
-      <h2>Python Packages</h2>
-      <div class="collapsible-content">
+<div class="section">
+<h2>Python Packages</h2>
+<div class="collapsible-content">
 
-        <p>Importing Python packages</p>
+<p>Importing Python packages</p>
 
-        <ul>
-          <li>NumPy - Used primarily for numerical computation and wide ranging mathematical functions</li>
-          <li>Pandas - Used for data manipulation, structuring and handling</li>
-        </ul>
+<ul>
+<li>NumPy - Used primarily for numerical computation and wide ranging mathematical functions</li>
+<li>Pandas - Used for data manipulation, structuring and handling</li>
+</ul>
 
-        <details>
-          <summary>View Code</summary>
-          <pre>
+<div class="cell collapsible-cell">
+  <div class="cell-row cell-header">
+    <div class="cell-label">In [1]:</div>
+    <div class="cell-box code">
+<pre>
 import numpy as np
 import pandas as pd
-          </pre>
-        </details>
-
-      </div>
+</pre>
     </div>
-
-    <div class="section">
-      <h2>Preliminary Data Inspection</h2>
-      <div class="collapsible-content">
-
-        <p>After loading the dataset onto the Jupyter notebook environment with  
-          **data = pd.read_csv("tiktok_dataset.csv")**  
-        An initial data inspection, validation and exploration using 'head()' , 'info()' , and 'describe()' to understand structure, data types, and statistical distributions  
-          - 'head()' - to examine sample record dataset structure and feature layout  
-          - 'info()' - to asses data types, missing values, and dataset integrity  
-          - 'describe()' - for statistical distribution (important for identifying trends, variability and potential outliers
-        </p>
-
-        <details>
-          <summary>View Code</summary>
-          <pre>
-#Displaying only the first 10 rows to examine structure and features  
-data.head(10)
-#Summary information  
-data.info()  
-#Summary statistics  
-data.describe()
-          </pre>
-        </details>
-
-        <div class="results">
-          <strong>Results:</strong>
-          <p>Show insights, charts, or outputs here.</p>
-        </div>
-
-      </div>
-    </div>
-
-    <h2>Project Overview</h2>
-    <div class="collapsible-content">
-      <p>
-        Summarize key findings, insights, and impact.
-      </p>
-    </div>
-
   </div>
+</div>
 
-  <script>
-    document.querySelectorAll("h2").forEach(function(header) {
-      header.classList.add("collapsible-header");
+</div>
+</div>
 
-      header.addEventListener("click", function() {
-        header.classList.toggle("collapsed");
-      });
-    });
+<div class="section">
+<h2>Preliminary Data Inspection</h2>
+<div class="collapsible-content">
 
-    let collapsed = false;
+<p>After loading the dataset onto the Jupyter notebook environment with  
+data = pd.read_csv("tiktok_dataset.csv")  
+An initial data inspection, validation and exploration using 'head()' , 'info()' , and 'describe()' to understand structure, data types, and statistical distributions  
+- 'head()' - to examine sample record dataset structure and feature layout  
+- 'info()' - to asses data types, missing values, and dataset integrity  
+- 'describe()' - for statistical distribution (important for identifying trends, variability and potential outliers
+</p>
 
-    function toggleAll() {
-      document.querySelectorAll("h2").forEach(function(header) {
-        header.classList.toggle("collapsed", !collapsed);
-      });
+<div class="cell collapsible-cell">
 
-      collapsed = !collapsed;
+<div class="cell-row cell-header">
+  <div class="cell-label">In [2]:</div>
+  <div class="cell-box code">
+<pre>
+data.head(10)
+data.info()
+data.describe()
+</pre>
+  </div>
+</div>
 
-      document.getElementById("toggleBtn").textContent =
-        collapsed ? "Expand all" : "Collapse all";
-    }
-  </script>
+<div class="cell-content">
+  <div class="cell-row">
+    <div class="cell-label out">Out[2]:</div>
+    <div class="cell-box output">
+
+      <!-- paste your to_html() table here -->
+
+      <p style="color:#aaa; font-size:0.8rem;">
+        Output preview of dataset structure and summary statistics.
+      </p>
+
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<h2>Project Overview</h2>
+<div class="collapsible-content">
+<p>Summarize key findings, insights, and impact.</p>
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll("h2").forEach(function(header){
+  header.classList.add("collapsible-header");
+  header.onclick = () => header.classList.toggle("collapsed");
+});
+
+let collapsed = false;
+
+function toggleAll(){
+  document.querySelectorAll("h2").forEach(h=>{
+    h.classList.toggle("collapsed", !collapsed);
+  });
+  collapsed = !collapsed;
+  toggleBtn.textContent = collapsed ? "Expand all" : "Collapse all";
+}
+
+document.querySelectorAll(".cell-header").forEach(header=>{
+  header.onclick = function(){
+    header.parentElement.classList.toggle("collapsed");
+  };
+});
+</script>
 
 </body>
 </html>
