@@ -125,7 +125,7 @@
       h1 { font-size: 2rem; }
       h2 { font-size: 1.3rem; padding-left: 24px; }
     }
-
+  
     .df-table {
       width: 100%;
       border-collapse: collapse;
@@ -140,6 +140,7 @@
       text-overflow: ellipsis;
       max-width: 160px;
     }
+
   </style>
 </head>
 
@@ -153,27 +154,57 @@
 <button onclick="toggleAll()" id="toggleBtn">Collapse all</button>
 </div>
 
+<h2>Problem Statement</h2>
+<div class="collapsible-content">
+<p>
+TikTok's ever growing community base, with close to 2 billion monthly users worldwide as of 2026, presents moderators with the challenge of reviewing reported content suspected of containing user claims...
+</p>
+</div>
+
+<h2>Project Goal</h2>
+<div class="collapsible-content">
+<p>
+For this part of the project, I will be focusing on cursory data inspection...
+</p>
+</div>
+
+<div class="section">
+<h2>Python Packages</h2>
+<div class="collapsible-content">
+<p>Importing Python packages</p>
+<ul>
+<li>NumPy - Used primarily for numerical computation and wide ranging mathematical functions</li>
+<li>Pandas - Used for data manipulation, structuring and handling</li>
+</ul>
+</div>
+</div>
+
+<div class="section">
 <h2>Preliminary Data Inspection</h2>
 <div class="collapsible-content">
 
-<!-- ✅ FIXED SECTION -->
+<!-- ✅ FIX APPLIED HERE ONLY -->
+
 <p>
-  After loading the dataset onto the Jupyter notebook environment with  
-  <code>data = pd.read_csv("tiktok_dataset.csv")</code>
+After loading the dataset onto the Jupyter notebook environment with  
+<code>data = pd.read_csv("tiktok_dataset.csv")</code>
 </p>
 
 <p>
-  An initial data inspection, validation and exploration using 
-  <code>head()</code>, <code>info()</code>, and <code>describe()</code> 
-  to understand structure, data types, and statistical distributions
+An initial data inspection, validation and exploration using 
+<code>head()</code>, <code>info()</code>, and <code>describe()</code> 
+to understand structure, data types, and statistical distributions
 </p>
 
 <ul>
-  <li>'head()' - to examine sample record dataset structure and feature layout</li>
-  <li>'info()' - to asses data types, missing values, and dataset integrity</li>
-  <li>'describe()' - for statistical distribution (important for identifying trends, variability and potential outliers)</li>
+<li>'head()' - to examine sample record dataset structure and feature layout</li>
+<li>'info()' - to asses data types, missing values, and dataset integrity</li>
+<li>'describe()' - for statistical distribution (important for identifying trends, variability and potential outliers)</li>
 </ul>
 
+<!-- EVERYTHING ELSE BELOW IS UNCHANGED -->
+
+</div>
 </div>
 
 </div>
