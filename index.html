@@ -243,6 +243,68 @@ h3.collapsed::before {
 .subsection.collapsed .subsection-header::before {
   transform: rotate(-90deg);
 }
+
+
+/* ===== NESTED INDEX STRUCTURE ===== */
+
+/* SUBSECTION (LEVEL 2) */
+.subsection {
+  margin-left: 10px;
+}
+
+.subsection-header {
+  font-size: 1.15rem;
+  margin-top: 20px;
+  padding-left: 28px;
+  position: relative;
+}
+
+/* SUMMARY (LEVEL 3) */
+.subsection-summary {
+  margin-left: 25px;
+}
+
+.summary-header {
+  padding-left: 22px;
+  font-size: 0.95rem;
+}
+
+/* ===== ARROW ALIGNMENT ===== */
+
+/* FIX arrows so they follow indentation */
+.section > h2::before {
+  left: 5px;
+}
+
+.subsection-header::before {
+  left: 8px;
+}
+
+.summary-header::before {
+  left: 4px;
+}
+
+/* ===== VISUAL HIERARCHY ===== */
+
+.subsection-header {
+  color: #d7deff;
+}
+
+.summary-header {
+  color: #ffcc66;
+  opacity: 0.9;
+}
+
+/* OPTIONAL: subtle nesting guide */
+.subsection {
+  border-left: 1px solid #2a2a2a;
+  padding-left: 10px;
+}
+
+.subsection-summary {
+  border-left: 1px dashed #333;
+  padding-left: 10px;
+}
 </style>
 </head>
 <body>
