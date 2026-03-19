@@ -629,6 +629,23 @@ document.querySelectorAll(".summary-header").forEach(function(header) {
   });
 });
 
+
+
+// COLLAPSE EVERYTHING BY DEFAULT
+document.addEventListener("DOMContentLoaded", function() {
+
+  // Collapse all sections and subsections
+  document.querySelectorAll("h2, h3").forEach(function(header) {
+    header.classList.add("collapsed");
+  });
+
+  // Collapse all summary boxes
+  document.querySelectorAll(".summary-header").forEach(function(header) {
+    header.classList.add("collapsed");
+  });
+
+});
+
 </script>
 
 </body>
