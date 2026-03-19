@@ -230,11 +230,11 @@ h3.collapsed::before {
     </div>
 
     
+
 <div class="section">
   <h2>Technical Implementation</h2>
   <div class="collapsible-content">
 
-    
 <h3>Python Packages</h3>
       <div class="collapsible-content">
 
@@ -254,30 +254,9 @@ import pandas as pd
         </details>
 </div>
 
+
+
 <h3>Preliminary Data Inspection</h3>
-
-
-<div class="summary-box">
-  <div class="summary-header collapsed">Summary</div>
-  <div class="summary-content">
-
-    <p>
-      Initial inspection reveals dataset structure, variable types, and missing values.
-    </p>
-
-    <p>
-      Engagement metrics exhibit strong right-skewness, indicating the presence 
-      of high-performing outliers.
-    </p>
-
-    <p>
-      Median values provide a more reliable representation of typical engagement 
-      compared to the mean.
-    </p>
-
-  </div>
-</div>
-
       <div class="collapsible-content">
 
         <p>
@@ -415,72 +394,6 @@ data.describe()
   </tbody>
 </table>
 </div>
-
-
-<h3>Claim Status & Engagement Analysis</h3>
-<div class="collapsible-content">
-
-  <div class="summary-box">
-    <div class="summary-header">Summary</div>
-    <div class="summary-content">
-
-      <p>
-        Engagement metrics grouped by <code>claim_status</code> reveal how user interaction 
-        differs between claim-based and opinion-based content.
-      </p>
-
-      <p>
-        This comparison highlights whether claims tend to generate higher visibility, 
-        which is critical for moderation prioritization.
-      </p>
-
-    </div>
-  </div>
-
-  <p>
-    The <code>claim_status</code> variable is used to segment the dataset into 
-    claims and opinions, enabling comparative analysis of engagement behavior.
-  </p>
-
-  <p>
-    Metrics such as views, likes, shares, downloads, and comments are aggregated 
-    using <code>groupby()</code> to evaluate differences across categories.
-  </p>
-
-  <details>
-    <summary>View Code</summary>
-    <pre>
-engagement_by_claim = data.groupby("claim_status")[[
-    "video_view_count",
-    "video_like_count",
-    "video_share_count",
-    "video_download_count",
-    "video_comment_count"
-]].mean()
-
-engagement_by_claim
-    </pre>
-  </details>
-
-  <div class="results">
-    <strong>Results:</strong>
-
-    <div class="cell-box output">
-      <pre style="color:#ccc; font-size:0.8rem;">
-               video_view_count  video_like_count  video_share_count  
-claim_status                                                        
-claim               XXXX              XXXX               XXXX       
-opinion             XXXX              XXXX               XXXX       
-      </pre>
-
-      <p style="color:#aaa; font-size:0.8rem;">
-        Average engagement grouped by claim status.
-      </p>
-    </div>
-  </div>
-
-</div>
-
 
 <div style="margin-top:15px;">
 <strong style="color:#aaa;">Data Info:</strong>
@@ -631,6 +544,9 @@ memory usage: 1.8+ MB
 </div>
 
 
+
+
+<!-- MOVED ORIGINAL SUMMARY (UNCHANGED TEXT) -->
 <div class="summary-box">
   <div class="summary-header">Summary</div>
   <div class="summary-content">
@@ -674,6 +590,40 @@ memory usage: 1.8+ MB
   </div>
 </div>
 
+</div>
+
+
+<h3>Claim Status & Engagement Analysis</h3>
+
+<div class="summary-box">
+  <div class="summary-header collapsed">Summary</div>
+  <div class="summary-content">
+    <!-- ADD YOUR SUMMARY HERE -->
+  </div>
+</div>
+
+<div class="collapsible-content">
+  <!-- ADD YOUR CONTENT HERE -->
+</div>
+
+
+
+<h3>Ban Status & Engagement</h3>
+
+<div class="summary-box">
+  <div class="summary-header collapsed">Summary</div>
+  <div class="summary-content">
+    <!-- ADD YOUR SUMMARY HERE -->
+  </div>
+</div>
+
+<div class="collapsible-content">
+  <!-- ADD YOUR CONTENT HERE -->
+</div>
+
+
+  </div>
+</div>
 </div>
 
       <div class="section">
