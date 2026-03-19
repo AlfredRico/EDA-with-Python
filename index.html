@@ -140,7 +140,7 @@
     <h2>Problem Statement</h2>
     <div class="collapsible-content">
       <p>
-        TikTok's ever growing community base with close to 2 billion monthly users worldwide presents moderators with the challenge of reviewing reported content suspected of containing user claims. In order to maintain trust and safety on the platform, moderators must take precautionary measures to prevent the spread of misinformation and ensure adherence to policy. To help reduce the level of backlogging, the overall focus of this project will be to create a predictive model that can determine whether a video contains claims or offers opinions allowing moderators to prioritize reports efficiently.
+        TikTok's ever growing community base, with close to 2 billion monthly users worldwide as of 2026, presents moderators with the challenge of reviewing reported content suspected of containing user claims. In order to maintain trust and safety on the platform, moderators must take precautionary measures to prevent the spread of misinformation and ensure adherence to policy. To help reduce the level of backlogging, the overall focus of this project will be to create a predictive model that can determine whether a video contains claims or offers opinions allowing moderators to prioritize reports efficiently.
       </p>
     </div>
 
@@ -174,21 +174,26 @@ import pandas as pd
     </div>
 
     <div class="section">
-      <h2>Python Packages</h2>
+      <h2>Preliminary Data Inspection</h2>
       <div class="collapsible-content">
 
-        <p>Importing Python packages</p>
-
-        <ul>
-          <li>NumPy - Used primarily for numerical computation and wide ranging mathematical functions</li>
-          <li>Pandas - Used for data manipulation, structuring and handling</li>
-        </ul>
+        <p>After loading the dataset onto the Jupyter notebook environment with  
+          **data = pd.read_csv("tiktok_dataset.csv")**  
+        An initial data inspection, validation and exploration using 'head()' , 'info()' , and 'describe()' to understand structure, data types, and statistical distributions  
+          - 'head()' - to examine sample record dataset structure and feature layout  
+          - 'info()' - to asses data types, missing values, and dataset integrity  
+          - 'describe()' - for statistical distribution (important for identifying trends, variability and potential outliers
+        </p>
 
         <details>
           <summary>View Code</summary>
           <pre>
-import numpy as np
-import pandas as pd
+#Displaying only the first 10 rows to examine structure and features  
+data.head(10)
+#Summary information  
+data.info()  
+#Summary statistics  
+data.describe()
           </pre>
         </details>
 
