@@ -214,6 +214,49 @@ import pandas as pd
 </div>
 
 </div>
+
+<div class="summary-box">
+
+  <strong>Summary</strong>
+
+  <p>
+    Upon inspection, <code>data.head(5)</code> displays the first five rows of the 19,382 entries, 
+    each representing either a claim or an opinion along with associated metadata. 
+    The dataset includes a mix of categorical, textual, and numerical features.
+  </p>
+
+  <p>
+    <code>data.info()</code> provides insight into data types and completeness, 
+    highlighting variables that contain missing or null values.
+  </p>
+
+  <p>
+    <code>data.describe()</code> is particularly relevant to the project objective, 
+    as it reveals the distribution of engagement-related variables. 
+    The results indicate strong right-skewness, where a small number of videos 
+    exhibit disproportionately high interaction values—suggesting the presence 
+    of high-end outliers likely associated with viral content.
+  </p>
+
+  <p>
+    Quartile analysis further supports this observation. Quartiles divide the data 
+    into four equal parts after sorting. At the 50% level (median), view counts are 
+    approximately 10k, while at the 75% level they rise to around 50k. This sharp 
+    increase indicates that a subset of videos significantly outperforms the majority.
+  </p>
+
+  <p>
+    Additionally, the standard deviation across engagement metrics is relatively large, 
+    reinforcing the presence of variability and outliers. It is important to note that 
+    the mean is not fully representative of typical engagement levels, as it is heavily 
+    influenced by extreme values. The median provides a more reliable measure of central 
+    tendency in this case, as it remains unaffected by outliers.
+  </p>
+
+</div>
+
+
+</div>
 </div>
 
 <div class="section">
@@ -482,48 +525,7 @@ memory usage: 1.8+ MB
 </div>
 
 
-      <div class="summary-box">
-
-  <strong>Summary</strong>
-
-  <p>
-    Upon inspection, <code>data.head(5)</code> displays the first five rows of the 19,382 entries, 
-    each representing either a claim or an opinion along with associated metadata. 
-    The dataset includes a mix of categorical, textual, and numerical features.
-  </p>
-
-  <p>
-    <code>data.info()</code> provides insight into data types and completeness, 
-    highlighting variables that contain missing or null values.
-  </p>
-
-  <p>
-    <code>data.describe()</code> is particularly relevant to the project objective, 
-    as it reveals the distribution of engagement-related variables. 
-    The results indicate strong right-skewness, where a small number of videos 
-    exhibit disproportionately high interaction values—suggesting the presence 
-    of high-end outliers likely associated with viral content.
-  </p>
-
-  <p>
-    Quartile analysis further supports this observation. Quartiles divide the data 
-    into four equal parts after sorting. At the 50% level (median), view counts are 
-    approximately 10k, while at the 75% level they rise to around 50k. This sharp 
-    increase indicates that a subset of videos significantly outperforms the majority.
-  </p>
-
-  <p>
-    Additionally, the standard deviation across engagement metrics is relatively large, 
-    reinforcing the presence of variability and outliers. It is important to note that 
-    the mean is not fully representative of typical engagement levels, as it is heavily 
-    influenced by extreme values. The median provides a more reliable measure of central 
-    tendency in this case, as it remains unaffected by outliers.
-  </p>
-
-</div>
-
-
-</div>
+      
 
 <p style="color:#aaa; font-size:0.8rem;">
         Output preview of dataset structure and summary statistics.
