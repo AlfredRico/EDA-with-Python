@@ -482,25 +482,57 @@ memory usage: 1.8+ MB
 </div>
 
 
-      <p style="color:#aaa; font-size:0.8rem;">
+      <div class="summary-box">
+
+  <strong>Summary</strong>
+
+  <p>
+    Upon inspection, <code>data.head(5)</code> displays the first five rows of the 19,382 entries, 
+    each representing either a claim or an opinion along with associated metadata. 
+    The dataset includes a mix of categorical, textual, and numerical features.
+  </p>
+
+  <p>
+    <code>data.info()</code> provides insight into data types and completeness, 
+    highlighting variables that contain missing or null values.
+  </p>
+
+  <p>
+    <code>data.describe()</code> is particularly relevant to the project objective, 
+    as it reveals the distribution of engagement-related variables. 
+    The results indicate strong right-skewness, where a small number of videos 
+    exhibit disproportionately high interaction values—suggesting the presence 
+    of high-end outliers likely associated with viral content.
+  </p>
+
+  <p>
+    Quartile analysis further supports this observation. Quartiles divide the data 
+    into four equal parts after sorting. At the 50% level (median), view counts are 
+    approximately 10k, while at the 75% level they rise to around 50k. This sharp 
+    increase indicates that a subset of videos significantly outperforms the majority.
+  </p>
+
+  <p>
+    Additionally, the standard deviation across engagement metrics is relatively large, 
+    reinforcing the presence of variability and outliers. It is important to note that 
+    the mean is not fully representative of typical engagement levels, as it is heavily 
+    influenced by extreme values. The median provides a more reliable measure of central 
+    tendency in this case, as it remains unaffected by outliers.
+  </p>
+
+</div>
+
+
+</div>
+
+<p style="color:#aaa; font-size:0.8rem;">
         Output preview of dataset structure and summary statistics.
       </p>
 
     </div>
   </div>
 
-<div class="summary-box">
-  <strong>Summary</strong>
-  <p>
-    Upon inspection, <code>data.head(5)</code> displayes the first 5 rows of the 19,382 representing either a claim or an opinion followed by their respective metadata in a combination of categorical, text, and numerical.  
-    <code>data.info()</code> plays an important role as it sheds light on variables that contain missing values or NULL values  
-    <code>data.describe()</code> seems to provide the most pertinence in regards to the project goals because it provides insight into count variable distributions. According to the statistical results of the data, there is a strong right-skewness of engagement metrics, with a small number of videos exhibiting disproportianately high interaction values indicating high-end outliers likely corresponding to viral content. For example, quartiles show where most data sits after splitting it into four equal parts and sorting from smallest to largest. The data here shows that at the 50% level, where outlier presence can be most obvious, view count is roughly 10k but at the 75% level view count is roughly 50k. On top of this, the standard deviation across the board for engagement activity seems to be quite large as well.  
-    **Note** that the mean is not fully representative of typical engagement levels either as it was observed that there exist very strong outliers in each field. The median would provide a more accurate measure of central tendency for the dataset as the median is unaffected by outliers (viral videos) that can disproportionately influence aggregate metrics.
-  </p>
-</div>
 
-
-</div>
 
 </div>
 
