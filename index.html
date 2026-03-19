@@ -305,6 +305,37 @@ h3.collapsed::before {
   border-left: 1px dashed #333;
   padding-left: 10px;
 }
+
+
+/* SUMMARY (SEPARATE LEVEL) */
+.subsection-summary {
+  margin-left: 25px;
+}
+
+.summary-header {
+  cursor: pointer;
+  padding-left: 20px;
+  position: relative;
+}
+
+.summary-header::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  transition: transform 0.2s ease;
+}
+
+.summary-header.collapsed::before {
+  transform: rotate(90deg);
+}
+
+.summary-content {
+  display: block;
+}
+
+.summary-header.collapsed + .summary-content {
+  display: none;
+}
 </style>
 </head>
 <body>
@@ -604,7 +635,7 @@ memory usage: 1.8+ MB
       </p>
 </div>
 </div>
-</div><div class="subsection-summary">
+</div></div><div class="subsection-summary">
 <div class="summary-header">Summary</div>
 <div class="summary-content">
 <p>
@@ -637,7 +668,7 @@ memory usage: 1.8+ MB
     tendency in this case, as it remains unaffected by outliers.
   </p>
 </div>
-</div></div></div>
+</div></div>
 <div class="section">
 <div class="section">
 <h2>Project Overview</h2>
@@ -662,7 +693,7 @@ document.querySelectorAll(".subsection-header").forEach(h => {
   });
 });
 
-// SUMMARY
+// SUMMARY (independent level)
 document.querySelectorAll(".summary-header").forEach(h => {
   h.addEventListener("click", (e) => {
     e.stopPropagation();
@@ -670,7 +701,7 @@ document.querySelectorAll(".summary-header").forEach(h => {
   });
 });
 
-// DEFAULT COLLAPSE ON LOAD
+// DEFAULT COLLAPSE
 document.querySelectorAll(".section, .subsection").forEach(el => {
   el.classList.add("collapsed");
 });
