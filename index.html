@@ -170,6 +170,40 @@ h3.collapsed::before {
   transform: translateY(-50%) rotate(-90deg);
 }
 
+
+
+/* SUMMARY DROPDOWN (UNIQUE STYLE) */
+.summary-header {
+  cursor: pointer;
+  font-weight: bold;
+  color: #ffcc66;
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 22px;
+}
+
+.summary-header::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s ease;
+  color: #ffcc66;
+}
+
+.summary-header.collapsed::before {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.summary-content {
+  display: block;
+}
+
+.summary-header.collapsed + .summary-content {
+  display: none;
+}
+
 </style>
 </head>
 <body>
@@ -508,9 +542,11 @@ memory usage: 1.8+ MB
 
 </div>
 
-<div class="summary-box">
 
-  <strong>Summary</strong>
+<div class="summary-box">
+  <div class="summary-header">Summary</div>
+  <div class="summary-content">
+
 
   <p>
     Upon inspection, <code>data.head(5)</code> displays the first five rows of the 19,382 entries, 
@@ -546,7 +582,10 @@ memory usage: 1.8+ MB
     tendency in this case, as it remains unaffected by outliers.
   </p>
 
+
+  </div>
 </div>
+
 </div>
 
       </div>
@@ -582,7 +621,16 @@ memory usage: 1.8+ MB
       document.getElementById("toggleBtn").textContent =
         collapsed ? "Expand all" : "Collapse all";
     }
-  </script>
+  
+
+// SUMMARY DROPDOWN
+document.querySelectorAll(".summary-header").forEach(function(header) {
+  header.addEventListener("click", function() {
+    header.classList.toggle("collapsed");
+  });
+});
+
+</script>
 
 </body>
 </html>
