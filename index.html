@@ -203,6 +203,46 @@ h3.collapsed::before {
   display: none;
 }
 
+
+
+/* ===== STABLE COLLAPSE SYSTEM ===== */
+
+/* SECTION */
+.section.collapsed > .collapsible-content {
+  display: none;
+}
+
+/* SUBSECTION */
+.subsection.collapsed > .subsection-content {
+  display: none;
+}
+
+.subsection.collapsed > .subsection-summary {
+  display: none;
+}
+
+/* ARROWS */
+.section > h2::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  transition: transform 0.2s ease;
+}
+
+.section.collapsed > h2::before {
+  transform: rotate(-90deg);
+}
+
+.subsection-header::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  transition: transform 0.2s ease;
+}
+
+.subsection.collapsed .subsection-header::before {
+  transform: rotate(-90deg);
+}
 </style>
 </head>
 <body>
@@ -562,9 +602,19 @@ document.querySelectorAll(".subsection-header").forEach(h => {
 
 // SUMMARY
 document.querySelectorAll(".summary-header").forEach(h => {
-  h.addEventListener("click", () => {
+  h.addEventListener("click", (e) => {
+    e.stopPropagation();
     h.classList.toggle("collapsed");
   });
+});
+
+// DEFAULT COLLAPSE ON LOAD
+document.querySelectorAll(".section, .subsection").forEach(el => {
+  el.classList.add("collapsed");
+});
+
+document.querySelectorAll(".summary-header").forEach(el => {
+  el.classList.add("collapsed");
 });
 </script>
 </div></div></div></body>
