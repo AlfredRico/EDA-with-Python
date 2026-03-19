@@ -599,18 +599,33 @@ memory usage: 1.8+ MB
 </div>
 
 
-  <script>
-    document.querySelectorAll("h2, h3").forEach(function(header) {
-      header.classList.add("collapsible-header");
+  
+<script>
 
-      header.addEventListener("click", function() {
-        header.classList.toggle("collapsed");
-      });
-    });
-
-    
 let collapsed = true;
 
+// APPLY COLLAPSIBLE BEHAVIOR
+function initCollapsibles() {
+  document.querySelectorAll("h2, h3, .summary-header").forEach(function(header) {
+
+    // Ensure clickable
+    header.style.cursor = "pointer";
+
+    header.addEventListener("click", function() {
+      header.classList.toggle("collapsed");
+    });
+
+  });
+}
+
+// COLLAPSE EVERYTHING ON LOAD
+function collapseAllOnLoad() {
+  document.querySelectorAll("h2, h3, .summary-header").forEach(function(header) {
+    header.classList.add("collapsed");
+  });
+}
+
+// TOGGLE BUTTON
 function toggleAll() {
   document.querySelectorAll("h2, h3, .summary-header").forEach(function(header) {
     header.classList.toggle("collapsed", !collapsed);
@@ -621,40 +636,15 @@ function toggleAll() {
   document.getElementById("toggleBtn").textContent =
     collapsed ? "Expand all" : "Collapse all";
 }
-);
 
-      collapsed = !collapsed;
-
-      document.getElementById("toggleBtn").textContent =
-        collapsed ? "Expand all" : "Collapse all";
-    }
-  
-
-// SUMMARY DROPDOWN
-document.querySelectorAll(".summary-header").forEach(function(header) {
-  header.addEventListener("click", function() {
-    header.classList.toggle("collapsed");
-  });
-});
-
-
-
-// COLLAPSE EVERYTHING BY DEFAULT
+// INIT
 document.addEventListener("DOMContentLoaded", function() {
-
-  // Collapse all sections and subsections
-  document.querySelectorAll("h2, h3").forEach(function(header) {
-    header.classList.add("collapsed");
-  });
-
-  // Collapse all summary boxes
-  document.querySelectorAll(".summary-header").forEach(function(header) {
-    header.classList.add("collapsed");
-  });
-
+  initCollapsibles();
+  collapseAllOnLoad();
 });
 
 </script>
+
 
 </body>
 </html>
