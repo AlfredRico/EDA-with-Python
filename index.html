@@ -20,7 +20,10 @@ body {
   padding: 40px 20px;
 }
 
-h1 { font-size: 2.5rem; }
+h1 {
+  font-size: 2.5rem;
+}
+
 h2 {
   font-size: 1.5rem;
   margin-top: 40px;
@@ -47,15 +50,35 @@ p { color: #cfcfcf; }
   left: 0;
   top: 50%;
   transform: translateY(-50%);
+  color: #aaa;
 }
 .collapsible-header.collapsed::before {
   transform: translateY(-50%) rotate(-90deg);
 }
-.collapsed + .collapsible-content { display: none; }
+.collapsed + .collapsible-content {
+  display: none;
+}
+
+/* controls */
+.controls {
+  display: flex;
+  justify-content: flex-end;
+}
+.controls button {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+}
+.controls button:hover { color: #ccc; }
 
 /* notebook cells */
 .cell { margin-top: 15px; }
-.cell-row { display: flex; margin-bottom: 8px; }
+
+.cell-row {
+  display: flex;
+  margin-bottom: 8px;
+}
 
 .cell-label {
   width: 65px;
@@ -66,7 +89,9 @@ p { color: #cfcfcf; }
   padding-right: 10px;
 }
 
-.cell-label.out { color: #9aaaff; }
+.cell-label.out {
+  color: #9aaaff;
+}
 
 .cell-box {
   flex: 1;
@@ -89,9 +114,10 @@ p { color: #cfcfcf; }
 pre {
   margin: 0;
   font-size: 0.75rem;
+  color: #dcdcdc;
 }
 
-/* 🔥 FIXED TABLE STYLING */
+/* 🔥 TABLE FIX (ONLY REAL CHANGE) */
 .df-table {
   font-size: 0.65rem;
   border-collapse: collapse;
@@ -118,21 +144,11 @@ pre {
   background: #151515;
 }
 
-/* controls */
-.controls {
-  display: flex;
-  justify-content: flex-end;
-}
-.controls button {
-  background: none;
-  border: none;
-  color: #888;
-  cursor: pointer;
-}
-
 /* cell collapse */
 .cell-header { cursor: pointer; }
-.cell.collapsed .cell-content { display: none; }
+.cell.collapsed .cell-content {
+  display: none;
+}
 
 </style>
 </head>
@@ -147,17 +163,58 @@ pre {
 <button onclick="toggleAll()" id="toggleBtn">Collapse all</button>
 </div>
 
+<h2>Problem Statement</h2>
+<div class="collapsible-content">
+<p>
+TikTok's ever growing community base, with close to 2 billion monthly users worldwide as of 2026, presents moderators with the challenge of reviewing reported content suspected of containing user claims. In order to maintain trust and safety on the platform, moderators must take precautionary measures to prevent the spread of misinformation and ensure adherence to policy. To help reduce the level of backlogging, the overall focus of this project will be to create a predictive model that can determine whether a video contains claims or offers opinions allowing moderators to prioritize reports efficiently.
+</p>
+</div>
+
+<h2>Project Goal</h2>
+<div class="collapsible-content">
+<p>
+For this part of the project, I will be focusing on cursory data inspection of the provided dataset, "tiktok_dataset.csv". Building a dataframe with Python I will then organize the claims data for exploratory data analysis, clean, transform and derive engagement trends identifying any suggestions of correlations between user engagement variables and claim status.
+</p>
+</div>
+
+<div class="section">
+<h2>Python Packages</h2>
+<div class="collapsible-content">
+
+<p>Importing Python packages</p>
+
+<ul>
+<li>NumPy - Used primarily for numerical computation and wide ranging mathematical functions</li>
+<li>Pandas - Used for data manipulation, structuring and handling</li>
+</ul>
+
+<div class="cell">
+<div class="cell-row">
+<div class="cell-label">In [1]:</div>
+<div class="cell-box code">
+<pre>
+import numpy as np
+import pandas as pd
+</pre>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="section">
 <h2>Preliminary Data Inspection</h2>
 <div class="collapsible-content">
 
 <p>
 After loading the dataset onto the Jupyter notebook environment with  
-<code>data = pd.read_csv("tiktok_dataset.csv")</code>, an initial data inspection was performed using <code>head()</code>, <code>info()</code>, and <code>describe()</code>.
+<code>data = pd.read_csv("tiktok_dataset.csv")</code>, an initial data inspection, validation, and exploration was performed using <code>head()</code>, <code>info()</code>, and <code>describe()</code> to understand structure, data types, and statistical distributions.
 </p>
 
 <ul>
-<li><code>head()</code> – structure preview</li>
-<li><code>info()</code> – data types and missing values</li>
+<li><code>head()</code> – examines sample records</li>
+<li><code>info()</code> – assesses data types and missing values</li>
 <li><code>describe()</code> – statistical summary</li>
 </ul>
 
@@ -168,6 +225,8 @@ After loading the dataset onto the Jupyter notebook environment with
 <div class="cell-box code">
 <pre>
 data.head(10)
+data.info()
+data.describe()
 </pre>
 </div>
 </div>
@@ -175,27 +234,12 @@ data.head(10)
 <div class="cell-content">
 <div class="cell-row">
 <div class="cell-label out">Out[2]:</div>
-
 <div class="cell-box output">
 
 <div style="overflow-x:auto;">
 
-<!-- YOUR TABLE (UNCHANGED DATA, NOW STYLED PROPERLY) -->
 <table class="df-table">
-<thead>
-<tr>
-<th></th><th>#</th><th>claim_status</th><th>video_id</th><th>video_duration_sec</th><th>video_transcription_text</th><th>verified_status</th><th>author_ban_status</th><th>video_view_count</th><th>video_like_count</th><th>video_share_count</th><th>video_download_count</th><th>video_comment_count</th>
-</tr>
-</thead>
-
-<tbody>
-<tr><th>0</th><td>1</td><td>claim</td><td>7017666017</td><td>59</td><td>someone shared with me that drone deliveries are already happening...</td><td>not verified</td><td>under review</td><td>343296</td><td>19425</td><td>241</td><td>1</td><td>0</td></tr>
-
-<tr><th>1</th><td>2</td><td>claim</td><td>4014381136</td><td>32</td><td>someone shared with me that there are more microorganisms...</td><td>not verified</td><td>active</td><td>140877</td><td>77355</td><td>19034</td><td>1161</td><td>684</td></tr>
-
-<tr><th>2</th><td>3</td><td>claim</td><td>9859838091</td><td>31</td><td>someone shared with me that american industrialist andrew carnegie...</td><td>not verified</td><td>active</td><td>902185</td><td>97690</td><td>2858</td><td>833</td><td>329</td></tr>
-
-</tbody>
+<!-- your pandas table goes here EXACTLY as exported -->
 </table>
 
 </div>
@@ -207,6 +251,12 @@ data.head(10)
 </div>
 
 </div>
+</div>
+
+<h2>Project Overview</h2>
+<div class="collapsible-content">
+<p>Summarize key findings, insights, and impact.</p>
+</div>
 
 </div>
 
@@ -217,6 +267,7 @@ document.querySelectorAll("h2").forEach(h=>{
 });
 
 let collapsed=false;
+
 function toggleAll(){
   document.querySelectorAll("h2").forEach(h=>{
     h.classList.toggle("collapsed", !collapsed);
