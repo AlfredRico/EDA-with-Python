@@ -381,6 +381,19 @@ h3.collapsed::before {
 .summary-header::before {
   transform: rotate(90deg);
 }
+
+
+/* ===== FIX SUMMARY ARROW ALIGNMENT ===== */
+
+.summary-header::before {
+  top: 45%;               /* move slightly up from center */
+  transform: translateY(-50%);
+}
+
+/* Optional fine-tune (more precise alignment) */
+.summary-header {
+  line-height: 1.2;
+}
 </style>
 </head>
 <body>
