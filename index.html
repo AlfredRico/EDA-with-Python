@@ -147,7 +147,24 @@
       h1 { font-size: 2rem; }
       h2 { font-size: 1.3rem; padding-left: 24px; }
     }
-  </style>
+  
+.summary-box {
+  margin-top: 15px;
+  padding: 12px 14px;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #cfcfcf;
+}
+
+.summary-box strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #9aaaff;
+}
+
+</style>
 </head>
 <body>
 
@@ -471,6 +488,18 @@ memory usage: 1.8+ MB
 
     </div>
   </div>
+
+<div class="summary-box">
+  <strong>Summary</strong>
+  <p>
+    Upon inspection, <code>data.head(5)</code> displayes the first 5 rows of the 19,382 representing either a claim or an opinion followed by their respective metadata in a combination of categorical, text, and numerical.  
+    <code>data.info()</code> plays an important role as it sheds light on variables that contain missing values or NULL values  
+    <code>data.describe()</code> seems to provide the most pertinence in regards to the project goals because it provides insight into count variable distributions. According to the statistical results of the data, there is a strong right-skewness of engagement metrics, with a small number of videos exhibiting disproportianately high interaction values indicating high-end outliers likely corresponding to viral content. For example, quartiles show where most data sits after splitting it into four equal parts and sorting from smallest to largest. The data here shows that at the 50% level, where outlier presence can be most obvious, view count is roughly 10k but at the 75% level view count is roughly 50k. On top of this, the standard deviation across the board for engagement activity seems to be quite large as well.  
+    **Note** that the mean is not fully representative of typical engagement levels either as it was observed that there exist very strong outliers in each field. The median would provide a more accurate measure of central tendency for the dataset as the median is unaffected by outliers (viral videos) that can disproportionately influence aggregate metrics.
+  </p>
+</div>
+
+
 </div>
 
 </div>
