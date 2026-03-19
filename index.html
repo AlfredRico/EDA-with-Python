@@ -394,6 +394,26 @@ h3.collapsed::before {
 .summary-header {
   line-height: 1.2;
 }
+
+
+/* ===== FIX SUMMARY ARROW DIRECTION ===== */
+
+/* collapsed (default) */
+.summary-header::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+}
+
+/* expanded */
+.summary-header:not(.collapsed)::before {
+  content: "▼";
+}
+
+/* remove rotation behavior (clean reset) */
+.summary-header::before {
+  transform: none !important;
+}
 </style>
 </head>
 <body>
