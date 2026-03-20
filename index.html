@@ -1017,11 +1017,18 @@ data.groupby(['author_ban_status']).agg(
 <div class="subsection-header">Engagement Rate Analysis by Claim and Ban Status</div>
 
 <div class="subsection-content">
-<p>To better understand engagement rates, raw counts (likes, comments, and shares) are normalized by views and since raw numbers are misleading, everything is converted into a rate per view.      
-         - likes_per_view: represents the number of likes divided by the number of views for each video
-         - comments_per_view: represents the number of comments divided by the number of views for each video
-         - shares_per_view: represents the number of shares divided by the number of views for each video  
-    After which groupby() to split the dataset into combination groups and compile the data therein (likes/comments/shares per view) for each group then agg() to calculate count, mean and median of each group as well.
+<p>
+To better understand engagement rates, raw counts (likes, comments, and shares) are normalized by views and since raw numbers are misleading, everything is converted into a rate per view.
+</p>
+
+<ul>
+  <li><strong>likes_per_view</strong>: represents the number of likes divided by the number of views for each video</li>
+  <li><strong>comments_per_view</strong>: represents the number of comments divided by the number of views for each video</li>
+  <li><strong>shares_per_view</strong>: represents the number of shares divided by the number of views for each video</li>
+</ul>
+
+<p>
+After which groupby() to split the dataset into combination groups and compile the data therein (likes/comments/shares per view) for each group then agg() to calculate count, mean and median of each group as well.
 </p>
 <details>
 <summary>View Code</summary>
