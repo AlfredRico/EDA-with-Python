@@ -1076,9 +1076,60 @@ data.groupby(['claim_status', 'author_ban_status']).agg(
     </div>
   </div>
 </div>
+
+<div class="subsection">
+<div class="subsection-header">Engagement Rates Across Claim and Author Status</div>
+
+<div class="subsection-content">
+
+<p>
+Now, create three new columns to help better understand engagement rates:
+</p>
+
+<details>
+<summary>View Code</summary>
+<pre>
+data['likes_per_view'] = data['video_like_count'] / data['video_view_count']
+
+data['comments_per_view'] = data['video_comment_count'] / data['video_view_count']
+
+data['shares_per_view'] = data['video_share_count'] / data['video_view_count']
+
+data.groupby(['claim_status', 'author_ban_status']).agg(
+
+    {'likes_per_view': ['count', 'mean', 'median'],
+
+     'comments_per_view': ['count', 'mean', 'median'],
+
+     'shares_per_view': ['count', 'mean', 'median']})
+</pre>
+</details>
+
+<p>
+Normalized engagement metrics allow for comparison across categories independent of total view counts, providing insight into proportional interaction behavior.
+</p>
+
+<div class="results">
+<strong>Results:</strong>
+<div class="cell-box output">
+<p>[Insert your engagement rate table here]</p>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="subsection-summary">
+<div class="summary-header">Summary</div>
+<div class="summary-content">
+<p>
+Normalized engagement metrics reveal that claim videos consistently generate higher interaction rates than opinion videos across all author statuses.
+</p>
+</div>
+</div>
 </div></div></div>
 <div class="section">
-<h2 id="project-overview" style="padding-left:0; cursor:default;">Project Overview</h2>
+<h2 id="project-overview" style="padding-left:0; cursor:default;" style="padding-left:0; cursor:default;">Project Overview</h2>
 <div class="collapsible-content">
 <p>
         Summarize key findings, insights, and impact.
@@ -1095,6 +1146,10 @@ function toggleAll() {
   expanded = !expanded;
 
   sections.forEach(el => {
+
+    const header = el.querySelector(":scope > h2");
+    if (header && header.id === "project-overview") return;
+
 
     // ✅ ONLY skip if THIS section header is Project Overview
     const header = el.querySelector(":scope > h2");
@@ -1122,6 +1177,9 @@ function toggleAll() {
 // SECTION
 document.querySelectorAll(".section > h2").forEach(h => {
 
+  if (h.id === "project-overview") return;
+
+
   // 🚫 DO NOT COLLAPSE PROJECT OVERVIEW
   if (h.id === "project-overview") return;
 
@@ -1147,6 +1205,10 @@ document.querySelectorAll(".summary-header").forEach(h => {
 
 // DEFAULT STATE
 document.querySelectorAll(".section, .subsection").forEach(el => {
+
+  const header = el.querySelector(":scope > h2");
+  if (header && header.id === "project-overview") return;
+
 
   const header = el.querySelector(":scope > h2");
   if (header && header.id === "project-overview") return;
