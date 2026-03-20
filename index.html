@@ -1012,7 +1012,64 @@ data.groupby(['author_ban_status']).agg(
 </div>
 </div>
 </div>
-</div></div><div class="subsection-summary"><div class="summary-header">Summary</div><div class="summary-content"><p>Ban status and engaegment analysis reveals that authors categorized as banned or under review consistently exhibit significantly higher engagment across all metrics compared to active authors. Share counts in particular, reveal a strong indication that highly viral content is more commonly associated with moderated accounts. One of the bigger signals of this is the marked gap between mean and median values across all groups suggesting a severe rightly skewed average, with a small number of highly viral videos driving overall engagement averages. These patterns suggest that engagement metrics may serve as strong indicators for distinguishing content behavior though careful interpretation is required due to the influence of outliers.</p></div></div></div>
+</div></div><div class="subsection-summary"><div class="summary-header">Summary</div><div class="summary-content"><p>Ban status and engaegment analysis reveals that authors categorized as banned or under review consistently exhibit significantly higher engagment across all metrics compared to active authors. Share counts in particular, reveal a strong indication that highly viral content is more commonly associated with moderated accounts. One of the bigger signals of this is the marked gap between mean and median values across all groups suggesting a severe rightly skewed average, with a small number of highly viral videos driving overall engagement averages. These patterns suggest that engagement metrics may serve as strong indicators for distinguishing content behavior though careful interpretation is required due to the influence of outliers.</p></div></div>
+<div class="subsection">
+<div class="subsection-header">Engagement Rate Analysis by Claim and Ban Status</div>
+<div class="subsection-content">
+<p>
+      To further enhance feature engineering for the classification model, engagement rate is introduced as a normalized metric. Unlike raw engagement counts, engagement rate accounts for exposure by scaling interactions relative to total views. This provides a more comparable measure of user interaction intensity across videos of varying reach.
+    </p>
+<details>
+<summary>View Code</summary>
+<pre>
+# Creating engagement rate features
+
+data['like_rate'] = data['video_like_count'] / data['video_view_count']
+data['share_rate'] = data['video_share_count'] / data['video_view_count']
+data['comment_rate'] = data['video_comment_count'] / data['video_view_count']
+
+engagement_rates = data.groupby(
+    ['claim_status', 'author_ban_status']
+).agg({
+    'like_rate': 'mean',
+    'share_rate': 'mean',
+    'comment_rate': 'mean'
+})
+
+engagement_rates
+      </pre>
+</details>
+<div class="results">
+<strong>Results:</strong>
+<div class="cell-box output">
+<pre>
+                  like_rate   share_rate   comment_rate
+claim  active       ...         ...           ...
+claim  banned       ...         ...           ...
+claim  under review ...         ...           ...
+opinion active      ...         ...           ...
+opinion banned      ...         ...           ...
+opinion under review...         ...           ...
+        </pre>
+</div>
+</div>
+<p>
+      Engagement rate analysis provides a normalized perspective on interaction behavior, revealing how users engage with content relative to its visibility. This metric is particularly useful in mitigating the influence of highly viral outliers, allowing for more stable comparisons across categories.
+    </p>
+</div>
+</div>
+<div class="subsection-summary">
+<div class="summary-header">Summary</div>
+<div class="summary-content">
+<p>
+      Engagement rate introduces a normalized measure of interaction by accounting for total views, providing a more stable comparison across videos of varying exposure levels.
+    </p>
+<p>
+      These engineered features enhance model performance by capturing interaction efficiency rather than raw scale.
+    </p>
+</div>
+</div>
+</div>
 <div class="section">
 <h2 id="project-overview" style="padding-left:0; cursor:default;">Project Overview</h2>
 <div class="collapsible-content">
