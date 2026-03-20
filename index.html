@@ -466,100 +466,78 @@ h2[style*="cursor:default"]::before {
 }
 
 
-/* ===== TOP 10% DESKTOP POLISH ===== */
+/* ===== ELITE DESKTOP OVERRIDE ===== */
 @media (min-width: 1024px) {
 
-  /* ===== BASE TYPOGRAPHY ===== */
+  /* FORCE wider layout */
+  body .container {
+    max-width: 1250px !important;
+    padding: 80px 60px !important;
+  }
+
+  /* STRONGER typography */
   body {
-    font-size: 17.5px;
-    line-height: 1.8;
-    letter-spacing: 0.2px;
+    font-size: 18px !important;
+    line-height: 1.85 !important;
   }
 
-  p {
-    font-size: 1.08rem;
-    line-height: 1.85;
-    max-width: 75ch; /* optimal reading width */
+  body p {
+    font-size: 1.1rem !important;
+    line-height: 1.9 !important;
+    max-width: 80ch !important;
   }
 
-  /* ===== LAYOUT ===== */
-  .container {
-    max-width: 1200px;
-    padding: 70px 50px;
+  /* HEADINGS that actually pop */
+  body h1 {
+    font-size: 3rem !important;
+    margin-bottom: 25px !important;
   }
 
-  .section {
-    margin-top: 55px;
+  body h2 {
+    font-size: 2rem !important;
+    margin-top: 70px !important;
+    margin-bottom: 20px !important;
   }
 
-  /* ===== HEADINGS (STRONG HIERARCHY) ===== */
-  h1 {
-    font-size: 2.8rem;
-    margin-bottom: 20px;
-    letter-spacing: 0.5px;
+  body .subsection-header,
+  body h3 {
+    font-size: 1.4rem !important;
+    margin-top: 40px !important;
   }
 
-  h2 {
-    font-size: 1.85rem;
-    margin-top: 60px;
-    margin-bottom: 18px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 6px;
+  body .summary-header {
+    font-size: 1.1rem !important;
   }
 
-  h3, .subsection-header {
-    font-size: 1.35rem;
-    margin-top: 35px;
-    margin-bottom: 10px;
+  /* MORE breathing room */
+  body .section {
+    margin-top: 60px !important;
   }
 
-  .summary-header {
-    font-size: 1.05rem;
-    margin-top: 10px;
+  body .results {
+    padding: 25px !important;
+    margin-top: 30px !important;
   }
 
-  /* ===== CONTENT SPACING ===== */
-  .results {
-    padding: 22px;
-    margin-top: 25px;
+  body details {
+    padding: 18px !important;
   }
 
-  details {
-    padding: 16px;
-    margin-top: 18px;
+  /* TABLE FIX (THIS WILL BE VERY NOTICEABLE) */
+  body .df-table th,
+  body .df-table td {
+    padding: 12px 14px !important;
+    max-width: 260px !important;
   }
 
-  pre {
-    font-size: 0.95rem;
-    line-height: 1.6;
+  body .df-table {
+    font-size: 1rem !important;
   }
 
-  ul {
-    margin-top: 10px;
-    margin-bottom: 15px;
-  }
-
-  li {
-    margin-bottom: 6px;
-  }
-
-  /* ===== TABLE IMPROVEMENTS ===== */
-  .df-table th,
-  .df-table td {
-    padding: 10px 12px;
-    max-width: 220px;
-  }
-
-  .df-table {
-    font-size: 0.95rem;
-  }
-
-  /* ===== COLLAPSIBLE CLICK TARGETS ===== */
-  .section > h2,
-  .subsection-header,
-  .summary-header {
-    padding-top: 4px;
-    padding-bottom: 4px;
+  /* Improve code readability */
+  body pre {
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
   }
 
 }
