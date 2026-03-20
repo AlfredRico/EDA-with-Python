@@ -466,37 +466,75 @@ h2[style*="cursor:default"]::before {
 }
 
 
-/* ===== DESKTOP POLISH (NON-DESTRUCTIVE) ===== */
+/* ===== TRUE DESKTOP READABILITY UPGRADE ===== */
 @media (min-width: 1024px) {
 
-  /* Slightly expand layout */
+  /* WIDER LAYOUT (BUT CONTROLLED) */
   .container {
-    max-width: 1100px;
+    max-width: 1200px;
   }
 
-  /* Improve readability */
+  /* TRUE READABLE BASE */
   body {
-    font-size: 16.5px;
-    line-height: 1.75;
+    font-size: 18px;
+    line-height: 1.9;
   }
 
+  /* PARAGRAPHS = KEY IMPROVEMENT */
   p {
-    line-height: 1.8;
+    font-size: 1.1rem;
+    line-height: 1.95;
+    max-width: 75ch;
   }
 
-  /* Add breathing room */
+  /* HEADINGS NEED PRESENCE */
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 1.9rem;
+    margin-top: 60px;
+  }
+
+  .subsection-header {
+    font-size: 1.35rem;
+    margin-top: 35px;
+  }
+
+  .summary-header {
+    font-size: 1.05rem;
+  }
+
+  /* SPACING = HUGE FOR READABILITY */
   .section {
-    margin-top: 45px;
+    margin-top: 60px;
   }
 
   .results {
-    padding: 18px;
+    padding: 22px;
+    margin-top: 25px;
   }
 
-  /* Improve table readability */
+  details {
+    padding: 16px;
+  }
+
+  /* TABLES (THIS MATTERS MORE THAN YOU THINK) */
   .df-table th,
   .df-table td {
-    padding: 8px 10px;
+    padding: 10px 12px;
+    max-width: 240px;
+  }
+
+  .df-table {
+    font-size: 0.98rem;
+  }
+
+  /* CODE BLOCKS */
+  pre {
+    font-size: 1rem;
+    line-height: 1.7;
   }
 
 }
