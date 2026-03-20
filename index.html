@@ -893,7 +893,7 @@ data.groupby(['claim_status', 'author_ban_status']).count()[['#']]
 </div>
 </div>
 </div></div><div class="subsection-summary"><div class="summary-header">Summary</div><div class="summary-content"><p>The target variable claim status is nearly evenly distributed, supporting unbiased model training and reliable evaluation.</p><p>Engagement analysis reveals a marked separation between classes, with claim videos averaging higher view counts than opinion videos. The alignment of mean and median values within each category group suggests relatively stable distributions within, while magnitudes of difference between categories indicates strong classification potential for engagement features.</p><p>Author ban status also seems to further highlight differences between classes, with claim videos disproportionately associated with banned authors.</p><p>Overall, the results indicate that engagement metrics and author status variables can enhance model performance.</p></div></div><div class="subsection"><div class="subsection-header">Ban Status &amp; Engagement Analysis</div><div class="subsection-content">
-<p>[Ban status text block holder] </p>
+<p>[Text block placeholder]</p>
 <details>
 <summary>View Code</summary>
 <pre># code placeholder</pre>
@@ -901,7 +901,45 @@ data.groupby(['claim_status', 'author_ban_status']).count()[['#']]
 <div class="results">
 <strong>Results:</strong>
 <div class="cell-box output">
-<pre># results placeholder</pre>
+
+<div style="overflow-x:auto;">
+<table class="df-table">
+  <thead>
+    <tr>
+      <th rowspan="2">author_ban_status</th>
+      <th colspan="2">video_view_count</th>
+      <th colspan="2">video_like_count</th>
+      <th colspan="2">video_share_count</th>
+    </tr>
+    <tr>
+      <th>mean</th><th>median</th>
+      <th>mean</th><th>median</th>
+      <th>mean</th><th>median</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>active</td>
+      <td>215927.039524</td><td>8616.0</td>
+      <td>71036.533836</td><td>2222.0</td>
+      <td>14111.466164</td><td>437.0</td>
+    </tr>
+    <tr>
+      <td>banned</td>
+      <td>445845.439144</td><td>448201.0</td>
+      <td>153017.236697</td><td>105573.0</td>
+      <td>29998.942508</td><td>14468.0</td>
+    </tr>
+    <tr>
+      <td>under review</td>
+      <td>392204.836399</td><td>365245.5</td>
+      <td>128718.050339</td><td>71204.5</td>
+      <td>25774.696999</td><td>9444.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 </div>
 </div>
 </div></div><div class="subsection-summary"><div class="summary-header">Summary</div><div class="summary-content"><p>[Summary placeholder]</p></div></div></div>
