@@ -1044,6 +1044,10 @@ function toggleAll() {
   expanded = !expanded;
 
   sections.forEach(el => {
+
+    // 🚫 SKIP PROJECT OVERVIEW
+    if (el.querySelector("#project-overview")) return;
+
     if (expanded) {
       el.classList.remove("collapsed");
     } else {
@@ -1091,6 +1095,10 @@ document.querySelectorAll(".summary-header").forEach(h => {
 
 // DEFAULT STATE
 document.querySelectorAll(".section, .subsection").forEach(el => {
+
+  // 🚫 SKIP PROJECT OVERVIEW
+  if (el.querySelector("#project-overview")) return;
+
   el.classList.add("collapsed");
 });
 
