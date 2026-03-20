@@ -488,7 +488,7 @@ h2[style*="cursor:default"]::before {
 <h2>Project Goal</h2>
 <div class="collapsible-content">
 <p>
-        For this part of the project, the focus will be on cursory data inspection of the provided dataset, "tiktok_dataset.csv". After building a dataframe with Python in Jupyter notebook the claims data will be organized for exploratory data analysis, cleaned, and transformed in order to derive engagement trends identifying any suggestions of correlations between user engagement variables and claim status. Engagement trends provide insight into how users interact with different types of content, revealing meaningful patterns associated with claim versus opinion videos. Incorporating these behavioral signals into a predictive model will improve it's ability to distinguish between the two classes.
+        For this part of the project, the focus will be on cursory data inspection of the provided dataset, <code>tiktok_dataset.csv</code>. After building a dataframe with Python in Jupyter notebook the claims data will be organized for exploratory data analysis, cleaned, and transformed in order to derive engagement trends identifying any suggestions of correlations between user engagement variables and claim status. Engagement trends provide insight into how users interact with different types of content, revealing meaningful patterns associated with claim versus opinion videos. Incorporating these behavioral signals into a predictive model will improve it's ability to distinguish between the two classes.
       </p>
 </div>
 <div class="section">
@@ -517,9 +517,9 @@ import pandas as pd
         to understand structure, data types, and statistical distributions
       </p>
 <p>
-        'head()' - to examine sample record dataset structure and feature layout<br/>
-        'info()' - to asses data types, missing values, and dataset integrity<br/>
-        'describe()' - for statistical distribution (important for identifying trends, variability and potential outliers)
+        <code>head()</code> - to examine sample record dataset structure and feature layout<br/>
+        <code>info()</code> - to asses data types, missing values, and dataset integrity<br/>
+        <code>describe()</code> - for statistical distribution (important for identifying trends, variability and potential outliers)
       </p>
 <details>
 <summary>View Code</summary>
@@ -804,7 +804,7 @@ memory usage: 1.8+ MB
   </p>
 </div>
 </div><div class="subsection"><div class="subsection-header">Claim Status &amp; Engagement Analysis</div><div class="subsection-content">
-<p>With the preliminary data inspection, and the machine learning model being created for this project in mind, it is apparent that the column claim_status will play a key role. This variable distinguishes whether a video contains a claim or expresses an opinion, serving as the basis for the downstream classification task. </p>
+<p>With the preliminary data inspection, and the machine learning model being created for this project in mind, it is apparent that the column <code>claim_status</code> will play a key role. This variable distinguishes whether a video contains a claim or expresses an opinion, serving as the basis for the downstream classification task. </p>
 <details>
 <summary>View Code</summary>
 <pre>#Identifying values and their counts for claim_status  
@@ -874,7 +874,7 @@ Median view count opinions: 4953.0
 Although the mean and median values within each group are closely aligned, suggesting even distribution, there is marked disparity between categories. Claim videos exhibit mean and median view counts exceeding 50k whereas opinion videos average close to 5k views. This strongly suggests that engagement patterns differ markedly by claim status making view count, and likely other engagement metrics, a particularly strong feature for classification.
 </p>
 <p>
-Next, any trends associated with the ban status of the author will be examined using groupby() to calculate how many videos there are for each combination of categories of claim status including 'active', 'banned', or 'under review'.   
+Next, any trends associated with the ban status of the author will be examined using <code>groupby()</code> to calculate how many videos there are for each combination of categories of claim status including 'active', 'banned', or 'under review'.   
 </p>
 <details>
 <summary>View Code</summary>
@@ -910,7 +910,7 @@ data.groupby(['claim_status', 'author_ban_status']).count()[['#']]
 </div>
 </div>
 </div></div><div class="subsection-summary"><div class="summary-header">Summary</div><div class="summary-content"><p>The target variable 'claim_status' is nearly evenly distributed, supporting unbiased model training and reliable evaluation.</p><p>Engagement analysis reveals a marked separation between classes, with claim videos averaging higher view counts than opinion videos. The alignment of mean and median values within each category group suggests relatively stable distributions within, while magnitudes of difference between categories indicates strong classification potential for engagement features.</p><p>Author ban status also seems to further highlight differences between classes, with claim videos disproportionately associated with banned authors.</p><p>Overall, the results indicate that engagement metrics and author status variables can enhance model performance.</p></div></div><div class="subsection"><div class="subsection-header">Ban Status &amp; Engagement Analysis</div><div class="subsection-content">
-<p>Analysis shifts focus to the author_ban_status variable, examining whether user interaction patterns differ between authors labeled as active, banned, or under review.</p><p>groupby() is used to segment the dataset by author ban status, aggregating key engagement metrics, including view, like, and share counts using mean and median values providing a comprehensive view of overall typical engagement levels as well as accounting for potential outliers.</p>
+<p>Analysis shifts focus to the <code>author_ban_status</code> variable, examining whether user interaction patterns differ between authors labeled as 'active', 'banned', or 'under review'.</p><p><code>groupby()</code> is used to segment the dataset by author ban status, aggregating key engagement metrics, including view, like, and share counts using mean and median values providing a comprehensive view of overall typical engagement levels as well as accounting for potential outliers.</p>
 <details>
 <summary>View Code</summary>
 <pre>
@@ -1034,7 +1034,7 @@ To better understand engagement rates, raw counts (likes, comments, and shares) 
 </ul>
 
 <p>
-Next, groupby() is used to split the dataset into combinations of <strong>claim status</strong> and <strong>author ban status</strong>. The new engagement rate data for each group is compiled and summarized using <code>agg()</code> to calculate count, mean and median of each group.
+Next, <code>groupby()</code> is used to split the dataset into combinations of <strong>claim status</strong> and <strong>author ban status</strong>. The new engagement rate data for each group is compiled and summarized using <code>agg()</code> to calculate count, mean and median of each group.
 </p>
 <details>
 <summary>View Code</summary>
@@ -1103,7 +1103,7 @@ data.groupby(['claim_status', 'author_ban_status']).agg(
 <div class="collapsible-content">
 <p>This project explores patterns in TikTok video engagement to support the development of a predictive model capable of distinguishing between claim-based and opinion-based content. Using a dataset of over 19,000 videos, exploratory data analysis (EDA) was conducted to understand how user interaction metrics and author characteristics relate to content type.</p>
 <p>Initial inspection revealed that engagement variables such as views, likes, shares, and comments exhibit strong right-skewed distributions, where a small subset of highly viral videos drives disproportionately large values. This was supported by large standard deviations and significant gaps between quartiles, indicating the presence of extreme outliers. As a result, <strong>median</strong> values were identified as <strong>more reliable</strong> indicators of typical engaegment behavior than <strong>means</strong>.</p>
-<p>The target variable, <strong>claim_status</strong>, is nearly evenly distributed between claim and opinion videos. This balance provides a strong foundation for unbiased model training and evaluation. When comparing engagement across these classes, a clear pattern indicates that claim videos significantly outperform opinion videos across all engagement metrics. They receive substantially higher view counts, more interactions, and stronger engagement rates per view. This separation highlihgts engagement features as highly predictive signals for classification.</p>
+<p>The target variable, <strong><code>claim_status</code></strong>, is nearly evenly distributed between claim and opinion videos. This balance provides a strong foundation for unbiased model training and evaluation. When comparing engagement across these classes, a clear pattern indicates that claim videos significantly outperform opinion videos across all engagement metrics. They receive substantially higher view counts, more interactions, and stronger engagement rates per view. This separation highlihgts engagement features as highly predictive signals for classification.</p>
 <p>Furhter anlaysis of author ban status revealed that videos from authors labeled as banned or under review tend to generate higher overall engagement than those from active users. However, these differences are heavily influenced by viral outliers and are less consistent when normalized into engagement rates. In contrast, engagement rate analysis shows that <strong>content type, not moderation status, is the primary driver of user interaction behavior</strong>. Claim videos maintain higher likes, shares, and comments per view regardless of author status.</p>
 <div class="analysis-block">
   <p><strong>Overall, the findings indicate that:</strong></p>
