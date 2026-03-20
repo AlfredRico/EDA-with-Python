@@ -1018,7 +1018,7 @@ data.groupby(['author_ban_status']).agg(
 
 <div class="subsection-content">
 <p>
-To better understand engagement rates, raw counts (likes, comments, and shares) are normalized by views and since raw numbers are misleading, everything is converted into a rate per view.
+To better understand engagement rates, raw counts (likes, comments, and shares) are normalized by total views and since raw numbers can be misleading, engagement metrics will be converted into rates per view.
 </p>
 
 <ul>
@@ -1028,7 +1028,7 @@ To better understand engagement rates, raw counts (likes, comments, and shares) 
 </ul>
 
 <p>
-After which groupby() to split the dataset into combination groups and compile the data therein (likes/comments/shares per view) for each group then agg() to calculate count, mean and median of each group as well.
+Next, groupby() is used to split the dataset into combinations of <strong>claim status</strong> and <strong>author ban status</strong>. The new engagement rate data for each group is compiled and summarized using <code>agg()</code> to calculate count, mean and median of each group.
 </p>
 <details>
 <summary>View Code</summary>
