@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Project Title</title>
 </head>
-
 <body>
 <!DOCTYPE html>
 
@@ -827,12 +827,11 @@ data['claim_status'].value_counts()</pre>
 </table></pre>
 </div>
 </div>
-
 <div class="analysis-block">
 <p>
     The target variable <code>claim_status</code> contains a near even distribution of 9,608 claim and 9,476 opinion videos. This balance will be beneficial downstream for classification purposes as it reduces risks of model bias toward a dominant class and supports more reliable evaluations of model performance. For classification tasks such as this one, the near even distribution between claim and opinion videos suggests that this dataset is well-suited for training a model that can learn to distinguish between the two classes.
   </p>
-  <p>
+<p>
     To further strengthen the predictive model, user engagement metrics are examined to determine whether interaction patterns differ across claim status categories. The dataset is filtered by claim status using Boolean masking to compare engagement levels between claims and opinions. Mean and median view counts are calculated for each group.
   </p>
 <details>
@@ -864,7 +863,6 @@ Median view count opinions: 4953.0
 </div>
 </div>
 </div>
-
 <div class="analysis-block">
 <p>
 Although the mean and median values within each group are closely aligned, suggesting even distribution, there is marked disparity between categories. Claim videos exhibit mean and median view counts exceeding 50k whereas opinion videos average close to 5k views. This strongly suggests that engagement patterns differ markedly by claim status making view count, and likely other engagement metrics, a particularly strong feature for classification.
@@ -883,27 +881,25 @@ data.groupby(['claim_status', 'author_ban_status']).count()[['#']]
 <div class="results">
 <strong>Results:</strong>
 <div class="cell-box output">
-
 <div style="overflow-x:auto;">
 <table class="df-table">
-  <thead>
-    <tr>
-      <th>claim_status</th>
-      <th>author_ban_status</th>
-      <th>Count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>claim</td><td>active</td><td>6566</td></tr>
-    <tr><td>claim</td><td>banned</td><td>1439</td></tr>
-    <tr><td>claim</td><td>under review</td><td>1603</td></tr>
-    <tr><td>opinion</td><td>active</td><td>8817</td></tr>
-    <tr><td>opinion</td><td>banned</td><td>196</td></tr>
-    <tr><td>opinion</td><td>under review</td><td>463</td></tr>
-  </tbody>
+<thead>
+<tr>
+<th>claim_status</th>
+<th>author_ban_status</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>claim</td><td>active</td><td>6566</td></tr>
+<tr><td>claim</td><td>banned</td><td>1439</td></tr>
+<tr><td>claim</td><td>under review</td><td>1603</td></tr>
+<tr><td>opinion</td><td>active</td><td>8817</td></tr>
+<tr><td>opinion</td><td>banned</td><td>196</td></tr>
+<tr><td>opinion</td><td>under review</td><td>463</td></tr>
+</tbody>
 </table>
 </div>
-
 </div>
 </div>
 </div>
@@ -921,52 +917,47 @@ data.groupby(['author_ban_status']).agg(
 <div class="results">
 <strong>Results:</strong>
 <div class="cell-box output">
-
 <div style="overflow-x:auto;">
 <table class="df-table">
-  <thead>
-    <tr>
-      <th rowspan="2">author_ban_status</th>
-      <th colspan="2">video_view_count</th>
-      <th colspan="2">video_like_count</th>
-      <th colspan="2">video_share_count</th>
-    </tr>
-    <tr>
-      <th>mean</th><th>median</th>
-      <th>mean</th><th>median</th>
-      <th>mean</th><th>median</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>active</td>
-      <td>215927.039524</td><td>8616.0</td>
-      <td>71036.533836</td><td>2222.0</td>
-      <td>14111.466164</td><td>437.0</td>
-    </tr>
-    <tr>
-      <td>banned</td>
-      <td>445845.439144</td><td>448201.0</td>
-      <td>153017.236697</td><td>105573.0</td>
-      <td>29998.942508</td><td>14468.0</td>
-    </tr>
-    <tr>
-      <td>under review</td>
-      <td>392204.836399</td><td>365245.5</td>
-      <td>128718.050339</td><td>71204.5</td>
-      <td>25774.696999</td><td>9444.0</td>
-    </tr>
-  </tbody>
+<thead>
+<tr>
+<th rowspan="2">author_ban_status</th>
+<th colspan="2">video_view_count</th>
+<th colspan="2">video_like_count</th>
+<th colspan="2">video_share_count</th>
+</tr>
+<tr>
+<th>mean</th><th>median</th>
+<th>mean</th><th>median</th>
+<th>mean</th><th>median</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>active</td>
+<td>215927.039524</td><td>8616.0</td>
+<td>71036.533836</td><td>2222.0</td>
+<td>14111.466164</td><td>437.0</td>
+</tr>
+<tr>
+<td>banned</td>
+<td>445845.439144</td><td>448201.0</td>
+<td>153017.236697</td><td>105573.0</td>
+<td>29998.942508</td><td>14468.0</td>
+</tr>
+<tr>
+<td>under review</td>
+<td>392204.836399</td><td>365245.5</td>
+<td>128718.050339</td><td>71204.5</td>
+<td>25774.696999</td><td>9444.0</td>
+</tr>
+</tbody>
 </table>
 </div>
-
 </div>
 </div>
-
 <div class="analysis-block">
-
 <p>Results reveal a clear pattern in that authors with a banned status consistently exhibit the highest engagement across all metrics, followed by those under review, while active authors show significantly lower engagement levels. Notably, the median share count for banned authors (14,468) is dramatically higher than that of active authors (437), revealing a 30-fold difference. Altogether, this further supports discriminatory ability from a modeling perspective, indicating that engagement features, especially share count, can serve as additional signals when identifying content that differs in behavior.</p><p>A count variable across engagement metrics is created in order to scale mean and median data across the sample and a few key patterns emerge. Authors labeled as banned or under review consistently exhibit dramataically higher values in engagement across all metrics (views, likes, and shares) compared to active authors suggesting contenet associated with these accounts is more widespread than it's counterpart. Another interesting observation is the wide gaps between the mean and median values across each group. The mean is substantially higher than the median strongly indicating the presence of a small number of videos with exceptionally high engagement, the outliers. In this preliminary analysis of ban status and engagement level, it is apparent that high engagement is not evenly distributed across videos or author groups. Instead, a small group of highly viral content influence much of the overall interaction, particularly among authors whose accounts are labeled as banned or under review. From a modeling perspective, these patterns indicate engagement features can carry a strong signal for classification but also require careful handling due to their apparent influence by extreme values.</p>
-
 <details>
 <summary>View Code</summary>
 <pre>
@@ -978,65 +969,57 @@ data.groupby(['author_ban_status']).agg(
      })
 </pre>
 </details>
-
 <div class="results">
 <strong>Results:</strong>
 <div class="cell-box output">
-
 <div style="overflow-x:auto;">
 <table class="df-table">
-  <thead>
-    <tr>
-      <th rowspan="2">author_ban_status</th>
-      <th colspan="3">video_view_count</th>
-      <th colspan="3">video_like_count</th>
-      <th colspan="3">video_share_count</th>
-    </tr>
-    <tr>
-      <th>count</th><th>mean</th><th>median</th>
-      <th>count</th><th>mean</th><th>median</th>
-      <th>count</th><th>mean</th><th>median</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>active</td>
-      <td>15383</td><td>215927.039524</td><td>8616.0</td>
-      <td>15383</td><td>71036.533836</td><td>2222.0</td>
-      <td>15383</td><td>14111.466164</td><td>437.0</td>
-    </tr>
-    <tr>
-      <td>banned</td>
-      <td>1635</td><td>445845.439144</td><td>448201.0</td>
-      <td>1635</td><td>153017.236697</td><td>105573.0</td>
-      <td>1635</td><td>29998.942508</td><td>14468.0</td>
-    </tr>
-    <tr>
-      <td>under review</td>
-      <td>2066</td><td>392204.836399</td><td>365245.5</td>
-      <td>2066</td><td>128718.050339</td><td>71204.5</td>
-      <td>2066</td><td>25774.696999</td><td>9444.0</td>
-    </tr>
-  </tbody>
+<thead>
+<tr>
+<th rowspan="2">author_ban_status</th>
+<th colspan="3">video_view_count</th>
+<th colspan="3">video_like_count</th>
+<th colspan="3">video_share_count</th>
+</tr>
+<tr>
+<th>count</th><th>mean</th><th>median</th>
+<th>count</th><th>mean</th><th>median</th>
+<th>count</th><th>mean</th><th>median</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>active</td>
+<td>15383</td><td>215927.039524</td><td>8616.0</td>
+<td>15383</td><td>71036.533836</td><td>2222.0</td>
+<td>15383</td><td>14111.466164</td><td>437.0</td>
+</tr>
+<tr>
+<td>banned</td>
+<td>1635</td><td>445845.439144</td><td>448201.0</td>
+<td>1635</td><td>153017.236697</td><td>105573.0</td>
+<td>1635</td><td>29998.942508</td><td>14468.0</td>
+</tr>
+<tr>
+<td>under review</td>
+<td>2066</td><td>392204.836399</td><td>365245.5</td>
+<td>2066</td><td>128718.050339</td><td>71204.5</td>
+<td>2066</td><td>25774.696999</td><td>9444.0</td>
+</tr>
+</tbody>
 </table>
 </div>
-
 </div>
 </div>
-
 </div>
 </div></div><div class="subsection-summary"><div class="summary-header">Summary</div><div class="summary-content"><p>Ban status and engaegment analysis reveals that authors categorized as banned or under review consistently exhibit significantly higher engagment across all metrics compared to active authors. Share counts in particular, reveal a strong indication that highly viral content is more commonly associated with moderated accounts. One of the bigger signals of this is the marked gap between mean and median values across all groups suggesting a severe rightly skewed average, with a small number of highly viral videos driving overall engagement averages. These patterns suggest that engagement metrics may serve as strong indicators for distinguishing content behavior though careful interpretation is required due to the influence of outliers.</p></div></div></div>
-<div class="section">
 
 <div class="subsection">
 <div class="subsection-header">Engagement Rates Across Claim and Author Status</div>
-
 <div class="subsection-content">
-
 <p>
 Engagement metrics are normalized by dividing interaction counts by total views to better understand relative user behavior independent of scale.
 </p>
-
 <details>
 <summary>View Code</summary>
 <pre>
@@ -1050,15 +1033,12 @@ data.groupby(['claim_status', 'author_ban_status']).agg(
      'shares_per_view': ['count', 'mean', 'median']})
 </pre>
 </details>
-
 <p>
 Normalizing engagement reveals proportional interaction behavior, allowing comparison across groups regardless of absolute view volume.
 </p>
-
 <div class="results">
 <strong>Results:</strong>
 <div class="cell-box output">
-
 <div style="overflow-x:auto;">
 <table class="df-table">
 <thead>
@@ -1079,19 +1059,15 @@ Normalizing engagement reveals proportional interaction behavior, allowing compa
 <tr><td>claim</td><td>active</td><td>6566</td><td>0.329542</td><td>0.326538</td><td>6566</td><td>0.001393</td><td>0.000776</td><td>6566</td><td>0.065456</td><td>0.049279</td></tr>
 <tr><td>claim</td><td>banned</td><td>1439</td><td>0.345071</td><td>0.358909</td><td>1439</td><td>0.001377</td><td>0.000746</td><td>1439</td><td>0.067893</td><td>0.051606</td></tr>
 <tr><td>claim</td><td>under review</td><td>1603</td><td>0.327997</td><td>0.320867</td><td>1603</td><td>0.001367</td><td>0.000789</td><td>1603</td><td>0.065733</td><td>0.049967</td></tr>
-
 <tr><td>opinion</td><td>active</td><td>8817</td><td>0.219744</td><td>0.218330</td><td>8817</td><td>0.000517</td><td>0.000252</td><td>8817</td><td>0.043729</td><td>0.032405</td></tr>
 <tr><td>opinion</td><td>banned</td><td>196</td><td>0.206868</td><td>0.198483</td><td>196</td><td>0.000434</td><td>0.000193</td><td>196</td><td>0.040531</td><td>0.030728</td></tr>
 <tr><td>opinion</td><td>under review</td><td>463</td><td>0.226394</td><td>0.228051</td><td>463</td><td>0.000536</td><td>0.000293</td><td>463</td><td>0.044472</td><td>0.035027</td></tr>
 </tbody>
 </table>
 </div>
-
 </div>
 </div>
-
 </div>
-
 <div class="subsection-summary">
 <div class="summary-header">Summary</div>
 <div class="summary-content">
@@ -1101,16 +1077,12 @@ Normalized engagement metrics reveal that claim videos consistently generate hig
 </div>
 </div>
 </div>
-
 <h2 style="padding-left:0; cursor:default;">Project Overview</h2>
 <div class="collapsible-content">
 <p>
         Summarize key findings, insights, and impact.
       </p>
 </div>
-</div>
-
-
 
 <script>
 document.querySelectorAll(".section > h2").forEach(h => {
@@ -1120,8 +1092,6 @@ document.querySelectorAll(".section > h2").forEach(h => {
   }
 });
 </script>
-
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   document.querySelectorAll(".section, .subsection").forEach(el => {
@@ -1133,6 +1103,5 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-
-</body>
-</html>
+</div></div></body>
+</html></body></html>
