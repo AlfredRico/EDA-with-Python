@@ -1045,8 +1045,9 @@ function toggleAll() {
 
   sections.forEach(el => {
 
-    // 🚫 SKIP PROJECT OVERVIEW
-    if (el.querySelector("#project-overview")) return;
+    // ✅ ONLY skip if THIS section header is Project Overview
+    const header = el.querySelector(":scope > h2");
+    if (header && header.id === "project-overview") return;
 
     if (expanded) {
       el.classList.remove("collapsed");
@@ -1096,8 +1097,8 @@ document.querySelectorAll(".summary-header").forEach(h => {
 // DEFAULT STATE
 document.querySelectorAll(".section, .subsection").forEach(el => {
 
-  // 🚫 SKIP PROJECT OVERVIEW
-  if (el.querySelector("#project-overview")) return;
+  const header = el.querySelector(":scope > h2");
+  if (header && header.id === "project-overview") return;
 
   el.classList.add("collapsed");
 });
