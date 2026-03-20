@@ -1015,59 +1015,70 @@ data.groupby(['author_ban_status']).agg(
 </div></div><div class="subsection-summary"><div class="summary-header">Summary</div><div class="summary-content"><p>Ban status and engaegment analysis reveals that authors categorized as banned or under review consistently exhibit significantly higher engagment across all metrics compared to active authors. Share counts in particular, reveal a strong indication that highly viral content is more commonly associated with moderated accounts. One of the bigger signals of this is the marked gap between mean and median values across all groups suggesting a severe rightly skewed average, with a small number of highly viral videos driving overall engagement averages. These patterns suggest that engagement metrics may serve as strong indicators for distinguishing content behavior though careful interpretation is required due to the influence of outliers.</p></div></div>
 <div class="subsection">
 <div class="subsection-header">Engagement Rate Analysis by Claim and Ban Status</div>
+
 <div class="subsection-content">
-<p>
-      To further enhance feature engineering for the classification model, engagement rate is introduced as a normalized metric. Unlike raw engagement counts, engagement rate accounts for exposure by scaling interactions relative to total views. This provides a more comparable measure of user interaction intensity across videos of varying reach.
-    </p>
+<p>[insert text]</p>
 <details>
 <summary>View Code</summary>
 <pre>
-# Creating engagement rate features
+# Create engagement rate features
 
-data['like_rate'] = data['video_like_count'] / data['video_view_count']
-data['share_rate'] = data['video_share_count'] / data['video_view_count']
-data['comment_rate'] = data['video_comment_count'] / data['video_view_count']
+data['likes_per_view'] = data['video_like_count'] / data['video_view_count']
+data['comments_per_view'] = data['video_comment_count'] / data['video_view_count']
+data['shares_per_view'] = data['video_share_count'] / data['video_view_count']
 
-engagement_rates = data.groupby(
-    ['claim_status', 'author_ban_status']
-).agg({
-    'like_rate': 'mean',
-    'share_rate': 'mean',
-    'comment_rate': 'mean'
-})
+# Grouped aggregation
 
-engagement_rates
-      </pre>
+data.groupby(['claim_status', 'author_ban_status']).agg(
+    {'likes_per_view': ['count', 'mean', 'median'],
+     'comments_per_view': ['count', 'mean', 'median'],
+     'shares_per_view': ['count', 'mean', 'median']}
+)
+</pre>
 </details>
 <div class="results">
 <strong>Results:</strong>
 <div class="cell-box output">
-<pre>
-                  like_rate   share_rate   comment_rate
-claim  active       ...         ...           ...
-claim  banned       ...         ...           ...
-claim  under review ...         ...           ...
-opinion active      ...         ...           ...
-opinion banned      ...         ...           ...
-opinion under review...         ...           ...
-        </pre>
+<div style="overflow-x:auto;">
+<table class="df-table">
+<thead>
+<tr>
+<th rowspan="2">claim_status</th>
+<th rowspan="2">author_ban_status</th>
+<th colspan="3">likes_per_view</th>
+<th colspan="3">comments_per_view</th>
+<th colspan="3">shares_per_view</th>
+</tr>
+<tr>
+<th>count</th><th>mean</th><th>median</th>
+<th>count</th><th>mean</th><th>median</th>
+<th>count</th><th>mean</th><th>median</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>claim</td><td>active</td><td>6566</td><td>0.329542</td><td>0.326538</td><td>6566</td><td>0.001393</td><td>0.000776</td><td>6566</td><td>0.065456</td><td>0.049279</td></tr>
+<tr><td>claim</td><td>banned</td><td>1439</td><td>0.345071</td><td>0.358909</td><td>1439</td><td>0.001377</td><td>0.000746</td><td>1439</td><td>0.067893</td><td>0.051606</td></tr>
+<tr><td>claim</td><td>under review</td><td>1603</td><td>0.327997</td><td>0.320867</td><td>1603</td><td>0.001367</td><td>0.000789</td><td>1603</td><td>0.065733</td><td>0.049967</td></tr>
+<tr><td>opinion</td><td>active</td><td>8817</td><td>0.219744</td><td>0.218330</td><td>8817</td><td>0.000517</td><td>0.000252</td><td>8817</td><td>0.043729</td><td>0.032405</td></tr>
+<tr><td>opinion</td><td>banned</td><td>196</td><td>0.206868</td><td>0.198483</td><td>196</td><td>0.000434</td><td>0.000193</td><td>196</td><td>0.040531</td><td>0.030728</td></tr>
+<tr><td>opinion</td><td>under review</td><td>463</td><td>0.226394</td><td>0.228051</td><td>463</td><td>0.000536</td><td>0.000293</td><td>463</td><td>0.044472</td><td>0.035027</td></tr>
+</tbody>
+</table>
 </div>
 </div>
-<p>
-      Engagement rate analysis provides a normalized perspective on interaction behavior, revealing how users engage with content relative to its visibility. This metric is particularly useful in mitigating the influence of highly viral outliers, allowing for more stable comparisons across categories.
-    </p>
 </div>
+<p>[insert text]</p>
+</div>
+
 </div>
 <div class="subsection-summary">
 <div class="summary-header">Summary</div>
+
 <div class="summary-content">
-<p>
-      Engagement rate introduces a normalized measure of interaction by accounting for total views, providing a more stable comparison across videos of varying exposure levels.
-    </p>
-<p>
-      These engineered features enhance model performance by capturing interaction efficiency rather than raw scale.
-    </p>
+<p>[insert text]</p>
+<p>[insert text]</p>
 </div>
+
 </div>
 </div>
 <div class="section">
