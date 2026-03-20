@@ -764,7 +764,40 @@ memory usage: 1.8+ MB
       </p>
 </div>
 </div>
-</div></div><div class="subsection"><div class="subsection-header">Claim Status &amp; Engagement Analysis</div><div class="subsection-content">
+</div></div><div class="subsection-summary">
+<div class="summary-header">Summary</div>
+<div class="summary-content">
+<p>
+    Upon inspection, <code>data.head(5)</code> displays the first five rows of the 19,382 entries, 
+    each representing either a claim or an opinion along with associated metadata. 
+    The dataset includes a mix of categorical, textual, and numerical features.
+  </p>
+<p>
+<code>data.info()</code> provides insight into data types and completeness, 
+    highlighting variables that contain missing or null values.
+  </p>
+<p>
+<code>data.describe()</code> is particularly relevant to the project objective, 
+    as it reveals the distribution of engagement-related variables. 
+    The results indicate strong right-skewness, where a small number of videos 
+    exhibit disproportionately high interaction values—suggesting the presence 
+    of high-end outliers likely associated with viral content.
+  </p>
+<p>
+    Quartile analysis further supports this observation. Quartiles divide the data 
+    into four equal parts after sorting. At the 50% level (median), view counts are 
+    approximately 10k, while at the 75% level they rise to around 50k. This sharp 
+    increase indicates that a subset of videos significantly outperforms the majority.
+  </p>
+<p>
+    Additionally, the standard deviation across engagement metrics is relatively large, 
+    reinforcing the presence of variability and outliers. It is important to note that 
+    the mean is not fully representative of typical engagement levels, as it is heavily 
+    influenced by extreme values. The median provides a more reliable measure of central 
+    tendency in this case, as it remains unaffected by outliers.
+  </p>
+</div>
+</div><div class="subsection"><div class="subsection-header">Claim Status &amp; Engagement Analysis</div><div class="subsection-content">
 <p>With the preliminary data inspection, and the machine learning model being created for this project in mind, it is apparent that the column claim_status will play a key role. This variable distinguishes whether a video contains a claim or expresses an opinion, serving as the basis for the downstream classification task. </p>
 <details>
 <summary>View Code</summary>
@@ -870,40 +903,7 @@ data.groupby(['claim_status', 'author_ban_status']).count()[['#']]
 </div>
 </div>
 </div>
-</div></div><div class="subsection-summary">
-<div class="summary-header">Summary</div>
-<div class="summary-content">
-<p>
-    Upon inspection, <code>data.head(5)</code> displays the first five rows of the 19,382 entries, 
-    each representing either a claim or an opinion along with associated metadata. 
-    The dataset includes a mix of categorical, textual, and numerical features.
-  </p>
-<p>
-<code>data.info()</code> provides insight into data types and completeness, 
-    highlighting variables that contain missing or null values.
-  </p>
-<p>
-<code>data.describe()</code> is particularly relevant to the project objective, 
-    as it reveals the distribution of engagement-related variables. 
-    The results indicate strong right-skewness, where a small number of videos 
-    exhibit disproportionately high interaction values—suggesting the presence 
-    of high-end outliers likely associated with viral content.
-  </p>
-<p>
-    Quartile analysis further supports this observation. Quartiles divide the data 
-    into four equal parts after sorting. At the 50% level (median), view counts are 
-    approximately 10k, while at the 75% level they rise to around 50k. This sharp 
-    increase indicates that a subset of videos significantly outperforms the majority.
-  </p>
-<p>
-    Additionally, the standard deviation across engagement metrics is relatively large, 
-    reinforcing the presence of variability and outliers. It is important to note that 
-    the mean is not fully representative of typical engagement levels, as it is heavily 
-    influenced by extreme values. The median provides a more reliable measure of central 
-    tendency in this case, as it remains unaffected by outliers.
-  </p>
-</div>
-</div><div class="subsection"><div class="subsection-header">Ban Status &amp; Engagement Analysis</div><div class="subsection-content">
+</div></div><div class="subsection-summary"><div class="summary-header">Summary</div><div class="summary-content"><p>The target variable 'claim_status' is nearly evenly distributed, supporting unbiased model training and reliable evaluation.</p><p>Engagement analysis reveals a marked separation between classes, with claim videos averaging higher view counts than opinion videos. The alignment of mean and median values within each category group suggests relatively stable distributions within, while magnitudes of difference between categories indicates strong classification potential for engagement features.</p><p>Author ban status also seems to further highlight differences between classes, with claim videos disproportionately associated with banned authors.</p><p>Overall, the results indicate that engagement metrics and author status variables can enhance model performance.</p></div></div><div class="subsection"><div class="subsection-header">Ban Status &amp; Engagement Analysis</div><div class="subsection-content">
 <p>Analysis shifts focus to the author_ban_status variable, examining whether user interaction patterns differ between authors labeled as active, banned, or under review.</p><p>groupby() is used to segment the dataset by author ban status, aggregating key engagement metrics, including view, like, and share counts using mean and median values providing a comprehensive view of overall typical engagement levels as well as accounting for potential outliers.</p>
 <details>
 <summary>View Code</summary>
@@ -1012,7 +1012,7 @@ data.groupby(['author_ban_status']).agg(
 </div>
 </div>
 </div>
-</div></div><div class="subsection-summary"><div class="summary-header">Summary</div><div class="summary-content"><p>The target variable 'claim_status' is nearly evenly distributed, supporting unbiased model training and reliable evaluation.</p><p>Engagement analysis reveals a marked separation between classes, with claim videos averaging higher view counts than opinion videos. The alignment of mean and median values within each category group suggests relatively stable distributions within, while magnitudes of difference between categories indicates strong classification potential for engagement features.</p><p>Author ban status also seems to further highlight differences between classes, with claim videos disproportionately associated with banned authors.</p><p>Overall, the results indicate that engagement metrics and author status variables can enhance model performance.</p></div></div></div>
+</div></div><div class="subsection-summary"><div class="summary-header">Summary</div><div class="summary-content"><p>Ban status and engaegment analysis reveals that authors categorized as banned or under review consistently exhibit significantly higher engagment across all metrics compared to active authors. Share counts in particular, reveal a strong indication that highly viral content is more commonly associated with moderated accounts. One of the bigger signals of this is the marked gap between mean and median values across all groups suggesting a severe rightly skewed average, with a small number of highly viral videos driving overall engagement averages. These patterns suggest that engagement metrics may serve as strong indicators for distinguishing content behavior though careful interpretation is required due to the influence of outliers.</p></div></div></div>
 <div class="section">
 <h2 id="project-overview" style="padding-left:0; cursor:default;">Project Overview</h2>
 <div class="collapsible-content">
