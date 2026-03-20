@@ -763,81 +763,7 @@ memory usage: 1.8+ MB
         Output preview of dataset structure and summary statistics.
       </p>
 </div>
-
-<div class="subsection">
-<div class="subsection-header">Engagement Rates Across Claim and Author Status</div>
-
-<div class="subsection-content">
-
-<p>
-Engagement metrics are normalized by dividing interaction counts by total views to better understand relative user behavior independent of scale.
-</p>
-
-<details>
-<summary>View Code</summary>
-<pre>
-data['likes_per_view'] = data['video_like_count'] / data['video_view_count']
-data['comments_per_view'] = data['video_comment_count'] / data['video_view_count']
-data['shares_per_view'] = data['video_share_count'] / data['video_view_count']
-
-data.groupby(['claim_status', 'author_ban_status']).agg(
-    {'likes_per_view': ['count', 'mean', 'median'],
-     'comments_per_view': ['count', 'mean', 'median'],
-     'shares_per_view': ['count', 'mean', 'median']})
-</pre>
-</details>
-
-<p>
-Normalizing engagement reveals proportional interaction behavior, allowing comparison across groups regardless of absolute view volume.
-</p>
-
-<div class="results">
-<strong>Results:</strong>
-<div class="cell-box output">
-
-<div style="overflow-x:auto;">
-<table class="df-table">
-<thead>
-<tr>
-<th>claim_status</th>
-<th>author_ban_status</th>
-<th>likes_mean</th>
-<th>likes_median</th>
-<th>comments_mean</th>
-<th>comments_median</th>
-<th>shares_mean</th>
-<th>shares_median</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>claim</td><td>active</td><td>0.329542</td><td>0.326538</td><td>0.001393</td><td>0.000776</td><td>0.065456</td><td>0.049279</td></tr>
-<tr><td>claim</td><td>banned</td><td>0.345071</td><td>0.358909</td><td>0.001377</td><td>0.000746</td><td>0.067893</td><td>0.051606</td></tr>
-<tr><td>claim</td><td>under review</td><td>0.327997</td><td>0.320867</td><td>0.001367</td><td>0.000789</td><td>0.065733</td><td>0.049967</td></tr>
-<tr><td>opinion</td><td>active</td><td>0.219744</td><td>0.218330</td><td>0.000517</td><td>0.000252</td><td>0.043729</td><td>0.032405</td></tr>
-<tr><td>opinion</td><td>banned</td><td>0.206868</td><td>0.198483</td><td>0.000434</td><td>0.000193</td><td>0.040531</td><td>0.030728</td></tr>
-<tr><td>opinion</td><td>under review</td><td>0.226394</td><td>0.228051</td><td>0.000536</td><td>0.000293</td><td>0.044472</td><td>0.035027</td></tr>
-</tbody>
-</table>
 </div>
-
-</div>
-</div>
-
-</div>
-
-<div class="subsection-summary">
-<div class="summary-header">Summary</div>
-<div class="summary-content">
-<p>
-Normalized engagement metrics reveal that claim videos consistently generate higher interaction rates than opinion videos across all author statuses.
-</p>
-<p>
-Differences between ban status groups persist even after normalization, suggesting behavioral patterns extend beyond raw exposure and reflect meaningful interaction differences.
-</p>
-</div>
-</div>
-</div>
-
 </div></div><div class="subsection-summary">
 <div class="summary-header">Summary</div>
 <div class="summary-content">
@@ -980,81 +906,7 @@ data.groupby(['claim_status', 'author_ban_status']).count()[['#']]
 
 </div>
 </div>
-
-<div class="subsection">
-<div class="subsection-header">Engagement Rates Across Claim and Author Status</div>
-
-<div class="subsection-content">
-
-<p>
-Engagement metrics are normalized by dividing interaction counts by total views to better understand relative user behavior independent of scale.
-</p>
-
-<details>
-<summary>View Code</summary>
-<pre>
-data['likes_per_view'] = data['video_like_count'] / data['video_view_count']
-data['comments_per_view'] = data['video_comment_count'] / data['video_view_count']
-data['shares_per_view'] = data['video_share_count'] / data['video_view_count']
-
-data.groupby(['claim_status', 'author_ban_status']).agg(
-    {'likes_per_view': ['count', 'mean', 'median'],
-     'comments_per_view': ['count', 'mean', 'median'],
-     'shares_per_view': ['count', 'mean', 'median']})
-</pre>
-</details>
-
-<p>
-Normalizing engagement reveals proportional interaction behavior, allowing comparison across groups regardless of absolute view volume.
-</p>
-
-<div class="results">
-<strong>Results:</strong>
-<div class="cell-box output">
-
-<div style="overflow-x:auto;">
-<table class="df-table">
-<thead>
-<tr>
-<th>claim_status</th>
-<th>author_ban_status</th>
-<th>likes_mean</th>
-<th>likes_median</th>
-<th>comments_mean</th>
-<th>comments_median</th>
-<th>shares_mean</th>
-<th>shares_median</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>claim</td><td>active</td><td>0.329542</td><td>0.326538</td><td>0.001393</td><td>0.000776</td><td>0.065456</td><td>0.049279</td></tr>
-<tr><td>claim</td><td>banned</td><td>0.345071</td><td>0.358909</td><td>0.001377</td><td>0.000746</td><td>0.067893</td><td>0.051606</td></tr>
-<tr><td>claim</td><td>under review</td><td>0.327997</td><td>0.320867</td><td>0.001367</td><td>0.000789</td><td>0.065733</td><td>0.049967</td></tr>
-<tr><td>opinion</td><td>active</td><td>0.219744</td><td>0.218330</td><td>0.000517</td><td>0.000252</td><td>0.043729</td><td>0.032405</td></tr>
-<tr><td>opinion</td><td>banned</td><td>0.206868</td><td>0.198483</td><td>0.000434</td><td>0.000193</td><td>0.040531</td><td>0.030728</td></tr>
-<tr><td>opinion</td><td>under review</td><td>0.226394</td><td>0.228051</td><td>0.000536</td><td>0.000293</td><td>0.044472</td><td>0.035027</td></tr>
-</tbody>
-</table>
 </div>
-
-</div>
-</div>
-
-</div>
-
-<div class="subsection-summary">
-<div class="summary-header">Summary</div>
-<div class="summary-content">
-<p>
-Normalized engagement metrics reveal that claim videos consistently generate higher interaction rates than opinion videos across all author statuses.
-</p>
-<p>
-Differences between ban status groups persist even after normalization, suggesting behavioral patterns extend beyond raw exposure and reflect meaningful interaction differences.
-</p>
-</div>
-</div>
-</div>
-
 </div></div><div class="subsection-summary"><div class="summary-header">Summary</div><div class="summary-content"><p>The target variable 'claim_status' is nearly evenly distributed, supporting unbiased model training and reliable evaluation.</p><p>Engagement analysis reveals a marked separation between classes, with claim videos averaging higher view counts than opinion videos. The alignment of mean and median values within each category group suggests relatively stable distributions within, while magnitudes of difference between categories indicates strong classification potential for engagement features.</p><p>Author ban status also seems to further highlight differences between classes, with claim videos disproportionately associated with banned authors.</p><p>Overall, the results indicate that engagement metrics and author status variables can enhance model performance.</p></div></div><div class="subsection"><div class="subsection-header">Ban Status &amp; Engagement Analysis</div><div class="subsection-content">
 <p>Analysis shifts focus to the author_ban_status variable, examining whether user interaction patterns differ between authors labeled as active, banned, or under review.</p><p>groupby() is used to segment the dataset by author ban status, aggregating key engagement metrics, including view, like, and share counts using mean and median values providing a comprehensive view of overall typical engagement levels as well as accounting for potential outliers.</p>
 <details>
@@ -1172,81 +1024,7 @@ data.groupby(['author_ban_status']).agg(
 </div>
 </div>
 
-
-<div class="subsection">
-<div class="subsection-header">Engagement Rates Across Claim and Author Status</div>
-
-<div class="subsection-content">
-
-<p>
-Engagement metrics are normalized by dividing interaction counts by total views to better understand relative user behavior independent of scale.
-</p>
-
-<details>
-<summary>View Code</summary>
-<pre>
-data['likes_per_view'] = data['video_like_count'] / data['video_view_count']
-data['comments_per_view'] = data['video_comment_count'] / data['video_view_count']
-data['shares_per_view'] = data['video_share_count'] / data['video_view_count']
-
-data.groupby(['claim_status', 'author_ban_status']).agg(
-    {'likes_per_view': ['count', 'mean', 'median'],
-     'comments_per_view': ['count', 'mean', 'median'],
-     'shares_per_view': ['count', 'mean', 'median']})
-</pre>
-</details>
-
-<p>
-Normalizing engagement reveals proportional interaction behavior, allowing comparison across groups regardless of absolute view volume.
-</p>
-
-<div class="results">
-<strong>Results:</strong>
-<div class="cell-box output">
-
-<div style="overflow-x:auto;">
-<table class="df-table">
-<thead>
-<tr>
-<th>claim_status</th>
-<th>author_ban_status</th>
-<th>likes_mean</th>
-<th>likes_median</th>
-<th>comments_mean</th>
-<th>comments_median</th>
-<th>shares_mean</th>
-<th>shares_median</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>claim</td><td>active</td><td>0.329542</td><td>0.326538</td><td>0.001393</td><td>0.000776</td><td>0.065456</td><td>0.049279</td></tr>
-<tr><td>claim</td><td>banned</td><td>0.345071</td><td>0.358909</td><td>0.001377</td><td>0.000746</td><td>0.067893</td><td>0.051606</td></tr>
-<tr><td>claim</td><td>under review</td><td>0.327997</td><td>0.320867</td><td>0.001367</td><td>0.000789</td><td>0.065733</td><td>0.049967</td></tr>
-<tr><td>opinion</td><td>active</td><td>0.219744</td><td>0.218330</td><td>0.000517</td><td>0.000252</td><td>0.043729</td><td>0.032405</td></tr>
-<tr><td>opinion</td><td>banned</td><td>0.206868</td><td>0.198483</td><td>0.000434</td><td>0.000193</td><td>0.040531</td><td>0.030728</td></tr>
-<tr><td>opinion</td><td>under review</td><td>0.226394</td><td>0.228051</td><td>0.000536</td><td>0.000293</td><td>0.044472</td><td>0.035027</td></tr>
-</tbody>
-</table>
 </div>
-
-</div>
-</div>
-
-</div>
-
-<div class="subsection-summary">
-<div class="summary-header">Summary</div>
-<div class="summary-content">
-<p>
-Normalized engagement metrics reveal that claim videos consistently generate higher interaction rates than opinion videos across all author statuses.
-</p>
-<p>
-Differences between ban status groups persist even after normalization, suggesting behavioral patterns extend beyond raw exposure and reflect meaningful interaction differences.
-</p>
-</div>
-</div>
-</div>
-
 </div></div><div class="subsection-summary"><div class="summary-header">Summary</div><div class="summary-content"><p>Ban status and engaegment analysis reveals that authors categorized as banned or under review consistently exhibit significantly higher engagment across all metrics compared to active authors. Share counts in particular, reveal a strong indication that highly viral content is more commonly associated with moderated accounts. One of the bigger signals of this is the marked gap between mean and median values across all groups suggesting a severe rightly skewed average, with a small number of highly viral videos driving overall engagement averages. These patterns suggest that engagement metrics may serve as strong indicators for distinguishing content behavior though careful interpretation is required due to the influence of outliers.</p></div></div></div>
 <div class="section">
 <h2 style="padding-left:0; cursor:default;">Project Overview</h2>
@@ -1318,6 +1096,4 @@ document.querySelectorAll(".summary-header").forEach(el => {
 </script>
 </div></div></div></body>
 </html>
-
-<script>
 
