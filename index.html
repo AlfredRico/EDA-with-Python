@@ -896,11 +896,12 @@ data.groupby(['claim_status', 'author_ban_status']).count()[['#']]
 <p>Analysis shifts focus to the author_ban_status variable, examining whether user interaction patterns differ between authors labeled as active, banned, or under review.</p><p>groupby() is used to segment the dataset by author ban status, aggregating key engagement metrics, including view, like, and share counts using mean and median values providing a comprehensive view of overall typical engagement levels as well as accounting for potential outliers.</p>
 <details>
 <summary>View Code</summary>
-<pre># Mean and median share count across engagement metrics
-    data.groupby(['author_ban_status']).agg(
-         {'video_view_count': ['mean', 'median'],
-         'video_like_count': ['mean', 'median'],
-         'video_share_count': ['mean', 'median']})</pre>
+<pre>
+# Mean and median share count across engagement metrics
+data.groupby(['author_ban_status']).agg(
+    {'video_view_count': ['mean', 'median'],
+    'video_like_count': ['mean', 'median'],
+    'video_share_count': ['mean', 'median']})</pre>
 </details>
 <div class="results">
 <strong>Results:</strong>
