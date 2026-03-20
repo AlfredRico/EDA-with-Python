@@ -955,6 +955,7 @@ data.groupby(['author_ban_status']).agg(
 <details>
 <summary>View Code</summary>
 <pre>
+# Adding a count variable
 data.groupby(['author_ban_status']).agg(
     {'video_view_count': ['count', 'mean', 'median'],
      'video_like_count': ['count', 'mean', 'median'],
