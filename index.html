@@ -562,7 +562,7 @@ h2[style*="cursor:default"]::before {
 <h2>Project Goal</h2>
 <div class="collapsible-content">
 <p>
-        For this part of the project, the focus will be on cursory data inspection of the provided dataset, "tiktok_dataset.csv". After building a dataframe with Python in Jupyter notebook the claims data will be organized for exploratory data analysis, cleaned, and transformed in order to derive engagement trends identifying any suggestions of correlations between user engagement variables and claim status. Engagement trends provide insight into how users interact with different types of content, revealing meaningful patterns associated with claim versus opinion videos. Incorporating these behavioral signals into a predictive model will improve it's ability to distinguish between the two classes.
+        For this part of the project, the focus will be on cursory data inspection of the provided dataset, <code>tiktok_dataset.csv</code>. After building a dataframe with Python in Jupyter notebook the claims data will be organized for exploratory data analysis, cleaned, and transformed in order to derive engagement trends identifying any suggestions of correlations between user engagement variables and claim status. Engagement trends provide insight into how users interact with different types of content, revealing meaningful patterns associated with claim versus opinion videos. Incorporating these behavioral signals into a predictive model will improve it's ability to distinguish between the two classes.
       </p>
 </div>
 <div class="section">
@@ -581,10 +581,8 @@ import pandas as pd
           </pre>
 </details>
 </div></div><div class="subsection"><div class="subsection-header">Preliminary Data Inspection</div><div class="collapsible-content subsection-content">
-<p>
-        Loading the dataset onto the Jupyter notebook environment with  
-        <code>data = pd.read_csv("tiktok_dataset.csv")</code>
-</p>
+<p>Loading the dataset onto the Jupyter notebook environment with</p>
+        <p><code>data = pd.read_csv("tiktok_dataset.csv")</code></p>
 <p>
         Initial data inspection, validation and exploration is performed using 
         <code>head()</code>, <code>info()</code>, and <code>describe()</code> 
