@@ -459,6 +459,12 @@ h3.collapsed::before {
   padding-bottom: 15px;
   border-bottom: 1px solid #2a2a2a;
 }
+
+/* REMOVE ARROW FOR PROJECT OVERVIEW */
+h2[style*="cursor:default"]::before {
+  content: none !important;
+}
+
 </style>
 </head>
 <body>
@@ -1021,7 +1027,6 @@ data.groupby(['author_ban_status']).agg(
 </div>
 </div></div><div class="subsection-summary"><div class="summary-header">Summary</div><div class="summary-content"><p>Ban status and engaegment analysis reveals that authors categorized as banned or under review consistently exhibit significantly higher engagment across all metrics compared to active authors. Share counts in particular, reveal a strong indication that highly viral content is more commonly associated with moderated accounts. One of the bigger signals of this is the marked gap between mean and median values across all groups suggesting a severe rightly skewed average, with a small number of highly viral videos driving overall engagement averages. These patterns suggest that engagement metrics may serve as strong indicators for distinguishing content behavior though careful interpretation is required due to the influence of outliers.</p></div></div></div>
 <div class="section">
-<div class="section">
 
 <div class="subsection">
 <div class="subsection-header">Engagement Rates Across Claim and Author Status</div>
@@ -1113,6 +1118,19 @@ document.querySelectorAll(".section > h2").forEach(h => {
     h.onclick = null;
     h.style.cursor = "default";
   }
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll(".section, .subsection").forEach(el => {
+    el.classList.add("collapsed");
+  });
+
+  document.querySelectorAll(".summary-header").forEach(el => {
+    el.classList.add("collapsed");
+  });
 });
 </script>
 
