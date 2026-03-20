@@ -503,13 +503,13 @@ import pandas as pd
 <details>
 <summary>View Code</summary>
 <pre>
-#Loading dataset  
+# Loading dataset  
 data = pd.read_csv("tiktok_dataset.csv")
-#Displaying only the first 5 rows to examine structure and features  
+# Displaying only the first 5 rows to examine structure and features  
 data.head(5)
-#Summary information  
+# Summary information  
 data.info()  
-#Summary statistics  
+# Summary statistics  
 data.describe()
           </pre>
 </details>
@@ -823,7 +823,17 @@ data['claim_status'].value_counts()</pre>
 <details>
 <summary>View Code</summary>
 <pre>
-# Step 2 code placeholder
+# Average view count (claim status)
+
+claims = data[data['claim_status'] == 'claim']
+print('Mean view count claims:', claims['video_view_count'].mean())
+print('Median view count claims:', claims['video_view_count'].median())  
+
+# Average view count (opinion status)
+
+opinions = data[data['claim_status'] == 'opinion']
+print('Mean view count opinions:', opinions['video_view_count'].mean())
+print('Median view count opinions:', opinions['video_view_count'].median())
 </pre>
 </details>
 <div class="results">
