@@ -1095,9 +1095,21 @@ data.groupby(['claim_status', 'author_ban_status']).agg(
 <div class="section">
 <h2 id="project-overview" style="padding-left:0; cursor:default;">Project Overview</h2>
 <div class="collapsible-content">
-<p>
-        Summarize key findings, insights, and impact.
-      </p>
+<p>This project explores patterns in TikTok video engagement to support the development of a predictive model capable of distinguishing between claim-based and opinion-based content. Using a dataset of over 19,000 videos, exploratory data analysis (EDA) was conducted to understand how user interaction metrics and author characteristics relate to content type.</p>
+<p>Initial inspection revealed that engagement variables such as views, likes, shares, and comments exhibit strong right-skewed distributions, where a small subset of highly viral videos drives disproportionately large values. This was supported by large standard deviations and significant gaps between quartiles, indicating the presence of extreme outliers. As a result, <strong>median</strong> values were identified as <strong>more reliable</strong> indicators of typical engaegment behavior than <strong>means</strong>.</p>
+<p>The target variable, <strong>claim_status</strong>, is nearly evenly distributed between claim and opinion videos. This balance provides a strong foundation for unbiased model training and evaluation. When comparing engagement across these classes, a clear pattern indicates that claim videos significantly outperform opinion videos across all engagement metrics. They receive substantially higher view counts, more interactions, and stronger engagement rates per view. This separation highlihgts engagement features as highly predictive signals for classification.</p>
+<p>Furhter anlaysis of author ban status revealed that videos from authors labeled as banned or under review tend to generate higher overall engagement than those from active users. However, these differences are heavily influenced by viral outliers and are less consistent when normalized into engagement rates. In contrast, engagement rate analysis shows that <strong>content type, not moderation status, is the primary driver of user interaction behavior</strong>. Claim videos maintain higher likes, shares, and comments per view regardless of author status.</p>
+<div class="analysis-block">
+  <p><strong>Overall, the findings indicate that:</strong></p>
+  <ul>
+    <li>Engagement metrics are powerful predictors of claim-based content</li>
+    <li>Content type drives user interaction more than author status</li>
+    <li>Outliers and skewness must be carefully handled in modeling</li>
+  </ul>
+  <p>
+    These insights provide a strong analytical foundation for the next phase of the project.
+  </p>
+</div>
 </div>
 </div>
 <script>
