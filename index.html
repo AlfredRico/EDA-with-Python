@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -6,51 +5,136 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Project Title</title>
+</head>
+<body>
+<!DOCTYPE html>
 
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Title</title>
 <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0e0e0e;
+      color: #eaeaea;
+      line-height: 1.6;
+    }
 
-/* ===== BASE (UNCHANGED LOOK) ===== */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0e0e0e;
-  color: #eaeaea;
-  line-height: 1.6;
-}
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
 
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
-}
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #333;
+      padding-bottom: 5px;
+      position: relative;
+      padding-left: 28px;
+    }
 
-h2 {
-  font-size: 1.5rem;
-  margin-top: 40px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #333;
-  padding-bottom: 5px;
-  position: relative;
-  padding-left: 28px;
-}
+    p {
+      color: #cfcfcf;
+    }
 
-p {
-  color: #cfcfcf;
-}
-
-.section {
+    .section {
   margin-top: 30px;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
-/* ===== KEEP YOUR ORIGINAL SYSTEM INTACT ===== */
-/* (collapse system untouched) */
+    .results {
+      margin-top: 15px;
+      padding: 15px;
+      background: #1a1a1a;
+      border-radius: 8px;
+      border: 1px solid #2a2a2a;
+    }
 
-/* ===== TABLE ===== */
+    details {
+      margin-top: 15px;
+      background: #151515;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+      color: #9aaaff;
+    }
+
+    pre {
+      overflow-x: auto;
+      font-size: 0.9rem;
+      color: #dcdcdc;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+
+    .controls button {
+      background: none;
+      border: none;
+      color: #888;
+      font-size: 0.85rem;
+      cursor: pointer;
+      padding: 4px 6px;
+    }
+
+    .controls button:hover {
+      color: #ccc;
+    }
+
+    .collapsible-header {
+      cursor: pointer;
+    }
+
+    .collapsible-header::before {
+      content: ">";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: #aaa;
+      transition: transform 0.2s ease;
+    }
+
+    .collapsible-header.collapsed::before {
+      transform: translateY(-50%) rotate(-90deg);
+    }
+
+    .collapsible-content {
+      display: block;
+    }
+
+    .collapsed + .collapsible-content {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.3rem; padding-left: 24px; }
+    }
+  
+/* TABLE FIX */
 .df-table {
   width: 100%;
   border-collapse: collapse;
@@ -60,69 +144,364 @@ p {
 .df-table td {
   padding: 6px 8px;
   border: 1px solid #2a2a2a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   max-width: 160px;
 }
 
-/* ===== DESKTOP (REAL FIX) ===== */
+
+
+/* SUBSECTION (H3) COLLAPSIBLE */
+h3 {
+  font-size: 1.2rem;
+  margin-top: 25px;
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 24px;
+  cursor: pointer;
+  color: #cfd8ff;
+}
+
+h3::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  color: #888;
+  transition: transform 0.2s ease;
+}
+
+h3.collapsed::before {
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+
+
+/* SUMMARY DROPDOWN (UNIQUE STYLE) */
+.summary-header {
+  cursor: pointer;
+  font-weight: bold;
+  color: #ffcc66;
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 22px;
+}
+
+.summary-header::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s ease;
+  color: #ffcc66;
+}
+
+.summary-header.collapsed::before {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.summary-content {
+  display: block;
+}
+
+.summary-header.collapsed + .summary-content {
+  display: none;
+}
+
+
+
+/* ===== STABLE COLLAPSE SYSTEM ===== */
+
+/* SECTION */
+.section.collapsed > .collapsible-content {
+  display: none;
+}
+
+/* SUBSECTION */
+.subsection.collapsed > .subsection-content {
+  display: none;
+}
+
+.subsection.collapsed > .subsection-summary {
+  display: none;
+}
+
+/* ARROWS */
+.section > h2::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  transition: transform 0.2s ease;
+}
+
+.section.collapsed > h2::before {
+  transform: rotate(-90deg);
+}
+
+.subsection-header::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  transition: transform 0.2s ease;
+}
+
+.subsection.collapsed .subsection-header::before {
+  transform: rotate(-90deg);
+}
+
+
+/* ===== NESTED INDEX STRUCTURE ===== */
+
+/* SUBSECTION (LEVEL 2) */
+.subsection {
+  margin-left: 10px;
+}
+
+.subsection-header {
+  font-size: 1.15rem;
+  margin-top: 20px;
+  padding-left: 28px;
+  position: relative;
+}
+
+/* SUMMARY (LEVEL 3) */
+.subsection-summary {
+  margin-left: 25px;
+}
+
+.summary-header {
+  padding-left: 22px;
+  font-size: 0.95rem;
+}
+
+/* ===== ARROW ALIGNMENT ===== */
+
+/* FIX arrows so they follow indentation */
+.section > h2::before {
+  left: 5px;
+}
+
+.subsection-header::before {
+  left: 8px;
+}
+
+.summary-header::before {
+  left: 4px;
+}
+
+/* ===== VISUAL HIERARCHY ===== */
+
+.subsection-header {
+  color: #d7deff;
+}
+
+.summary-header {
+  color: #ffcc66;
+  opacity: 0.9;
+}
+
+/* OPTIONAL: subtle nesting guide */
+.subsection {
+  border-left: 1px solid #2a2a2a;
+  padding-left: 10px;
+}
+
+.subsection-summary {
+  border-left: 1px dashed #333;
+  padding-left: 10px;
+}
+
+
+/* SUMMARY (SEPARATE LEVEL) */
+.subsection-summary {
+  margin-left: 25px;
+}
+
+.summary-header {
+  cursor: pointer;
+  padding-left: 20px;
+  position: relative;
+}
+
+.summary-header::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  transition: transform 0.2s ease;
+}
+
+.summary-header.collapsed::before {
+  transform: rotate(90deg);
+}
+
+.summary-content {
+  display: block;
+}
+
+.summary-header.collapsed + .summary-content {
+  display: none;
+}
+
+
+/* ===== UNIFIED DROPDOWN UI ===== */
+
+/* ALL CLICKABLE */
+.section > h2,
+.subsection-header,
+.summary-header {
+  cursor: pointer;
+}
+
+/* CLEAN TRIANGLE ARROWS */
+.section > h2::before,
+.subsection-header::before,
+.summary-header::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  transition: transform 0.2s ease;
+}
+
+/* ROTATION STATES */
+.section.collapsed > h2::before {
+  transform: rotate(0deg);
+}
+
+.section > h2::before {
+  transform: rotate(90deg);
+}
+
+.subsection.collapsed .subsection-header::before {
+  transform: rotate(0deg);
+}
+
+.subsection .subsection-header::before {
+  transform: rotate(90deg);
+}
+
+.summary-header.collapsed::before {
+  transform: rotate(0deg);
+}
+
+.summary-header::before {
+  transform: rotate(90deg);
+}
+
+
+/* ===== FIX SUMMARY ARROW ALIGNMENT ===== */
+
+.summary-header::before {
+  top: 45%;               /* move slightly up from center */
+  transform: translateY(-50%);
+}
+
+/* Optional fine-tune (more precise alignment) */
+.summary-header {
+  line-height: 1.2;
+}
+
+
+/* ===== FIX SUMMARY ARROW DIRECTION ===== */
+
+/* collapsed (default) */
+.summary-header::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+}
+
+/* expanded */
+.summary-header:not(.collapsed)::before {
+  content: "▼";
+}
+
+/* remove rotation behavior (clean reset) */
+.summary-header::before {
+  transform: none !important;
+}
+
+
+/* ===== SUMMARY ARROW REFINEMENT ===== */
+
+/* make summary header a positioning container */
+.summary-header {
+  position: relative;
+  padding-right: 20px; /* space for arrow */
+}
+
+/* arrow styling */
+.summary-header::before {
+  content: "▶";
+  position: absolute;
+  right: 4px;     /* move to right side */
+  top: 2px;       /* align near top with text */
+  font-size: 0.75rem; /* match subsection arrow size */
+}
+
+/* expanded state */
+.summary-header:not(.collapsed)::before {
+  content: "▼";
+}
+
+/* remove any leftover transforms */
+.summary-header::before {
+  transform: none !important;
+}
+
+
+/* ANALYSIS BLOCK STRUCTURE */
+.analysis-block {
+  margin-top: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+/* REMOVE PROJECT OVERVIEW ARROW */
+h2[style*="cursor:default"]::before {
+  content: none !important;
+}
+
+
+/* ===== DESKTOP POLISH (NON-DESTRUCTIVE) ===== */
 @media (min-width: 1024px) {
 
-  body {
-    font-size: 18px;
-    line-height: 1.85;
-  }
-
+  /* Slightly expand layout */
   .container {
-    max-width: 1150px;
-    padding: 70px 50px;
+    max-width: 1100px;
   }
 
-  h1 {
-    font-size: 2.9rem;
-  }
-
-  h2 {
-    font-size: 1.9rem;
-    margin-top: 60px;
-  }
-
-  .subsection-header {
-    font-size: 1.35rem;
-    margin-top: 35px;
-  }
-
-  .summary-header {
-    font-size: 1.05rem;
+  /* Improve readability */
+  body {
+    font-size: 16.5px;
+    line-height: 1.75;
   }
 
   p {
-    font-size: 1.08rem;
-    line-height: 1.9;
-    max-width: 75ch;
+    line-height: 1.8;
   }
 
+  /* Add breathing room */
   .section {
-    margin-top: 55px;
+    margin-top: 45px;
   }
 
   .results {
-    padding: 22px;
-    margin-top: 25px;
+    padding: 18px;
   }
 
-  pre {
-    font-size: 1rem;
-  }
-
+  /* Improve table readability */
   .df-table th,
   .df-table td {
-    padding: 10px 12px;
-    max-width: 220px;
+    padding: 8px 10px;
   }
 
 }
 
 </style>
-
 </head>
 <body>
 <div class="container">
