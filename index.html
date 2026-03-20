@@ -467,7 +467,7 @@ h3.collapsed::before {
 <h2>Project Goal</h2>
 <div class="collapsible-content">
 <p>
-        For this part of the project, the focus will be on cursory data inspection of the provided dataset, "tiktok_dataset.csv". After building a dataframe with Python in Jupyter notebook the claims data will be organized for exploratory data analysis, cleaned, and transformed in order to derive engagement trends identifying any suggestions of correlations between user engagement variables and claim status.
+        For this part of the project, the focus will be on cursory data inspection of the provided dataset, "tiktok_dataset.csv". After building a dataframe with Python in Jupyter notebook the claims data will be organized for exploratory data analysis, cleaned, and transformed in order to derive engagement trends identifying any suggestions of correlations between user engagement variables and claim status. Engagement trends provide insight into how users interact with different types of content, revealing meaningful patterns associated with claim versus opinion videos. Incorporating these behavioral signals into a predictive model will improve it's ability to distinguish between the two classes.
       </p>
 </div>
 <div class="section">
@@ -783,7 +783,7 @@ memory usage: 1.8+ MB
   </p>
 </div>
 </div><div class="subsection"><div class="subsection-header">Claim Status &amp; Engagement Analysis</div><div class="subsection-content">
-<p>With the preliminary data inspection, and the machine learning model being created for this project, in mind it is apparent that the column claim_status will play a key role. This variable distinguishes whether a video contains a claim or expresses an opinion, serving as the basis for the downstream classification task. </p>
+<p>With the preliminary data inspection, and the machine learning model being created for this project in mind, it is apparent that the column claim_status will play a key role. This variable distinguishes whether a video contains a claim or expresses an opinion, serving as the basis for the downstream classification task. </p>
 <details>
 <summary>View Code</summary>
 <pre>#Identifying values and their counts for claim_status  
@@ -815,8 +815,11 @@ data['claim_status'].value_counts()</pre>
 
 <div class="analysis-block">
 <p>
-Step 2: [Describe the purpose of this analysis step here]
-</p>
+    The target variable <code>claim_status</code> contains a near even distribution of 9,608 claim and 9,476 opinion videos. This balance will be beneficial downstream for classification purposes as it reduces risks of model bias toward a dominant class and supports more reliable evaluations of model performance. For classification tasks such as this one, the near even distribution between claim and opinion videos suggests that this dataset is well-suited for training a model that can learn to distinguish between the two classes.
+  </p>
+  <p>
+    To further strengthen the predictive model, user engagement metrics are examined to determine whether interaction patterns differ across claim status categories. The dataset is filtered by claim status using Boolean masking to compare engagement levels between claims and opinions. Mean and median view counts are calculated for each group.
+  </p>
 <details>
 <summary>View Code</summary>
 <pre>
