@@ -860,7 +860,9 @@ Next, any trends associated with the ban status of the author will be examined u
 <details>
 <summary>View Code</summary>
 <pre>
-# Step 3 code placeholder
+# Counts for each group combination of claim status and author ban status
+
+data.groupby(['claim_status', 'author_ban_status']).count()[['#']]
 </pre>
 </details>
 <div class="results">
