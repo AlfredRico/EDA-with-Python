@@ -868,9 +868,27 @@ data.groupby(['claim_status', 'author_ban_status']).count()[['#']]
 <div class="results">
 <strong>Results:</strong>
 <div class="cell-box output">
-<pre>
-# Step 3 results placeholder
-</pre>
+
+<div style="overflow-x:auto;">
+<table class="df-table">
+  <thead>
+    <tr>
+      <th>claim_status</th>
+      <th>author_ban_status</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>claim</td><td>active</td><td>6566</td></tr>
+    <tr><td>claim</td><td>banned</td><td>1439</td></tr>
+    <tr><td>claim</td><td>under review</td><td>1603</td></tr>
+    <tr><td>opinion</td><td>active</td><td>8817</td></tr>
+    <tr><td>opinion</td><td>banned</td><td>196</td></tr>
+    <tr><td>opinion</td><td>under review</td><td>463</td></tr>
+  </tbody>
+</table>
+</div>
+
 </div>
 </div>
 </div>
