@@ -591,9 +591,9 @@ import pandas as pd
         to understand structure, data types, and statistical distributions
       </p>
 <p>
-        'head()' - to examine sample record dataset structure and feature layout<br/>
-        'info()' - to asses data types, missing values, and dataset integrity<br/>
-        'describe()' - for statistical distribution (important for identifying trends, variability and potential outliers)
+        <code>head()</code> - to examine sample record dataset structure and feature layout<br/>
+        <code>info()</code> - to asses data types, missing values, and dataset integrity<br/>
+        <code>describe()</code> - for statistical distribution (important for identifying trends, variability and potential outliers)
       </p>
 <details>
 <summary>View Code</summary>
@@ -617,12 +617,12 @@ data.describe()
 <tr style="text-align: right;">
 <th></th>
 <th>#</th>
-<th>claim_status</th>
+<th><code>claim_status</code></th>
 <th>video_id</th>
 <th>video_duration_sec</th>
 <th>video_transcription_text</th>
 <th>verified_status</th>
-<th>author_ban_status</th>
+<th><code>author_ban_status</code></th>
 <th>video_view_count</th>
 <th>video_like_count</th>
 <th>video_share_count</th>
@@ -717,12 +717,12 @@ Data columns (total 12 columns):
  #   Column                    Non-Null Count  Dtype  
 ---  ------                    --------------  -----  
  0   #                         19382 non-null  int64  
- 1   claim_status              19084 non-null  object 
+ 1   <code>claim_status</code>              19084 non-null  object 
  2   video_id                  19382 non-null  int64  
  3   video_duration_sec        19382 non-null  int64  
  4   video_transcription_text  19084 non-null  object 
  5   verified_status           19382 non-null  object 
- 6   author_ban_status         19382 non-null  object 
+ 6   <code>author_ban_status</code>         19382 non-null  object 
  7   video_view_count          19084 non-null  float64
  8   video_like_count          19084 non-null  float64
  9   video_share_count         19084 non-null  float64
@@ -878,11 +878,11 @@ memory usage: 1.8+ MB
   </p>
 </div>
 </div><div class="subsection"><div class="subsection-header">Claim Status &amp; Engagement Analysis</div><div class="subsection-content">
-<p>With the preliminary data inspection, and the machine learning model being created for this project in mind, it is apparent that the column claim_status will play a key role. This variable distinguishes whether a video contains a claim or expresses an opinion, serving as the basis for the downstream classification task. </p>
+<p>With the preliminary data inspection, and the machine learning model being created for this project in mind, it is apparent that the column <code>claim_status</code> will play a key role. This variable distinguishes whether a video contains a claim or expresses an opinion, serving as the basis for the downstream classification task. </p>
 <details>
 <summary>View Code</summary>
-<pre>#Identifying values and their counts for claim_status  
-data['claim_status'].value_counts()</pre>
+<pre>#Identifying values and their counts for <code>claim_status</code>  
+data['<code>claim_status</code>'].value_counts()</pre>
 </details>
 <div class="results">
 <strong>Results:</strong>
@@ -909,7 +909,7 @@ data['claim_status'].value_counts()</pre>
 </div>
 <div class="analysis-block">
 <p>
-    The target variable <code>claim_status</code> contains a near even distribution of 9,608 claim and 9,476 opinion videos. This balance will be beneficial downstream for classification purposes as it reduces risks of model bias toward a dominant class and supports more reliable evaluations of model performance. For classification tasks such as this one, the near even distribution between claim and opinion videos suggests that this dataset is well-suited for training a model that can learn to distinguish between the two classes.
+    The target variable <code><code>claim_status</code></code> contains a near even distribution of 9,608 claim and 9,476 opinion videos. This balance will be beneficial downstream for classification purposes as it reduces risks of model bias toward a dominant class and supports more reliable evaluations of model performance. For classification tasks such as this one, the near even distribution between claim and opinion videos suggests that this dataset is well-suited for training a model that can learn to distinguish between the two classes.
   </p>
 <p>
     To further strengthen the predictive model, user engagement metrics are examined to determine whether interaction patterns differ across claim status categories. The dataset is filtered by claim status using Boolean masking to compare engagement levels between claims and opinions. Mean and median view counts are calculated for each group.
@@ -919,13 +919,13 @@ data['claim_status'].value_counts()</pre>
 <pre>
 # Average view count (claim status)
 
-claims = data[data['claim_status'] == 'claim']
+claims = data[data['<code>claim_status</code>'] == 'claim']
 print('Mean view count claims:', claims['video_view_count'].mean())
 print('Median view count claims:', claims['video_view_count'].median())  
 
 # Average view count (opinion status)
 
-opinions = data[data['claim_status'] == 'opinion']
+opinions = data[data['<code>claim_status</code>'] == 'opinion']
 print('Mean view count opinions:', opinions['video_view_count'].mean())
 print('Median view count opinions:', opinions['video_view_count'].median())
 </pre>
@@ -948,14 +948,14 @@ Median view count opinions: 4953.0
 Although the mean and median values within each group are closely aligned, suggesting even distribution, there is marked disparity between categories. Claim videos exhibit mean and median view counts exceeding 50k whereas opinion videos average close to 5k views. This strongly suggests that engagement patterns differ markedly by claim status making view count, and likely other engagement metrics, a particularly strong feature for classification.
 </p>
 <p>
-Next, any trends associated with the ban status of the author will be examined using groupby() to calculate how many videos there are for each combination of categories of claim status including 'active', 'banned', or 'under review'.   
+Next, any trends associated with the ban status of the author will be examined using <code>groupby()</code> to calculate how many videos there are for each combination of categories of claim status including 'active', 'banned', or 'under review'.   
 </p>
 <details>
 <summary>View Code</summary>
 <pre>
 # Counts for each group combination of claim status and author ban status
 
-data.groupby(['claim_status', 'author_ban_status']).count()[['#']]
+data.groupby(['<code>claim_status</code>', '<code>author_ban_status</code>']).count()[['#']]
 </pre>
 </details>
 <div class="results">
@@ -965,8 +965,8 @@ data.groupby(['claim_status', 'author_ban_status']).count()[['#']]
 <table class="df-table">
 <thead>
 <tr>
-<th>claim_status</th>
-<th>author_ban_status</th>
+<th><code>claim_status</code></th>
+<th><code>author_ban_status</code></th>
 <th>Count</th>
 </tr>
 </thead>
@@ -983,13 +983,13 @@ data.groupby(['claim_status', 'author_ban_status']).count()[['#']]
 </div>
 </div>
 </div>
-</div></div><div class="subsection-summary"><div class="summary-header">Summary</div><div class="summary-content"><p>The target variable 'claim_status' is nearly evenly distributed, supporting unbiased model training and reliable evaluation.</p><p>Engagement analysis reveals a marked separation between classes, with claim videos averaging higher view counts than opinion videos. The alignment of mean and median values within each category group suggests relatively stable distributions within, while magnitudes of difference between categories indicates strong classification potential for engagement features.</p><p>Author ban status also seems to further highlight differences between classes, with claim videos disproportionately associated with banned authors.</p><p>Overall, the results indicate that engagement metrics and author status variables can enhance model performance.</p></div></div><div class="subsection"><div class="subsection-header">Ban Status &amp; Engagement Analysis</div><div class="subsection-content">
-<p>Analysis shifts focus to the author_ban_status variable, examining whether user interaction patterns differ between authors labeled as active, banned, or under review.</p><p>groupby() is used to segment the dataset by author ban status, aggregating key engagement metrics, including view, like, and share counts using mean and median values providing a comprehensive view of overall typical engagement levels as well as accounting for potential outliers.</p>
+</div></div><div class="subsection-summary"><div class="summary-header">Summary</div><div class="summary-content"><p>The target variable '<code>claim_status</code>' is nearly evenly distributed, supporting unbiased model training and reliable evaluation.</p><p>Engagement analysis reveals a marked separation between classes, with claim videos averaging higher view counts than opinion videos. The alignment of mean and median values within each category group suggests relatively stable distributions within, while magnitudes of difference between categories indicates strong classification potential for engagement features.</p><p>Author ban status also seems to further highlight differences between classes, with claim videos disproportionately associated with banned authors.</p><p>Overall, the results indicate that engagement metrics and author status variables can enhance model performance.</p></div></div><div class="subsection"><div class="subsection-header">Ban Status &amp; Engagement Analysis</div><div class="subsection-content">
+<p>Analysis shifts focus to the <code>author_ban_status</code> variable, examining whether user interaction patterns differ between authors labeled as active, banned, or under review.</p><p><code>groupby()</code> is used to segment the dataset by author ban status, aggregating key engagement metrics, including view, like, and share counts using mean and median values providing a comprehensive view of overall typical engagement levels as well as accounting for potential outliers.</p>
 <details>
 <summary>View Code</summary>
 <pre>
 # Mean and median share count across engagement metrics
-data.groupby(['author_ban_status']).agg(
+data.groupby(['<code>author_ban_status</code>']).agg(
     {'video_view_count': ['mean', 'median'],
     'video_like_count': ['mean', 'median'],
     'video_share_count': ['mean', 'median']})</pre>
@@ -1001,7 +1001,7 @@ data.groupby(['author_ban_status']).agg(
 <table class="df-table">
 <thead>
 <tr>
-<th rowspan="2">author_ban_status</th>
+<th rowspan="2"><code>author_ban_status</code></th>
 <th colspan="2">video_view_count</th>
 <th colspan="2">video_like_count</th>
 <th colspan="2">video_share_count</th>
@@ -1042,7 +1042,7 @@ data.groupby(['author_ban_status']).agg(
 <summary>View Code</summary>
 <pre>
 # Adding a count variable
-data.groupby(['author_ban_status']).agg(
+data.groupby(['<code>author_ban_status</code>']).agg(
     {'video_view_count': ['count', 'mean', 'median'],
      'video_like_count': ['count', 'mean', 'median'],
      'video_share_count': ['count', 'mean', 'median']
@@ -1056,7 +1056,7 @@ data.groupby(['author_ban_status']).agg(
 <table class="df-table">
 <thead>
 <tr>
-<th rowspan="2">author_ban_status</th>
+<th rowspan="2"><code>author_ban_status</code></th>
 <th colspan="3">video_view_count</th>
 <th colspan="3">video_like_count</th>
 <th colspan="3">video_share_count</th>
@@ -1102,29 +1102,29 @@ To better understand engagement rates, raw counts (likes, comments, and shares) 
 </p>
 
 <ul>
-  <li><strong>likes_per_view</strong>: represents the number of likes divided by the number of views for each video</li>
-  <li><strong>comments_per_view</strong>: represents the number of comments divided by the number of views for each video</li>
-  <li><strong>shares_per_view</strong>: represents the number of shares divided by the number of views for each video</li>
+  <li><strong><code>likes_per_view</code></strong>: represents the number of likes divided by the number of views for each video</li>
+  <li><strong><code>comments_per_view</code></strong>: represents the number of comments divided by the number of views for each video</li>
+  <li><strong><code>shares_per_view</code></strong>: represents the number of shares divided by the number of views for each video</li>
 </ul>
 
 <p>
-Next, groupby() is used to split the dataset into combinations of <strong>claim status</strong> and <strong>author ban status</strong>. The new engagement rate data for each group is compiled and summarized using <code>agg()</code> to calculate count, mean and median of each group.
+Next, <code>groupby()</code> is used to split the dataset into combinations of <strong>claim status</strong> and <strong>author ban status</strong>. The new engagement rate data for each group is compiled and summarized using <code>agg()</code> to calculate count, mean and median of each group.
 </p>
 <details>
 <summary>View Code</summary>
 <pre>
 # Create engagement rate features
 
-data['likes_per_view'] = data['video_like_count'] / data['video_view_count']
-data['comments_per_view'] = data['video_comment_count'] / data['video_view_count']
-data['shares_per_view'] = data['video_share_count'] / data['video_view_count']
+data['<code>likes_per_view</code>'] = data['video_like_count'] / data['video_view_count']
+data['<code>comments_per_view</code>'] = data['video_comment_count'] / data['video_view_count']
+data['<code>shares_per_view</code>'] = data['video_share_count'] / data['video_view_count']
 
 # Grouped aggregation
 
-data.groupby(['claim_status', 'author_ban_status']).agg(
-    {'likes_per_view': ['count', 'mean', 'median'],
-     'comments_per_view': ['count', 'mean', 'median'],
-     'shares_per_view': ['count', 'mean', 'median']}
+data.groupby(['<code>claim_status</code>', '<code>author_ban_status</code>']).agg(
+    {'<code>likes_per_view</code>': ['count', 'mean', 'median'],
+     '<code>comments_per_view</code>': ['count', 'mean', 'median'],
+     '<code>shares_per_view</code>': ['count', 'mean', 'median']}
 )
 </pre>
 </details>
@@ -1135,11 +1135,11 @@ data.groupby(['claim_status', 'author_ban_status']).agg(
 <table class="df-table">
 <thead>
 <tr>
-<th rowspan="2">claim_status</th>
-<th rowspan="2">author_ban_status</th>
-<th colspan="3">likes_per_view</th>
-<th colspan="3">comments_per_view</th>
-<th colspan="3">shares_per_view</th>
+<th rowspan="2"><code>claim_status</code></th>
+<th rowspan="2"><code>author_ban_status</code></th>
+<th colspan="3"><code>likes_per_view</code></th>
+<th colspan="3"><code>comments_per_view</code></th>
+<th colspan="3"><code>shares_per_view</code></th>
 </tr>
 <tr>
 <th>count</th><th>mean</th><th>median</th>
@@ -1177,7 +1177,7 @@ data.groupby(['claim_status', 'author_ban_status']).agg(
 <div class="collapsible-content">
 <p>This project explores patterns in TikTok video engagement to support the development of a predictive model capable of distinguishing between claim-based and opinion-based content. Using a dataset of over 19,000 videos, exploratory data analysis (EDA) was conducted to understand how user interaction metrics and author characteristics relate to content type.</p>
 <p>Initial inspection revealed that engagement variables such as views, likes, shares, and comments exhibit strong right-skewed distributions, where a small subset of highly viral videos drives disproportionately large values. This was supported by large standard deviations and significant gaps between quartiles, indicating the presence of extreme outliers. As a result, <strong>median</strong> values were identified as <strong>more reliable</strong> indicators of typical engaegment behavior than <strong>means</strong>.</p>
-<p>The target variable, <strong>claim_status</strong>, is nearly evenly distributed between claim and opinion videos. This balance provides a strong foundation for unbiased model training and evaluation. When comparing engagement across these classes, a clear pattern indicates that claim videos significantly outperform opinion videos across all engagement metrics. They receive substantially higher view counts, more interactions, and stronger engagement rates per view. This separation highlihgts engagement features as highly predictive signals for classification.</p>
+<p>The target variable, <strong><code>claim_status</code></strong>, is nearly evenly distributed between claim and opinion videos. This balance provides a strong foundation for unbiased model training and evaluation. When comparing engagement across these classes, a clear pattern indicates that claim videos significantly outperform opinion videos across all engagement metrics. They receive substantially higher view counts, more interactions, and stronger engagement rates per view. This separation highlihgts engagement features as highly predictive signals for classification.</p>
 <p>Furhter anlaysis of author ban status revealed that videos from authors labeled as banned or under review tend to generate higher overall engagement than those from active users. However, these differences are heavily influenced by viral outliers and are less consistent when normalized into engagement rates. In contrast, engagement rate analysis shows that <strong>content type, not moderation status, is the primary driver of user interaction behavior</strong>. Claim videos maintain higher likes, shares, and comments per view regardless of author status.</p>
 <div class="analysis-block">
   <p><strong>Overall, the findings indicate that:</strong></p>
