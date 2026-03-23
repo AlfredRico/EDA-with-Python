@@ -98,6 +98,49 @@ details pre {
 
 </style>
 
+
+<style>
+
+/* ===== VIEW CODE (DISTINCT COLOR) ===== */
+
+/* DARK MODE */
+details summary {
+  color: #7dd3fc !important;   /* brighter cyan (distinct from headers) */
+}
+
+details pre {
+  color: #e6edf3 !important;
+}
+
+/* LIGHT MODE */
+body.light details summary {
+  color: #0ea5e9 !important;   /* strong blue (stands out clearly) */
+}
+
+body.light details pre {
+  color: #0f172a !important;
+  background: #f8fafc !important;
+}
+
+/* ===== SUBSECTION HEADERS (SEPARATED COLOR) ===== */
+
+/* DARK MODE */
+.subsection-header {
+  color: #c7d2fe !important;   /* softer, less saturated */
+}
+
+/* LIGHT MODE */
+body.light .subsection-header {
+  color: #475569 !important;   /* neutral slate (NOT blue anymore) */
+}
+
+/* ===== EXTRA READABILITY ===== */
+details pre {
+  line-height: 1.6;
+}
+
+</style>
+
 </head>
 <body>
 <!DOCTYPE html>
@@ -743,6 +786,49 @@ body.light details pre {
 }
 
 /* Improve readability */
+details pre {
+  line-height: 1.6;
+}
+
+</style>
+
+
+<style>
+
+/* ===== VIEW CODE (DISTINCT COLOR) ===== */
+
+/* DARK MODE */
+details summary {
+  color: #7dd3fc !important;   /* brighter cyan (distinct from headers) */
+}
+
+details pre {
+  color: #e6edf3 !important;
+}
+
+/* LIGHT MODE */
+body.light details summary {
+  color: #0ea5e9 !important;   /* strong blue (stands out clearly) */
+}
+
+body.light details pre {
+  color: #0f172a !important;
+  background: #f8fafc !important;
+}
+
+/* ===== SUBSECTION HEADERS (SEPARATED COLOR) ===== */
+
+/* DARK MODE */
+.subsection-header {
+  color: #c7d2fe !important;   /* softer, less saturated */
+}
+
+/* LIGHT MODE */
+body.light .subsection-header {
+  color: #475569 !important;   /* neutral slate (NOT blue anymore) */
+}
+
+/* ===== EXTRA READABILITY ===== */
 details pre {
   line-height: 1.6;
 }
