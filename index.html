@@ -924,7 +924,7 @@ import pandas as pd
 # Loading dataset  
 data = pd.read_csv("tiktok_dataset.csv")
 # Displaying only the first 5 rows to examine structure and features  
-data.head(5)
+data.head()
 # Summary information  
 data.info()  
 # Summary statistics  
@@ -1171,7 +1171,7 @@ memory usage: 1.8+ MB
 <div class="summary-header">Summary</div>
 <div class="summary-content">
 <p>
-    Upon inspection, <code>data.head(5)</code> displays the first five rows of the 19,382 entries, 
+    Upon inspection, <code>data.head()</code> displays the first five rows of the 19,382 entries, 
     each representing either a claim or an opinion along with associated metadata. 
     The dataset includes a mix of categorical, textual, and numerical features.
   </p>
