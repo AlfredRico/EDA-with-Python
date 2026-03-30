@@ -1,44 +1,185 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TikTok Claims Project</title>
 
+<style>
+
+/* ===== LIGHT MODE (MATCH LIGHTNING PROJECT) ===== */
+body.light {
+  background: #f8fafc !important;
+  color: #1a1a1a !important;
+}
+
+body.light h1,
+body.light h2 {
+  color: #0f172a !important;
+}
+
+body.light p,
+body.light li {
+  color: #333 !important;
+}
+
+body.light .subsection-header {
+  color: #2563eb !important;
+}
+
+body.light .summary-header {
+  color: #b45309 !important;
+}
+
+body.light .results,
+body.light details,
+body.light pre {
+  background: #ffffff !important;
+  border: 1px solid #ddd !important;
+}
+
+/* TABLE FIX (CRITICAL) */
+body.light .df-table {
+  background: #ffffff !important;
+  border-collapse: collapse;
+}
+
+body.light .df-table th {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+body.light .df-table td {
+  background: #ffffff !important;
+  color: #1a1a1a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+body.light .df-table tr:nth-child(even) {
+  background: #f8fafc !important;
+}
+
+body.light a {
+  color: #2563eb !important;
+}
+
+</style>
+
+
+<style>
+
+/* ===== VIEW CODE (GLOBAL FIX) ===== */
+
+/* DARK MODE */
+details summary {
+  color: #9aaaff !important;
+}
+
+details pre {
+  color: #e6edf3 !important;
+}
+
+/* LIGHT MODE */
+body.light details summary {
+  color: #1d4ed8 !important;
+}
+
+body.light details pre {
+  color: #0f172a !important;
+  background: #f8fafc !important;
+}
+
+/* Improve readability */
+details pre {
+  line-height: 1.6;
+}
+
+</style>
+
+
+<style>
+
+/* ===== VIEW CODE (DISTINCT COLOR) ===== */
+
+/* DARK MODE */
+details summary {
+  color: #7dd3fc !important;
+}
+
+details pre {
+  color: #e6edf3 !important;
+}
+
+/* LIGHT MODE */
+body.light details summary {
+  color: #0ea5e9 !important;
+}
+
+body.light details pre {
+  color: #0f172a !important;
+  background: #f8fafc !important;
+}
+
+/* ===== SUBSECTION HEADERS (SEPARATED COLOR) ===== */
+
+/* DARK MODE */
+.subsection-header {
+  color: #c7d2fe !important;
+}
+
+/* LIGHT MODE */
+body.light .subsection-header {
+  color: #475569 !important;
+}
+
+/* ===== READABILITY ===== */
+details pre {
+  line-height: 1.6;
+}
+
+</style>
+
+
+<style>
+
+/* ===== FIX TECHNICAL IMPLEMENTATION SIZE ===== */
+
+.subsection-content p,
+.subsection-content li {
+  font-size: 1.1rem !important;
+  line-height: 1.9 !important;
+}
+
+.subsection-header {
+  font-size: 1.3rem !important;
+}
+
+.summary-header {
+  font-size: 1.05rem !important;
+}
+
+.results {
+  font-size: 1rem !important;
+}
+
+.df-table th,
+.df-table td {
+  font-size: 0.95rem !important;
+  padding: 10px !important;
+}
+
+pre {
+  font-size: 0.95rem !important;
+  line-height: 1.7 !important;
+}
+
+</style>
+
+</head>
 <body>
-<div class="container">
-
-<a href="https://alfredrico.github.io/" style="color:#9aaaff;text-decoration:none;">
-← Back to Portfolio
-</a>
-
-<h1>TikTok Claims Project (EDA with Python)</h1>
-<p style="color:#aaa;">By Alfred Rico</p>
-
-<div class="controls">
-<button id="toggleBtn" onclick="toggleAll()">Expand all</button>
-<button id="themeBtn" onclick="toggleTheme()">Day</button>
-
-<a href="https://github.com/ShadyEggs/EDA-with-Python" target="_blank">
-<svg height="22" width="22" viewBox="0 0 16 16" fill="currentColor">
-<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 
-6.53 5.47 7.59.4.07.55-.17.55-.38 
-0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94
--.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
--.01-.53.63-.01 1.08.58 1.23.82.72 1.21 
-1.87.87 2.33.66.07-.52.28-.87.51-1.07
--1.78-.2-3.64-.89-3.64-3.95 
-0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 
-0 0 .67-.21 2.2.82.64-.18 1.32-.27 
-2-.27s1.36.09 2 .27c1.53-1.04 
-2.2-.82 2.2-.82.44 1.1.16 1.92.08 
-2.12.51.56.82 1.27.82 2.15 
-0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 
-1.48 0 1.07-.01 1.93-.01 2.2 
-0 .21.15.46.55.38A8.013 8.013 0 
-0 0 16 8c0-4.42-3.58-8-8-8z"/>
-</svg>
-</a>
-</div>
-
-
+<body>
 <div class="container">
 <div style="margin-bottom:20px;">
   <a href="https://alfredrico.github.io/" style="color:#9aaaff; text-decoration:none; font-size:0.9rem;">
@@ -75,10 +216,33 @@
 <h1>TikTok Claims Project (EDA with Python)</h1>
 <p style="color:#aaa; margin-top:-5px;">By Alfred Rico</p>
 
+
 <div class="controls">
   <button id="toggleBtn" onclick="toggleAll()">Expand all</button>
-  <button onclick="toggleTheme()" style="margin-left:15px;">Light / Dark</button>
+  <button id="themeBtn" id="themeBtn" onclick="toggleTheme()">Day</button>
+
+  <a href="https://github.com/ShadyEggs/EDA-with-Python" target="_blank" style="display:flex; align-items:center;">
+    <svg height="22" width="22" viewBox="0 0 16 16" fill="currentColor">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 
+      6.53 5.47 7.59.4.07.55-.17.55-.38 
+      0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49
+      -.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
+      -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 
+      1.87.87 2.33.66.07-.52.28-.87.51-1.07
+      -1.78-.2-3.64-.89-3.64-3.95 
+      0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 
+      0 0 .67-.21 2.2.82.64-.18 1.32-.27 
+      2-.27s1.36.09 2 .27c1.53-1.04 
+      2.2-.82 2.2-.82.44 1.1.16 1.92.08 
+      2.12.51.56.82 1.27.82 2.15 
+      0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 
+      1.48 0 1.07-.01 1.93-.01 2.2 
+      0 .21.15.46.55.38A8.013 8.013 0 
+      0 0 16 8c0-4.42-3.58-8-8-8z"/>
+    </svg>
+  </a>
 </div>
+
 
 
 <h2>Key Takeaways</h2>
@@ -731,11 +895,101 @@ data.groupby(['<code>claim_status</code>', '<code>author_ban_status</code>']).ag
 </div>
 </div>
 </div>
+<script>
+let expanded = false;
 
+function toggleAll() {
+  const sections = document.querySelectorAll(".section, .subsection");
+  const summaries = document.querySelectorAll(".summary-header");
+
+  expanded = !expanded;
+
+  sections.forEach(el => {
+
+    // ✅ ONLY skip if THIS section header is Project Overview
+    const header = el.querySelector(":scope > h2");
+    if (header && header.id === "project-overview") return;
+
+    if (expanded) {
+      el.classList.remove("collapsed");
+    } else {
+      el.classList.add("collapsed");
+    }
+  });
+
+  summaries.forEach(el => {
+    if (expanded) {
+      el.classList.remove("collapsed");
+    } else {
+      el.classList.add("collapsed");
+    }
+  });
+
+  document.getElementById("toggleBtn").textContent =
+    expanded ? "Collapse all" : "Expand all";
+}
+
+// SECTION
+document.querySelectorAll(".section > h2").forEach(h => {
+
+  // 🚫 DO NOT COLLAPSE PROJECT OVERVIEW
+  if (h.id === "project-overview") return;
+
+  h.addEventListener("click", () => {
+    h.parentElement.classList.toggle("collapsed");
+  });
+});
+
+// SUBSECTION
+document.querySelectorAll(".subsection-header").forEach(h => {
+  h.addEventListener("click", () => {
+    h.parentElement.classList.toggle("collapsed");
+  });
+});
+
+// SUMMARY
+document.querySelectorAll(".summary-header").forEach(h => {
+  h.addEventListener("click", (e) => {
+    e.stopPropagation();
+    h.classList.toggle("collapsed");
+  });
+});
+
+// DEFAULT STATE
+document.querySelectorAll(".section, .subsection").forEach(el => {
+
+  const header = el.querySelector(":scope > h2");
+  if (header && header.id === "project-overview") return;
+
+  el.classList.add("collapsed");
+});
+
+document.querySelectorAll(".summary-header").forEach(el => {
+  el.classList.add("collapsed");
+});
+</script>
 </div><footer style="margin-top:40px; padding-top:15px; border-top:1px solid #2a2a2a; font-size:0.8rem; color:#777; text-align:center;">
   © 2026 Alfred Rico. All rights reserved.
 </footer>
 </div>
+<script>
+
+</script>
 
 
-</div></body></html>
+<script>
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.getElementById("themeBtn");
+
+  body.classList.toggle("light");
+
+  if (body.classList.contains("light")) {
+    btn.textContent = "Night";
+  } else {
+    btn.textContent = "Day";
+  }
+}
+</script>
+
+</body></html>
