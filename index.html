@@ -767,6 +767,19 @@ ul {
 
 </style>
 
+
+<style>
+
+/* ===== MOBILE TITLE FIX ===== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem !important;
+    line-height: 1.25;
+  }
+}
+
+</style>
+
 </head>
 <body>
 <div class="container">
@@ -1460,79 +1473,7 @@ data.groupby(['claim_status', 'author_ban_status']).agg(
 </div>
 </div>
 </div>
-<script>
-let expanded = false;
 
-function toggleAll() {
-  const sections = document.querySelectorAll(".section, .subsection");
-  const summaries = document.querySelectorAll(".summary-header");
-
-  expanded = !expanded;
-
-  sections.forEach(el => {
-
-    // ✅ ONLY skip if THIS section header is Project Overview
-    const header = el.querySelector(":scope > h2");
-    if (header && header.id === "project-overview") return;
-
-    if (expanded) {
-      el.classList.remove("collapsed");
-    } else {
-      el.classList.add("collapsed");
-    }
-  });
-
-  summaries.forEach(el => {
-    if (expanded) {
-      el.classList.remove("collapsed");
-    } else {
-      el.classList.add("collapsed");
-    }
-  });
-
-  document.getElementById("toggleBtn").textContent =
-    expanded ? "Collapse all" : "Expand all";
-}
-
-// SECTION
-document.querySelectorAll(".section > h2").forEach(h => {
-
-  // 🚫 DO NOT COLLAPSE PROJECT OVERVIEW
-  if (h.id === "project-overview") return;
-
-  h.addEventListener("click", () => {
-    h.parentElement.classList.toggle("collapsed");
-  });
-});
-
-// SUBSECTION
-document.querySelectorAll(".subsection-header").forEach(h => {
-  h.addEventListener("click", () => {
-    h.parentElement.classList.toggle("collapsed");
-  });
-});
-
-// SUMMARY
-document.querySelectorAll(".summary-header").forEach(h => {
-  h.addEventListener("click", (e) => {
-    e.stopPropagation();
-    h.classList.toggle("collapsed");
-  });
-});
-
-// DEFAULT STATE
-document.querySelectorAll(".section, .subsection").forEach(el => {
-
-  const header = el.querySelector(":scope > h2");
-  if (header && header.id === "project-overview") return;
-
-  el.classList.add("collapsed");
-});
-
-document.querySelectorAll(".summary-header").forEach(el => {
-  el.classList.add("collapsed");
-});
-</script>
 </div><footer style="margin-top:40px; padding-top:15px; border-top:1px solid #2a2a2a;  color:#777; text-align:center;">
   © 2026 Alfred Rico. All rights reserved.
 </footer>
