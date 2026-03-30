@@ -878,6 +878,20 @@ details pre {
   <button onclick="toggleTheme()" style="margin-left:15px;">Light / Dark</button>
 </div>
 
+
+<h2>Key Takeaways</h2>
+<div class="collapsible-content">
+<ul>
+<li>Engagement is not evenly distributed across videos. A small number of highly viral posts account for a large share of total interaction, which pulls averages upward and makes median values more reliable when understanding typical performance.</li>
+
+<li>Claim videos consistently generate higher engagement than opinion videos across views, likes, shares, and comments. The separation is large enough that engagement patterns alone begin to distinguish between the two groups.</li>
+
+<li>While authors labeled as banned or under review tend to show higher raw engagement, this is largely driven by a small number of high-performing videos. Once this effect is accounted for, the difference between groups becomes less pronounced.</li>
+
+<li>Normalizing engagement into rates helps remove the influence of scale and makes comparisons more consistent. After doing this, content type remains the stronger signal, with claim videos maintaining higher engagement regardless of author status.</li>
+</ul>
+</div>
+
 <h2>Problem Statement</h2>
 <div class="collapsible-content">
 <p>
@@ -1496,20 +1510,6 @@ data.groupby(['<code>claim_status</code>', '<code>author_ban_status</code>']).ag
 </div>
 </div>
 <div class="section">
-
-<h2>Key Takeaways</h2>
-<div class="collapsible-content">
-<ul>
-<li>Engagement is not evenly distributed across videos. A small number of highly viral posts account for a large share of total interaction, which pulls averages upward and makes median values more reliable when understanding typical performance.</li>
-
-<li>Claim videos consistently generate higher engagement than opinion videos across views, likes, shares, and comments. The separation is large enough that engagement patterns alone begin to distinguish between the two groups.</li>
-
-<li>While authors labeled as banned or under review tend to show higher raw engagement, this is largely driven by a small number of high-performing videos. Once this effect is accounted for, the difference between groups becomes less pronounced.</li>
-
-<li>Normalizing engagement into rates helps remove the influence of scale and makes comparisons more consistent. After doing this, content type remains the stronger signal, with claim videos maintaining higher engagement regardless of author status.</li>
-</ul>
-</div>
-
 <h2 id="project-overview" style="padding-left:0; cursor:default;">Project Overview</h2>
 <div class="collapsible-content">
 <p>This project explores patterns in TikTok video engagement to support the development of a predictive model capable of distinguishing between claim-based and opinion-based content. Using a dataset of over 19,000 videos, exploratory data analysis (EDA) was conducted to understand how user interaction metrics and author characteristics relate to content type.</p>
