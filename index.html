@@ -657,6 +657,43 @@ pre code {
 
 </style>
 
+
+<style>
+
+/* ===== AUTHOR TEXT FIX ===== */
+
+body.light p[style*="color:#aaa"] {
+  color: #475569 !important;   /* slate-600 */
+  font-weight: 500;
+}
+
+</style>
+
+
+<style>
+
+/* ===== INFO() OUTPUT FIX ===== */
+
+body.light pre {
+  background: #f8fafc !important;   /* soft gray */
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+/* improve readability inside */
+body.light pre {
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* specifically for dense outputs like info() */
+body.light pre[class*="dataframe"],
+body.light pre:has(.df-table) {
+  background: #ffffff !important;
+}
+
+</style>
+
 </head>
 <body>
 <div class="container">
