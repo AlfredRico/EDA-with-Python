@@ -360,6 +360,52 @@ details summary {
 
 </style>
 
+
+<style>
+
+/* ===== CONTROLS LAYOUT FIX ===== */
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;              /* prevents cutoff */
+  margin-bottom: 10px;
+}
+
+/* give buttons consistent spacing */
+.controls button {
+  white-space: nowrap;
+}
+
+/* GitHub icon fully visible */
+.controls a {
+  display: flex;
+  align-items: center;
+  padding-left: 4px;
+}
+
+.controls a svg {
+  width: 26px;
+  height: 26px;
+  overflow: visible;
+}
+
+</style>
+
+
+<style>
+
+/* ===== VIEW CODE SIZE FIX ===== */
+
+details summary {
+  font-size: 1.05rem !important;
+  font-weight: 500;
+}
+
+</style>
+
 </head>
 <body>
 <div class="container">
