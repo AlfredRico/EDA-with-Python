@@ -217,6 +217,96 @@ function toggleTheme(){
 
 </style>
 
+
+<style>
+
+/* ===== RESTORE ALL ARROWS ===== */
+
+/* SECTION */
+.section > h2::before {
+  content: "▸";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* COLLAPSED SECTION */
+.section.collapsed > h2::before {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+/* SUBSECTION */
+.subsection-header {
+  padding-left: 30px;
+  position: relative;
+}
+
+.subsection-header::before {
+  content: "▸";
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* COLLAPSED SUBSECTION */
+.subsection.collapsed > .subsection-header::before {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+/* SUMMARY */
+.summary-header {
+  padding-left: 50px;
+  position: relative;
+}
+
+.summary-header::before {
+  content: "▸";
+  position: absolute;
+  left: 22px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* COLLAPSED SUMMARY */
+.summary-header.collapsed::before {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+/* ===== REMOVE PROJECT OVERVIEW ARROW ===== */
+#project-overview::before {
+  content: none !important;
+}
+
+</style>
+
+
+<style>
+
+/* ===== CLEAN CLICKABLE CURSOR ===== */
+
+.section > h2,
+.subsection-header,
+.summary-header,
+details summary {
+  cursor: pointer;
+}
+
+/* REMOVE TEXT-SELECT FEEL */
+.section > h2,
+.subsection-header,
+.summary-header {
+  user-select: none;
+}
+
+/* KEEP PROJECT OVERVIEW NON-CLICKABLE */
+#project-overview {
+  cursor: default !important;
+}
+
+</style>
+
 </head>
 <body>
 <div class="container">
