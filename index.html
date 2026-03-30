@@ -350,7 +350,7 @@ details summary {
 
 /* SUMMARY ARROW */
 .summary-header::before {
-  font-size: 0.9rem;
+  
 }
 
 /* SECTION ARROW (slight bump) */
@@ -467,7 +467,7 @@ pre {
   padding: 14px 16px;
   border-radius: 8px;
   overflow-x: auto;
-  font-size: 0.95rem;
+  
   line-height: 1.6;
   font-family: Consolas, Monaco, "Courier New", monospace;
   border: 1px solid #2a2a2a;
@@ -605,6 +605,48 @@ body.light button:hover {
 .controls {
   gap: 14px;
   align-items: center;
+}
+
+</style>
+
+
+<style>
+
+/* ===== MATCH YOUR PROJECT CODE STYLE ===== */
+
+pre {
+  background: #111;
+  padding: 16px 18px;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  overflow-x: auto;
+
+  /* CRITICAL: preserve structure exactly */
+  white-space: pre;
+  tab-size: 4;
+
+  /* readability */
+  font-family: Consolas, Monaco, "Courier New", monospace;
+  
+  line-height: 1.65;
+}
+
+/* ensure code doesn't collapse spacing */
+pre code {
+  white-space: inherit;
+  display: block;
+}
+
+/* spacing between logical blocks */
+pre code br {
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* LIGHT MODE */
+body.light pre {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
 }
 
 </style>
@@ -820,7 +862,7 @@ data.describe()
 </div>
 <div style="margin-top:15px;">
 <strong style="color:#aaa;">Data Info:</strong>
-<pre style="font-size:0.7rem; color:#ccc;"><class 'pandas.core.frame.dataframe'="">
+<pre style=" color:#ccc;"><class 'pandas.core.frame.dataframe'="">
 RangeIndex: 19382 entries, 0 to 19381
 Data columns (total 12 columns):
  #   Column                    Non-Null Count  Dtype  
@@ -948,7 +990,7 @@ memory usage: 1.8+ MB
 </tbody>
 </table>
 </div>
-<p style="color:#aaa; font-size:0.8rem;">
+<p style="color:#aaa; ">
         Output preview of dataset structure and summary statistics.
       </p>
 </div>
@@ -1374,7 +1416,7 @@ document.querySelectorAll(".summary-header").forEach(el => {
   el.classList.add("collapsed");
 });
 </script>
-</div><footer style="margin-top:40px; padding-top:15px; border-top:1px solid #2a2a2a; font-size:0.8rem; color:#777; text-align:center;">
+</div><footer style="margin-top:40px; padding-top:15px; border-top:1px solid #2a2a2a;  color:#777; text-align:center;">
   © 2026 Alfred Rico. All rights reserved.
 </footer>
 </div>
