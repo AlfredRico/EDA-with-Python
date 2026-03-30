@@ -217,7 +217,6 @@ function toggleTheme(){
 
 </style>
 
-
 <style>
 
 /* ===== RESTORE ALL ARROWS ===== */
@@ -281,7 +280,6 @@ function toggleTheme(){
 
 </style>
 
-
 <style>
 
 /* ===== CLEAN CLICKABLE CURSOR ===== */
@@ -307,7 +305,6 @@ details summary {
 
 </style>
 
-
 <style>
 
 /* ===== GITHUB ICON FIX ===== */
@@ -324,7 +321,6 @@ details summary {
 }
 
 </style>
-
 
 <style>
 
@@ -350,7 +346,7 @@ details summary {
 
 /* SUMMARY ARROW */
 .summary-header::before {
-  
+
 }
 
 /* SECTION ARROW (slight bump) */
@@ -359,7 +355,6 @@ details summary {
 }
 
 </style>
-
 
 <style>
 
@@ -394,7 +389,6 @@ details summary {
 
 </style>
 
-
 <style>
 
 /* ===== VIEW CODE SIZE FIX ===== */
@@ -405,7 +399,6 @@ details summary {
 }
 
 </style>
-
 
 <style>
 
@@ -436,7 +429,6 @@ details summary {
 
 </style>
 
-
 <style>
 
 /* ===== CODE BLOCK SIZE FIX ===== */
@@ -457,7 +449,6 @@ pre code {
 
 </style>
 
-
 <style>
 
 /* ===== CODE BLOCK CLEAN FORMAT ===== */
@@ -467,7 +458,7 @@ pre {
   padding: 14px 16px;
   border-radius: 8px;
   overflow-x: auto;
-  
+
   line-height: 1.6;
   font-family: Consolas, Monaco, "Courier New", monospace;
   border: 1px solid #2a2a2a;
@@ -487,7 +478,6 @@ body.light pre {
 }
 
 </style>
-
 
 <style>
 
@@ -518,7 +508,6 @@ body.light pre {
 }
 
 </style>
-
 
 <style>
 
@@ -581,7 +570,6 @@ body.light button:hover {
 
 </style>
 
-
 <style>
 
 /* ===== CLEAN GITHUB ICON ===== */
@@ -609,7 +597,6 @@ body.light button:hover {
 
 </style>
 
-
 <style>
 
 /* ===== MATCH YOUR PROJECT CODE STYLE ===== */
@@ -627,7 +614,7 @@ pre {
 
   /* readability */
   font-family: Consolas, Monaco, "Courier New", monospace;
-  
+
   line-height: 1.65;
 }
 
@@ -651,11 +638,28 @@ body.light pre {
 
 </style>
 
+
+<style>
+
+/* ===== RESTORE ORIGINAL CODE STRUCTURE ===== */
+
+pre {
+  white-space: pre !important;
+  tab-size: 4;
+  font-family: Consolas, Monaco, "Courier New", monospace;
+}
+
+/* prevent any inline styling interference */
+pre code {
+  all: unset;
+  font-family: inherit;
+}
+
+</style>
+
 </head>
 <body>
 <div class="container">
-
-
 
 <h1>TikTok Claims Project (EDA with Python)</h1>
 <p style="color:#aaa;">By Alfred Rico</p>
@@ -686,12 +690,9 @@ body.light pre {
 
 <button id="themeBtn" onclick="toggleTheme()">Day</button>
 
-
 </div>
 
 <div class="container">
-
-
 
 <h2>Key Takeaways</h2>
 <div class="collapsible-content">
@@ -1032,8 +1033,8 @@ memory usage: 1.8+ MB
 <p>With the preliminary data inspection, and the machine learning model being created for this project in mind, it is apparent that the column <code>claim_status</code> will play a key role. This variable distinguishes whether a video contains a claim or expresses an opinion, serving as the basis for the downstream classification task. </p>
 <details>
 <summary>View Code</summary>
-<pre>#Identifying values and their counts for <code>claim_status</code>  
-data['<code>claim_status</code>'].value_counts()</pre>
+<pre>#Identifying values and their counts for claim_status  
+data['claim_status'].value_counts()</pre>
 </details>
 <div class="results">
 <strong>Results:</strong>
@@ -1070,13 +1071,13 @@ data['<code>claim_status</code>'].value_counts()</pre>
 <pre>
 # Average view count (claim status)
 
-claims = data[data['<code>claim_status</code>'] == 'claim']
+claims = data[data['claim_status'] == 'claim']
 print('Mean view count claims:', claims['video_view_count'].mean())
 print('Median view count claims:', claims['video_view_count'].median())  
 
 # Average view count (opinion status)
 
-opinions = data[data['<code>claim_status</code>'] == 'opinion']
+opinions = data[data['claim_status'] == 'opinion']
 print('Mean view count opinions:', opinions['video_view_count'].mean())
 print('Median view count opinions:', opinions['video_view_count'].median())
 </pre>
@@ -1106,7 +1107,7 @@ Next, any trends associated with the ban status of the author will be examined u
 <pre>
 # Counts for each group combination of claim status and author ban status
 
-data.groupby(['<code>claim_status</code>', '<code>author_ban_status</code>']).count()[['#']]
+data.groupby(['claim_status', 'author_ban_status']).count()[['#']]
 </pre>
 </details>
 <div class="results">
@@ -1140,7 +1141,7 @@ data.groupby(['<code>claim_status</code>', '<code>author_ban_status</code>']).co
 <summary>View Code</summary>
 <pre>
 # Mean and median share count across engagement metrics
-data.groupby(['<code>author_ban_status</code>']).agg(
+data.groupby(['author_ban_status']).agg(
     {'video_view_count': ['mean', 'median'],
     'video_like_count': ['mean', 'median'],
     'video_share_count': ['mean', 'median']})</pre>
@@ -1193,7 +1194,7 @@ data.groupby(['<code>author_ban_status</code>']).agg(
 <summary>View Code</summary>
 <pre>
 # Adding a count variable
-data.groupby(['<code>author_ban_status</code>']).agg(
+data.groupby(['author_ban_status']).agg(
     {'video_view_count': ['count', 'mean', 'median'],
      'video_like_count': ['count', 'mean', 'median'],
      'video_share_count': ['count', 'mean', 'median']
@@ -1266,16 +1267,16 @@ Next, <code>groupby()</code> is used to split the dataset into combinations of <
 <pre>
 # Create engagement rate features
 
-data['<code>likes_per_view</code>'] = data['video_like_count'] / data['video_view_count']
-data['<code>comments_per_view</code>'] = data['video_comment_count'] / data['video_view_count']
-data['<code>shares_per_view</code>'] = data['video_share_count'] / data['video_view_count']
+data['likes_per_view'] = data['video_like_count'] / data['video_view_count']
+data['comments_per_view'] = data['video_comment_count'] / data['video_view_count']
+data['shares_per_view'] = data['video_share_count'] / data['video_view_count']
 
 # Grouped aggregation
 
-data.groupby(['<code>claim_status</code>', '<code>author_ban_status</code>']).agg(
-    {'<code>likes_per_view</code>': ['count', 'mean', 'median'],
-     '<code>comments_per_view</code>': ['count', 'mean', 'median'],
-     '<code>shares_per_view</code>': ['count', 'mean', 'median']}
+data.groupby(['claim_status', 'author_ban_status']).agg(
+    {'likes_per_view': ['count', 'mean', 'median'],
+     'comments_per_view': ['count', 'mean', 'median'],
+     'shares_per_view': ['count', 'mean', 'median']}
 )
 </pre>
 </details>
