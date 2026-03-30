@@ -798,6 +798,65 @@ ul {
 
 </style>
 
+
+<style>
+
+/* ===== DARK MODE TABLE IMPROVEMENT ===== */
+.df-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #2f2f2f;
+  font-size: 0.98rem;
+}
+
+/* header */
+.df-table th {
+  background: #1a1a1a;
+  color: #e5e7eb;
+  font-weight: 600;
+  padding: 10px;
+  border: 1px solid #2f2f2f;
+}
+
+/* body cells */
+.df-table td {
+  padding: 10px;
+  border: 1px solid #2a2a2a;
+  color: #d1d5db;
+}
+
+/* zebra striping */
+.df-table tbody tr:nth-child(even) {
+  background: #151515;
+}
+
+/* hover */
+.df-table tbody tr:hover {
+  background: #222;
+}
+
+/* ===== LIGHT MODE OVERRIDE (KEEP CLEAN) ===== */
+body.light .df-table th {
+  background: #f1f5f9;
+  color: #111;
+  border: 1px solid #d1d5db;
+}
+
+body.light .df-table td {
+  border: 1px solid #e2e8f0;
+  color: #1f2937;
+}
+
+body.light .df-table tbody tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+body.light .df-table tbody tr:hover {
+  background: #e2e8f0;
+}
+
+</style>
+
 </head>
 <body>
 <div class="container">
