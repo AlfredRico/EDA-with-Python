@@ -1,842 +1,196 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>TikTok Claims Project</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <style>
 
-/* ===== LIGHT MODE (MATCH LIGHTNING PROJECT) ===== */
-body.light {
-  background: #f8fafc !important;
-  color: #1a1a1a !important;
+/* ===== BASE ===== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0e0e0e;
+  color: #eaeaea;
+  line-height: 1.7;
 }
 
-body.light h1,
-body.light h2 {
-  color: #0f172a !important;
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 50px 30px;
 }
 
-body.light p,
-body.light li {
-  color: #333 !important;
-}
-
-body.light .subsection-header {
-  color: #2563eb !important;
-}
-
-body.light .summary-header {
-  color: #b45309 !important;
-}
-
-body.light .results,
-body.light details,
-body.light pre {
-  background: #ffffff !important;
-  border: 1px solid #ddd !important;
-}
-
-/* TABLE FIX (CRITICAL) */
-body.light .df-table {
-  background: #ffffff !important;
-  border-collapse: collapse;
-}
-
-body.light .df-table th {
-  background: #e2e8f0 !important;
-  color: #0f172a !important;
-  border: 1px solid #cbd5e1 !important;
-}
-
-body.light .df-table td {
-  background: #ffffff !important;
-  color: #1a1a1a !important;
-  border: 1px solid #cbd5e1 !important;
-}
-
-body.light .df-table tr:nth-child(even) {
-  background: #f8fafc !important;
-}
-
-body.light a {
-  color: #2563eb !important;
-}
-
-</style>
-
-
-<style>
-
-/* ===== VIEW CODE (GLOBAL FIX) ===== */
-
-/* DARK MODE */
-details summary {
-  color: #9aaaff !important;
-}
-
-details pre {
-  color: #e6edf3 !important;
-}
-
-/* LIGHT MODE */
-body.light details summary {
-  color: #1d4ed8 !important;
-}
-
-body.light details pre {
-  color: #0f172a !important;
-  background: #f8fafc !important;
-}
-
-/* Improve readability */
-details pre {
-  line-height: 1.6;
-}
-
-</style>
-
-
-<style>
-
-/* ===== VIEW CODE (DISTINCT COLOR) ===== */
-
-/* DARK MODE */
-details summary {
-  color: #7dd3fc !important;
-}
-
-details pre {
-  color: #e6edf3 !important;
-}
-
-/* LIGHT MODE */
-body.light details summary {
-  color: #0ea5e9 !important;
-}
-
-body.light details pre {
-  color: #0f172a !important;
-  background: #f8fafc !important;
-}
-
-/* ===== SUBSECTION HEADERS (SEPARATED COLOR) ===== */
-
-/* DARK MODE */
-.subsection-header {
-  color: #c7d2fe !important;
-}
-
-/* LIGHT MODE */
-body.light .subsection-header {
-  color: #475569 !important;
-}
-
-/* ===== READABILITY ===== */
-details pre {
-  line-height: 1.6;
-}
-
-</style>
-
-</head>
-<body>
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Tiktok Claims Project</title>
-<style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0e0e0e;
-      color: #eaeaea;
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      margin-top: 40px;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #333;
-      padding-bottom: 5px;
-      position: relative;
-      padding-left: 28px;
-    }
-
-    p {
-      color: #cfcfcf;
-    }
-
-    .section {
-  margin-top: 30px;
-  padding: 0;
-  border: none;
-  background: none;
-}
-
-    .results {
-      margin-top: 15px;
-      padding: 15px;
-      background: #1a1a1a;
-      border-radius: 8px;
-      border: 1px solid #2a2a2a;
-    }
-
-    details {
-      margin-top: 15px;
-      background: #151515;
-      border: 1px solid #2a2a2a;
-      border-radius: 8px;
-      padding: 10px;
-    }
-
-    summary {
-      cursor: pointer;
-      font-weight: bold;
-      color: #9aaaff;
-    }
-
-    pre {
-      overflow-x: auto;
-      font-size: 0.9rem;
-      color: #dcdcdc;
-    }
-
-    .controls {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 10px;
-    }
-
-    .controls button {
-      background: none;
-      border: none;
-      color: #888;
-      font-size: 0.85rem;
-      cursor: pointer;
-      padding: 4px 6px;
-    }
-
-    .controls button:hover {
-      color: #ccc;
-    }
-
-    .collapsible-header {
-      cursor: pointer;
-    }
-
-    .collapsible-header::before {
-      content: ">";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1rem;
-      color: #aaa;
-      transition: transform 0.2s ease;
-    }
-
-    .collapsible-header.collapsed::before {
-      transform: translateY(-50%) rotate(-90deg);
-    }
-
-    .collapsible-content {
-      display: block;
-    }
-
-    .collapsed + .collapsible-content {
-      display: none;
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2rem; }
-      h2 { font-size: 1.3rem; padding-left: 24px; }
-    }
-  
-/* TABLE FIX */
-.df-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.df-table th,
-.df-table td {
-  padding: 6px 8px;
-  border: 1px solid #2a2a2a;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 160px;
-}
-
-
-
-/* SUBSECTION (H3) COLLAPSIBLE */
-h3 {
-  font-size: 1.2rem;
-  margin-top: 25px;
-  margin-bottom: 8px;
-  position: relative;
-  padding-left: 24px;
-  cursor: pointer;
-  color: #cfd8ff;
-}
-
-h3::before {
-  content: ">";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.9rem;
-  color: #888;
-  transition: transform 0.2s ease;
-}
-
-h3.collapsed::before {
-  transform: translateY(-50%) rotate(-90deg);
-}
-
-
-
-/* SUMMARY DROPDOWN (UNIQUE STYLE) */
-.summary-header {
-  cursor: pointer;
-  font-weight: bold;
-  color: #ffcc66;
-  margin-bottom: 8px;
-  position: relative;
-  padding-left: 22px;
-}
-
-.summary-header::before {
-  content: "▸";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: transform 0.2s ease;
-  color: #ffcc66;
-}
-
-.summary-header.collapsed::before {
-  transform: translateY(-50%) rotate(90deg);
-}
-
-.summary-content {
-  display: block;
-}
-
-.summary-header.collapsed + .summary-content {
-  display: none;
-}
-
-
-
-/* ===== STABLE COLLAPSE SYSTEM ===== */
-
-/* SECTION */
-.section.collapsed > .collapsible-content {
-  display: none;
-}
-
-/* SUBSECTION */
-.subsection.collapsed > .subsection-content {
-  display: none;
-}
-
-.subsection.collapsed > .subsection-summary {
-  display: none;
-}
-
-/* ARROWS */
-.section > h2::before {
-  content: ">";
-  position: absolute;
-  left: 0;
-  transition: transform 0.2s ease;
-}
-
-.section.collapsed > h2::before {
-  transform: rotate(-90deg);
-}
-
-.subsection-header::before {
-  content: ">";
-  position: absolute;
-  left: 0;
-  transition: transform 0.2s ease;
-}
-
-.subsection.collapsed .subsection-header::before {
-  transform: rotate(-90deg);
-}
-
-
-/* ===== NESTED INDEX STRUCTURE ===== */
-
-/* SUBSECTION (LEVEL 2) */
-.subsection {
-  margin-left: 10px;
-}
-
-.subsection-header {
-  font-size: 1.15rem;
-  margin-top: 20px;
+/* ===== TYPO ===== */
+h1 { font-size: 3rem; }
+h2 {
+  font-size: 1.9rem;
+  margin-top: 60px;
+  border-bottom: 1px solid #333;
   padding-left: 28px;
   position: relative;
 }
 
-/* SUMMARY (LEVEL 3) */
-.subsection-summary {
-  margin-left: 25px;
-}
-
-.summary-header {
-  padding-left: 22px;
-  font-size: 0.95rem;
-}
-
-/* ===== ARROW ALIGNMENT ===== */
-
-/* FIX arrows so they follow indentation */
-.section > h2::before {
-  left: 5px;
-}
-
-.subsection-header::before {
-  left: 8px;
-}
-
-.summary-header::before {
-  left: 4px;
-}
-
-/* ===== VISUAL HIERARCHY ===== */
-
-.subsection-header {
-  color: #d7deff;
-}
-
-.summary-header {
-  color: #ffcc66;
-  opacity: 0.9;
-}
-
-/* OPTIONAL: subtle nesting guide */
-.subsection {
-  border-left: 1px solid #2a2a2a;
-  padding-left: 10px;
-}
-
-.subsection-summary {
-  border-left: 1px dashed #333;
-  padding-left: 10px;
-}
-
-
-/* SUMMARY (SEPARATE LEVEL) */
-.subsection-summary {
-  margin-left: 25px;
-}
-
-.summary-header {
-  cursor: pointer;
-  padding-left: 20px;
-  position: relative;
-}
-
-.summary-header::before {
-  content: "▸";
-  position: absolute;
-  left: 0;
-  transition: transform 0.2s ease;
-}
-
-.summary-header.collapsed::before {
-  transform: rotate(90deg);
-}
-
-.summary-content {
-  display: block;
-}
-
-.summary-header.collapsed + .summary-content {
-  display: none;
-}
-
-
-/* ===== UNIFIED DROPDOWN UI ===== */
-
-/* ALL CLICKABLE */
-.section > h2,
-.subsection-header,
-.summary-header {
-  cursor: pointer;
-}
-
-/* CLEAN TRIANGLE ARROWS */
-.section > h2::before,
-.subsection-header::before,
-.summary-header::before {
-  content: "▸";
-  position: absolute;
-  left: 0;
-  transition: transform 0.2s ease;
-}
-
-/* ROTATION STATES */
-.section.collapsed > h2::before {
-  transform: rotate(0deg);
-}
-
-.section > h2::before {
-  transform: rotate(90deg);
-}
-
-.subsection.collapsed .subsection-header::before {
-  transform: rotate(0deg);
-}
-
-.subsection .subsection-header::before {
-  transform: rotate(90deg);
-}
-
-.summary-header.collapsed::before {
-  transform: rotate(0deg);
-}
-
-.summary-header::before {
-  transform: rotate(90deg);
-}
-
-
-/* ===== FIX SUMMARY ARROW ALIGNMENT ===== */
-
-.summary-header::before {
-  top: 45%;               /* move slightly up from center */
-  transform: translateY(-50%);
-}
-
-/* Optional fine-tune (more precise alignment) */
-.summary-header {
-  line-height: 1.2;
-}
-
-
-/* ===== FIX SUMMARY ARROW DIRECTION ===== */
-
-/* collapsed (default) */
-.summary-header::before {
-  content: "▶";
-  position: absolute;
-  left: 0;
-}
-
-/* expanded */
-.summary-header:not(.collapsed)::before {
-  content: "▼";
-}
-
-/* remove rotation behavior (clean reset) */
-.summary-header::before {
-  transform: none !important;
-}
-
-
-/* ===== SUMMARY ARROW REFINEMENT ===== */
-
-/* make summary header a positioning container */
-.summary-header {
-  position: relative;
-  padding-right: 20px; /* space for arrow */
-}
-
-/* arrow styling */
-.summary-header::before {
-  content: "▶";
-  position: absolute;
-  right: 4px;     /* move to right side */
-  top: 2px;       /* align near top with text */
-  font-size: 0.75rem; /* match subsection arrow size */
-}
-
-/* expanded state */
-.summary-header:not(.collapsed)::before {
-  content: "▼";
-}
-
-/* remove any leftover transforms */
-.summary-header::before {
-  transform: none !important;
-}
-
-
-/* ANALYSIS BLOCK STRUCTURE */
-.analysis-block {
-  margin-top: 20px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #2a2a2a;
-}
-
-/* REMOVE PROJECT OVERVIEW ARROW */
-h2[style*="cursor:default"]::before {
-  content: none !important;
-}
-
-
-/* ===== TRUE DESKTOP READABILITY UPGRADE ===== */
-@media (min-width: 1024px) {
-
-  /* WIDER LAYOUT (BUT CONTROLLED) */
-  .container {
-    max-width: 1200px;
-  }
-
-  /* TRUE READABLE BASE */
-  body {
-    font-size: 18px;
-    line-height: 1.9;
-  }
-
-  /* PARAGRAPHS = KEY IMPROVEMENT */
-  p {
-    font-size: 1.1rem;
-    line-height: 1.95;
-    max-width: 85ch;
-  }
-
-  /* HEADINGS NEED PRESENCE */
-  h1 {
-    font-size: 3rem;
-  }
-
-  h2 {
-    font-size: 1.9rem;
-    margin-top: 60px;
-  }
-
-  .subsection-header {
-    font-size: 1.35rem;
-    margin-top: 35px;
-  }
-
-  .summary-header {
-    font-size: 1.05rem;
-  }
-
-  /* SPACING = HUGE FOR READABILITY */
-  .section {
-    margin-top: 60px;
-  }
-
-  .results {
-    padding: 22px;
-    margin-top: 25px;
-  }
-
-  details {
-    padding: 16px;
-  }
-
-  /* TABLES (THIS MATTERS MORE THAN YOU THINK) */
-  .df-table th,
-  .df-table td {
-    padding: 10px 12px;
-    max-width: 240px;
-  }
-
-  .df-table {
-    font-size: 0.98rem;
-  }
-
-  /* CODE BLOCKS */
-  pre {
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-
-}
-
-
-/* ===== LIST TYPOGRAPHY FIX ===== */
-ul {
-  margin-top: 10px;
-  margin-bottom: 15px;
-  padding-left: 22px;
-}
-
-li {
+p, li {
   color: #cfcfcf;
-  font-size: 1rem;
-  line-height: 1.8;
-  margin-bottom: 6px;
+  font-size: 1.1rem;
+  line-height: 1.9;
 }
 
-/* Desktop alignment with paragraph readability */
-@media (min-width: 1024px) {
-  li {
-    font-size: 1.1rem;
-    line-height: 1.95;
-  }
+/* ===== CONTROLS ===== */
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
 }
 
-</style>
+button {
+  background: #2dd4bf;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+button:hover { background: #14b8a6; }
 
-<style>
+/* ===== COLLAPSE ===== */
+.section.collapsed > .collapsible-content { display:none; }
+.subsection.collapsed > .subsection-content { display:none; }
 
-/* ===== LIGHT MODE (MATCH LIGHTNING PROJECT) ===== */
-body.light {
-  background: #f8fafc !important;
-  color: #1a1a1a !important;
+/* ===== ARROWS ===== */
+.section > h2::before,
+.subsection-header::before {
+  content:"▸";
+  position:absolute;
+  left:0;
 }
 
-body.light h1,
-body.light h2 {
-  color: #0f172a !important;
-}
+.section > h2::before { transform:rotate(90deg); }
+.section.collapsed > h2::before { transform:rotate(0deg); }
 
-body.light p,
-body.light li {
-  color: #333 !important;
-}
-
-body.light .subsection-header {
-  color: #2563eb !important;
-}
-
-body.light .summary-header {
-  color: #b45309 !important;
-}
-
-body.light .results,
-body.light details,
-body.light pre {
-  background: #ffffff !important;
-  border: 1px solid #ddd !important;
-}
-
-/* TABLE FIX (CRITICAL) */
-body.light .df-table {
-  background: #ffffff !important;
-  border-collapse: collapse;
-}
-
-body.light .df-table th {
-  background: #e2e8f0 !important;
-  color: #0f172a !important;
-  border: 1px solid #cbd5e1 !important;
-}
-
-body.light .df-table td {
-  background: #ffffff !important;
-  color: #1a1a1a !important;
-  border: 1px solid #cbd5e1 !important;
-}
-
-body.light .df-table tr:nth-child(even) {
-  background: #f8fafc !important;
-}
-
-body.light a {
-  color: #2563eb !important;
-}
-
-</style>
-
-
-<style>
-
-/* ===== VIEW CODE (GLOBAL FIX) ===== */
-
-/* DARK MODE */
-details summary {
-  color: #9aaaff !important;
-}
-
-details pre {
-  color: #e6edf3 !important;
-}
-
-/* LIGHT MODE */
-body.light details summary {
-  color: #1d4ed8 !important;
-}
-
-body.light details pre {
-  color: #0f172a !important;
-  background: #f8fafc !important;
-}
-
-/* Improve readability */
-details pre {
-  line-height: 1.6;
-}
-
-</style>
-
-
-<style>
-
-/* ===== VIEW CODE (DISTINCT COLOR) ===== */
-
-/* DARK MODE */
-details summary {
-  color: #7dd3fc !important;
-}
-
-details pre {
-  color: #e6edf3 !important;
-}
-
-/* LIGHT MODE */
-body.light details summary {
-  color: #0ea5e9 !important;
-}
-
-body.light details pre {
-  color: #0f172a !important;
-  background: #f8fafc !important;
-}
-
-/* ===== SUBSECTION HEADERS (SEPARATED COLOR) ===== */
-
-/* DARK MODE */
 .subsection-header {
-  color: #c7d2fe !important;
+  color:#9aaaff;
+  padding-left:28px;
+}
+.subsection-header::before { transform:rotate(90deg); }
+.subsection.collapsed > .subsection-header::before { transform:rotate(0deg); }
+
+.summary-header {
+  color:#ffcc66;
+  padding-left:48px;
+}
+.summary-header::before {
+  content:"▸";
+  position:absolute;
+  left:20px;
+  transform:rotate(90deg);
+}
+.summary-header.collapsed::before {
+  transform:rotate(0deg);
 }
 
-/* LIGHT MODE */
-body.light .subsection-header {
-  color: #475569 !important;
+.summary-content { margin-left:48px; }
+.summary-header.collapsed + .summary-content { display:none; }
+
+/* ===== VIEW CODE ===== */
+details summary {
+  color:#2dd4bf;
+  cursor:pointer;
+}
+details summary:hover { opacity:0.85; }
+
+/* ===== TABLE ===== */
+.df-table {
+  border-collapse:collapse;
+  width:100%;
+}
+.df-table th, .df-table td {
+  border:1px solid #333;
+  padding:8px;
 }
 
-/* ===== READABILITY ===== */
-details pre {
-  line-height: 1.6;
-}
+/* ===== LIGHT MODE ===== */
+body.light { background:#fff; color:#111; }
+body.light p { color:#333; }
 
 </style>
 
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  document.querySelectorAll(".section").forEach(s=>{
+    const h=s.querySelector(":scope > h2");
+    if(!h || h.id==="project-overview") return;
+    s.classList.add("collapsed");
+  });
+
+  document.querySelectorAll(".subsection").forEach(s=>s.classList.add("collapsed"));
+  document.querySelectorAll(".summary-header").forEach(s=>s.classList.add("collapsed"));
+
+  document.querySelectorAll(".section > h2").forEach(h=>{
+    if(h.id==="project-overview") return;
+    h.onclick=()=>h.parentElement.classList.toggle("collapsed");
+  });
+
+  document.querySelectorAll(".subsection-header").forEach(h=>{
+    h.onclick=()=>h.closest(".subsection").classList.toggle("collapsed");
+  });
+
+  document.querySelectorAll(".summary-header").forEach(h=>{
+    h.onclick=(e)=>{e.stopPropagation();h.classList.toggle("collapsed");};
+  });
+
+});
+
+let expanded=false;
+
+function toggleAll(){
+  expanded=!expanded;
+  document.querySelectorAll(".section,.subsection").forEach(el=>{
+    const h=el.querySelector(":scope > h2");
+    if(h && h.id==="project-overview") return;
+    el.classList.toggle("collapsed",!expanded);
+  });
+  document.querySelectorAll(".summary-header").forEach(el=>{
+    el.classList.toggle("collapsed",!expanded);
+  });
+  document.getElementById("toggleBtn").textContent =
+    expanded?"Collapse all":"Expand all";
+}
+
+function toggleTheme(){
+  const b=document.body;
+  const btn=document.getElementById("themeBtn");
+  b.classList.toggle("light");
+  btn.textContent=b.classList.contains("light")?"Night":"Day";
+}
+
+</script>
 </head>
 <body>
+<div class="container">
+
+<a href="https://alfredrico.github.io/" style="color:#9aaaff;text-decoration:none;">
+← Back to Portfolio
+</a>
+
+<h1>TikTok Claims Project (EDA with Python)</h1>
+<p style="color:#aaa;">By Alfred Rico</p>
+
+<div class="controls">
+<button id="toggleBtn" onclick="toggleAll()">Expand all</button>
+<button id="themeBtn" onclick="toggleTheme()">Day</button>
+
+<a href="https://github.com/ShadyEggs/EDA-with-Python" target="_blank">
+<svg height="22" width="22" viewBox="0 0 16 16" fill="currentColor">
+<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59..."/>
+</svg>
+</a>
+</div>
+
 <div class="container">
 <div style="margin-bottom:20px;">
   <a href="https://alfredrico.github.io/" style="color:#9aaaff; text-decoration:none; font-size:0.9rem;">
@@ -1612,12 +966,4 @@ function toggleTheme() {
 }
 </script>
 
-</body>
-</html>
-<script>
-function toggleTheme() {
-  document.body.classList.toggle("light");
-}
-</script>
-
-</body></html>
+</div></body></html>
