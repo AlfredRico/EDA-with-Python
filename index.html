@@ -13,24 +13,20 @@ body {
   font-family: Arial, sans-serif;
   background: #0e0e0e;
   color: #eaeaea;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: auto;
-  padding: 40px 20px;
+  padding: 50px 30px;
 }
 
-/* ===== TYPOGRAPHY ===== */
-h1 {
-  font-size: 3.4rem;
-  margin-bottom: 8px;
-}
-
+/* ===== TYPO ===== */
+h1 { font-size: 3rem; }
 h2 {
-  font-size: 1.8rem;
-  margin-top: 55px;
+  font-size: 1.9rem;
+  margin-top: 60px;
   border-bottom: 1px solid #333;
   padding-left: 28px;
   position: relative;
@@ -38,19 +34,16 @@ h2 {
 
 p, li {
   color: #cfcfcf;
-  line-height: 1.75;
-}
-
-ul {
-  padding-left: 22px;
+  font-size: 1.1rem;
+  line-height: 1.9;
 }
 
 /* ===== CONTROLS ===== */
 .controls {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
 }
 
 button {
@@ -60,89 +53,760 @@ button {
   border-radius: 6px;
   cursor: pointer;
 }
+button:hover { background: #14b8a6; }
+
+/* ===== COLLAPSE ===== */
+.section.collapsed > .collapsible-content { display:none; }
+.subsection.collapsed > .subsection-content { display:none; }
+
+/* ===== ARROWS ===== */
+.section > h2::before,
+.subsection-header::before {
+  content:"▸";
+  position:absolute;
+  left:0;
+}
+
+.section > h2::before { transform:rotate(90deg); }
+.section.collapsed > h2::before { transform:rotate(0deg); }
+
+.subsection-header {
+  color:#9aaaff;
+  padding-left:28px;
+}
+.subsection-header::before { transform:rotate(90deg); }
+.subsection.collapsed > .subsection-header::before { transform:rotate(0deg); }
+
+.summary-header {
+  color:#ffcc66;
+  padding-left:48px;
+}
+.summary-header::before {
+  content:"▸";
+  position:absolute;
+  left:20px;
+  transform:rotate(90deg);
+}
+.summary-header.collapsed::before {
+  transform:rotate(0deg);
+}
+
+.summary-content { margin-left:48px; }
+.summary-header.collapsed + .summary-content { display:none; }
+
+/* ===== VIEW CODE ===== */
+details summary {
+  color:#2dd4bf;
+  cursor:pointer;
+}
+details summary:hover { opacity:0.85; }
 
 /* ===== TABLE ===== */
 .df-table {
-  border-collapse: collapse;
-  width: 100%;
+  border-collapse:collapse;
+  width:100%;
 }
-
 .df-table th, .df-table td {
-  border: 1px solid #333;
-  padding: 8px;
+  border:1px solid #333;
+  padding:8px;
 }
 
-/* ===== CODE ===== */
-pre {
-  overflow-x: auto;
-  white-space: pre;
-  font-family: Consolas, monospace;
+/* ===== LIGHT MODE ===== */
+body.light { background:#fff; color:#111; }
+body.light p { color:#333; }
+
+</style>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  document.querySelectorAll(".section").forEach(s=>{
+    const h=s.querySelector(":scope > h2");
+    if(!h || h.id==="project-overview") return;
+    s.classList.add("collapsed");
+  });
+
+  document.querySelectorAll(".subsection").forEach(s=>s.classList.add("collapsed"));
+  document.querySelectorAll(".summary-header").forEach(s=>s.classList.add("collapsed"));
+
+  document.querySelectorAll(".section > h2").forEach(h=>{
+    if(h.id==="project-overview") return;
+    h.onclick=()=>h.parentElement.classList.toggle("collapsed");
+  });
+
+  document.querySelectorAll(".subsection-header").forEach(h=>{
+    h.onclick=()=>h.closest(".subsection").classList.toggle("collapsed");
+  });
+
+  document.querySelectorAll(".summary-header").forEach(h=>{
+    h.onclick=(e)=>{e.stopPropagation();h.classList.toggle("collapsed");};
+  });
+
+});
+
+let expanded=false;
+
+function toggleAll(){
+  expanded=!expanded;
+  document.querySelectorAll(".section,.subsection").forEach(el=>{
+    const h=el.querySelector(":scope > h2");
+    if(h && h.id==="project-overview") return;
+    el.classList.toggle("collapsed",!expanded);
+  });
+  document.querySelectorAll(".summary-header").forEach(el=>{
+    el.classList.toggle("collapsed",!expanded);
+  });
+  document.getElementById("toggleBtn").textContent =
+    expanded?"Collapse all":"Expand all";
 }
 
-/* ===== DESKTOP ===== */
-@media (min-width: 769px) {
-  body {
-    font-size: 18px;
-    line-height: 1.7;
-  }
-
-  .container {
-    max-width: 1200px;
-    padding: 50px 30px;
-  }
+function toggleTheme(){
+  const b=document.body;
+  const btn=document.getElementById("themeBtn");
+  b.classList.toggle("light");
+  btn.textContent=b.classList.contains("light")?"Night":"Day";
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-  body {
-    font-size: 16px;
-    line-height: 1.85;
-  }
+</script>
 
-  .container {
-    padding: 24px 16px;
-  }
+<style>
 
-  pre {
-    font-size: 0.85rem;
-  }
+/* ===== PERFECT ARROW ALIGNMENT ===== */
+
+/* SECTION */
+.section > h2::before {
+  left: 4px;
+}
+
+/* SUBSECTION */
+.subsection-header {
+  padding-left: 30px;
+}
+.subsection-header::before {
+  left: 6px;
+}
+
+/* SUMMARY */
+.summary-header {
+  padding-left: 50px;
+}
+.summary-header::before {
+  left: 22px;
+}
+
+/* FIX VERTICAL ALIGNMENT */
+.section > h2::before,
+.subsection-header::before,
+.summary-header::before {
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.section.collapsed > h2::before {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+.subsection.collapsed > .subsection-header::before {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+.summary-header.collapsed::before {
+  transform: translateY(-50%) rotate(0deg);
 }
 
 </style>
-</head>
 
+<style>
+
+/* ===== RESTORE ALL ARROWS ===== */
+
+/* SECTION */
+.section > h2::before {
+  content: "▸";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* COLLAPSED SECTION */
+.section.collapsed > h2::before {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+/* SUBSECTION */
+.subsection-header {
+  padding-left: 30px;
+  position: relative;
+}
+
+.subsection-header::before {
+  content: "▸";
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* COLLAPSED SUBSECTION */
+.subsection.collapsed > .subsection-header::before {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+/* SUMMARY */
+.summary-header {
+  padding-left: 50px;
+  position: relative;
+}
+
+.summary-header::before {
+  content: "▸";
+  position: absolute;
+  left: 22px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* COLLAPSED SUMMARY */
+.summary-header.collapsed::before {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+/* ===== REMOVE PROJECT OVERVIEW ARROW ===== */
+#project-overview::before {
+  content: none !important;
+}
+
+</style>
+
+<style>
+
+/* ===== CLEAN CLICKABLE CURSOR ===== */
+
+.section > h2,
+.subsection-header,
+.summary-header,
+details summary {
+  cursor: pointer;
+}
+
+/* REMOVE TEXT-SELECT FEEL */
+.section > h2,
+.subsection-header,
+.summary-header {
+  user-select: none;
+}
+
+/* KEEP PROJECT OVERVIEW NON-CLICKABLE */
+#project-overview {
+  cursor: default !important;
+}
+
+</style>
+
+<style>
+
+/* ===== GITHUB ICON FIX ===== */
+
+.controls a svg {
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+  overflow: visible;
+}
+
+.controls {
+  align-items: center;
+}
+
+</style>
+
+<style>
+
+/* ===== HEADER SIZE NORMALIZATION ===== */
+
+/* SUBSECTION */
+.subsection-header {
+  font-size: 1.35rem !important;
+  margin-top: 30px;
+}
+
+/* SUMMARY */
+.summary-header {
+  font-size: 1.08rem !important;
+}
+
+/* ===== ARROW SCALING ===== */
+
+/* SUBSECTION ARROW */
+.subsection-header::before {
+  font-size: 1rem;
+}
+
+/* SUMMARY ARROW */
+.summary-header::before {
+
+}
+
+/* SECTION ARROW (slight bump) */
+.section > h2::before {
+  font-size: 1.05rem;
+}
+
+</style>
+
+<style>
+
+/* ===== CONTROLS LAYOUT FIX ===== */
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;              /* prevents cutoff */
+  margin-bottom: 10px;
+}
+
+/* give buttons consistent spacing */
+.controls button {
+  white-space: nowrap;
+}
+
+/* GitHub icon fully visible */
+.controls a {
+  display: flex;
+  align-items: center;
+  padding-left: 4px;
+}
+
+.controls a svg {
+  width: 26px;
+  height: 26px;
+  overflow: visible;
+}
+
+</style>
+
+<style>
+
+/* ===== VIEW CODE SIZE FIX ===== */
+
+details summary {
+  font-size: 1.05rem !important;
+  font-weight: 500;
+}
+
+</style>
+
+<style>
+
+/* ===== GITHUB ICON TRUE FIX ===== */
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+}
+
+/* prevent shrinking */
+.controls a {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 28px;
+}
+
+/* force full icon visibility */
+.controls a svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+  overflow: visible;
+}
+
+</style>
+
+<style>
+
+/* ===== CODE BLOCK SIZE FIX ===== */
+
+pre {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+code {
+  font-size: 1rem !important;
+}
+
+/* improve readability */
+pre code {
+  display: block;
+}
+
+</style>
+
+<style>
+
+/* ===== CODE BLOCK CLEAN FORMAT ===== */
+
+pre {
+  background: #111;
+  padding: 14px 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+
+  line-height: 1.6;
+  font-family: Consolas, Monaco, "Courier New", monospace;
+  border: 1px solid #2a2a2a;
+}
+
+pre code {
+  font-family: inherit;
+  font-size: inherit;
+  display: block;
+  white-space: pre;
+}
+
+/* LIGHT MODE CODE */
+body.light pre {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+}
+
+</style>
+
+<style>
+
+/* ===== GITHUB ICON POSITION FIX ===== */
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* force icon to sit just left of edge, not clipped */
+.controls a {
+  order: 2;
+  margin-left: 6px;
+  flex-shrink: 0;
+}
+
+.controls button {
+  order: 1;
+}
+
+/* keep icon visible */
+.controls a svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+</style>
+
+<style>
+
+/* ===== DAY MODE FULL READABILITY FIX ===== */
+
+body.light {
+  background: #ffffff;
+  color: #111;
+}
+
+/* TEXT */
+body.light p,
+body.light li {
+  color: #333;
+}
+
+/* HEADERS */
+body.light h1,
+body.light h2 {
+  color: #111;
+  border-color: #ddd;
+}
+
+/* SUBSECTIONS */
+body.light .subsection-header {
+  color: #4a63d8;
+}
+
+/* SUMMARY */
+body.light .summary-header {
+  color: #b8860b;
+}
+
+/* TABLES */
+body.light .df-table th {
+  background: #f0f0f0;
+  color: #111;
+}
+
+body.light .df-table td {
+  background: #ffffff;
+  color: #222;
+  border: 1px solid #ddd;
+}
+
+/* LINKS */
+body.light a {
+  color: #4a63d8;
+}
+
+/* BUTTONS */
+body.light button {
+  background: #2dd4bf;
+  color: #000;
+}
+
+body.light button:hover {
+  background: #14b8a6;
+}
+
+</style>
+
+<style>
+
+/* ===== CLEAN GITHUB ICON ===== */
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.github-link svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* keep controls clean */
+.controls {
+  gap: 14px;
+  align-items: center;
+}
+
+</style>
+
+<style>
+
+/* ===== MATCH YOUR PROJECT CODE STYLE ===== */
+
+pre {
+  background: #111;
+  padding: 16px 18px;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  overflow-x: auto;
+
+  /* CRITICAL: preserve structure exactly */
+  white-space: pre;
+  tab-size: 4;
+
+  /* readability */
+  font-family: Consolas, Monaco, "Courier New", monospace;
+
+  line-height: 1.65;
+}
+
+/* ensure code doesn't collapse spacing */
+pre code {
+  white-space: inherit;
+  display: block;
+}
+
+/* spacing between logical blocks */
+pre code br {
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* LIGHT MODE */
+body.light pre {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+}
+
+</style>
+
+
+<style>
+
+/* ===== RESTORE ORIGINAL CODE STRUCTURE ===== */
+
+pre {
+  white-space: pre !important;
+  tab-size: 4;
+  font-family: Consolas, Monaco, "Courier New", monospace;
+}
+
+/* prevent any inline styling interference */
+pre code {
+  all: unset;
+  font-family: inherit;
+}
+
+</style>
+
+
+<style>
+
+/* ===== AUTHOR TEXT FIX ===== */
+
+body.light p[style*="color:#aaa"] {
+  color: #475569 !important;   /* slate-600 */
+  font-weight: 500;
+}
+
+</style>
+
+
+<style>
+
+/* ===== INFO() OUTPUT FIX ===== */
+
+body.light pre {
+  background: #f8fafc !important;   /* soft gray */
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+/* improve readability inside */
+body.light pre {
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* specifically for dense outputs like info() */
+body.light pre[class*="dataframe"],
+body.light pre:has(.df-table) {
+  background: #ffffff !important;
+}
+
+</style>
+
+
+<style>
+
+/* ===== FORCE CONSISTENT WIDTH (MATCH LIGHTNING) ===== */
+
+.container * {
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* prevent accidental narrowing */
+.section,
+.subsection,
+.subsection-content,
+.summary-content,
+.results {
+  width: 100% !important;
+}
+
+/* ensure tables and blocks don't shrink */
+.df-table,
+pre,
+img {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+</style>
+
+
+<style>
+
+/* ===== MATCH LIGHTNING FONT SYSTEM ===== */
+
+/* DESKTOP */
+@media (min-width: 769px) {
+  body {
+    font-size: 18px !important;
+    line-height: 1.7 !important;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px !important;
+    line-height: 1.85 !important;
+  }
+}
+
+/* ENSURE TEXT INHERITS */
+p, li {
+  font-size: inherit !important;
+}
+
+</style>
+
+
+<style>
+
+/* ===== KEY TAKEAWAYS ALIGNMENT FIX ===== */
+
+ul {
+  padding-left: 22px !important;
+  margin-left: 0 !important;
+}
+
+.collapsible-content ul {
+  padding-left: 22px !important;
+}
+
+</style>
+
+</head>
 <body>
 <div class="container">
+
 
 <div style="margin-bottom:20px;">
   <a href="https://AlfredRico.github.io/" style="color:#9aaaff; text-decoration:none;">
     ← Back to Portfolio
   </a>
 </div>
-
 <h1>TikTok Claims Project (EDA with Python)</h1>
 <p style="color:#aaa;">By Alfred Rico</p>
 
 <div class="controls">
-  <button id="toggleBtn" onclick="toggleAll()">Expand all</button>
-  <button id="themeBtn" onclick="toggleTheme()">Day</button>
+<button id="toggleBtn" onclick="toggleAll()">Expand all</button>
 
-  <a href="https://github.com/ShadyEggs/EDA-with-Python" target="_blank">
-    <svg height="22" width="22" viewBox="0 0 16 16" fill="currentColor">
-      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59..."/>
-    </svg>
-  </a>
+<a href="https://github.com/ShadyEggs/EDA-with-Python" target="_blank" class="github-link">
+  <svg viewBox="0 0 16 16" aria-hidden="true">
+    <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 
+    3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 
+    0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94
+    -.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
+    -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 
+    1.87.87 2.33.66.07-.52.28-.87.51-1.07
+    -1.78-.2-3.64-.89-3.64-3.95 
+    0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 
+    0 0 .67-.21 2.2.82.64-.18 1.32-.27 
+    2-.27s1.36.09 2 .27c1.53-1.04 
+    2.2-.82 2.2-.82.44 1.1.16 1.92.08 
+    2.12.51.56.82 1.27.82 2.15 
+    0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 
+    1.48 0 1.07-.01 1.93-.01 2.2 
+    0 .21.15.46.55.38A8.013 8.013 0 
+    0 0 16 8c0-4.42-3.58-8-8-8z"/>
+  </svg>
+</a>
+
+<button id="themeBtn" onclick="toggleTheme()">Day</button>
+
 </div>
-
-
-<div class="container">
-
-
-
-<h1>TikTok Claims Project (EDA with Python)</h1>
-<p style="color:#aaa;">By Alfred Rico</p>
-
-
 
 <div class="container">
 
@@ -879,8 +1543,4 @@ function toggleTheme() {
 }
 </script>
 
-</div>
-
-</div>
-</body>
-</html>
+</div></body></html>
