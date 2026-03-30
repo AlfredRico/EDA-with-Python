@@ -307,6 +307,59 @@ details summary {
 
 </style>
 
+
+<style>
+
+/* ===== GITHUB ICON FIX ===== */
+
+.controls a svg {
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+  overflow: visible;
+}
+
+.controls {
+  align-items: center;
+}
+
+</style>
+
+
+<style>
+
+/* ===== HEADER SIZE NORMALIZATION ===== */
+
+/* SUBSECTION */
+.subsection-header {
+  font-size: 1.35rem !important;
+  margin-top: 30px;
+}
+
+/* SUMMARY */
+.summary-header {
+  font-size: 1.08rem !important;
+}
+
+/* ===== ARROW SCALING ===== */
+
+/* SUBSECTION ARROW */
+.subsection-header::before {
+  font-size: 1rem;
+}
+
+/* SUMMARY ARROW */
+.summary-header::before {
+  font-size: 0.9rem;
+}
+
+/* SECTION ARROW (slight bump) */
+.section > h2::before {
+  font-size: 1.05rem;
+}
+
+</style>
+
 </head>
 <body>
 <div class="container">
