@@ -767,10 +767,42 @@ ul {
 
 </style>
 
+
+<style>
+
+/* ===== FORCE HEADER TO FOLLOW CONTAINER WIDTH ===== */
+
+.controls {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+/* ensure no element exceeds container */
+.container > * {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* remove any rogue centering or expansion */
+body > div:not(.container) {
+  all: unset;
+}
+
+</style>
+
 </head>
 <body>
 <div class="container">
 
+
+<div style="margin-bottom:20px;">
+  <a href="https://AlfredRico.github.io/" style="color:#9aaaff; text-decoration:none;">
+    ← Back to Portfolio
+  </a>
+</div>
 
 <div style="margin-bottom:20px;">
   <a href="https://AlfredRico.github.io/" style="color:#9aaaff; text-decoration:none;">
