@@ -406,6 +406,57 @@ details summary {
 
 </style>
 
+
+<style>
+
+/* ===== GITHUB ICON TRUE FIX ===== */
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+}
+
+/* prevent shrinking */
+.controls a {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 28px;
+}
+
+/* force full icon visibility */
+.controls a svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+  overflow: visible;
+}
+
+</style>
+
+
+<style>
+
+/* ===== CODE BLOCK SIZE FIX ===== */
+
+pre {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+code {
+  font-size: 1rem !important;
+}
+
+/* improve readability */
+pre code {
+  display: block;
+}
+
+</style>
+
 </head>
 <body>
 <div class="container">
