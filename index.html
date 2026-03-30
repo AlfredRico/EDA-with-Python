@@ -694,6 +694,63 @@ body.light pre:has(.df-table) {
 
 </style>
 
+
+<style>
+
+/* ===== FORCE CONSISTENT WIDTH (MATCH LIGHTNING) ===== */
+
+.container * {
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* prevent accidental narrowing */
+.section,
+.subsection,
+.subsection-content,
+.summary-content,
+.results {
+  width: 100% !important;
+}
+
+/* ensure tables and blocks don't shrink */
+.df-table,
+pre,
+img {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+</style>
+
+
+<style>
+
+/* ===== MATCH LIGHTNING FONT SYSTEM ===== */
+
+/* DESKTOP */
+@media (min-width: 769px) {
+  body {
+    font-size: 18px !important;
+    line-height: 1.7 !important;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px !important;
+    line-height: 1.85 !important;
+  }
+}
+
+/* ENSURE TEXT INHERITS */
+p, li {
+  font-size: inherit !important;
+}
+
+</style>
+
 </head>
 <body>
 <div class="container">
